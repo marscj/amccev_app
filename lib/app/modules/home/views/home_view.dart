@@ -23,9 +23,7 @@ class HomeView extends GetView<HomeController> {
           ),
           ElevatedButton(
               onPressed: () {
-                MyHttp().get('/api.json').then((value) {
-                  print(value);
-                });
+                MyHttp().get('/api.json').then((value) {});
               },
               child: Text("ll  asdf"))
         ],

@@ -34,8 +34,6 @@ void main() async {
   //初始化 dio
   (MyHttp().transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
 
-  MyHttp().get('/posts');
-
   //初始化闪屏
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
