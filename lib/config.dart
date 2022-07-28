@@ -16,7 +16,7 @@ class Env {
   // 开发环境
   static final EnvConfig _debugConfig = EnvConfig(
     appTitle: "debugTitle",
-    appDomain: "http://www.debugxxx.com",
+    appDomain: "http://192.168.0.84:8201",
   );
 
   // 发布环境

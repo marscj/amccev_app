@@ -1,4 +1,5 @@
 import 'package:app/config.dart';
+import 'package:app/utils/http/myhttp.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -14,11 +15,20 @@ class HomeView extends GetView<HomeController> {
         title: Text(Env.config.appTitle),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          Env.config.appDomain,
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Column(
+        children: [
+          Text(
+            Env.config.appDomain,
+            style: TextStyle(fontSize: 20),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                MyHttp().get('/api.json').then((value) {
+                  print(value);
+                });
+              },
+              child: Text("ll  asdf"))
+        ],
       ),
     );
   }
