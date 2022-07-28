@@ -2,5 +2,12 @@
   "app_name": "AMCCEV",
   "buttons": {
     "login": "Login"
+  },
+  "tabs": {
+    "home": "Home",
+    "booking": "Booking",
+    "shop": "shop",
+    "cart": "Cart",
+    "my": "My"
   }
 }

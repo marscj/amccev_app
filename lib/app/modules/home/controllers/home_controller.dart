@@ -1,12 +1,16 @@
+import 'package:app/common/persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
 
-  final count = 0.obs;
+  late PersistentTabController persistentTabController;
+
   @override
   void onInit() {
     super.onInit();
+
+    persistentTabController = PersistentTabController();
   }
 
   @override
@@ -18,6 +22,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
