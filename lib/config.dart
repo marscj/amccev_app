@@ -25,10 +25,10 @@ class Env {
     appDomain: "http://www.releasexxx.com",
   );
 
-  static EnvConfig get envConfig => _getEnvConfig();
+  static EnvConfig get config => _getConfig();
 
 // 根据不同环境返回对应的环境配置
-  static EnvConfig _getEnvConfig() {
+  static EnvConfig _getConfig() {
     switch (appEnv) {
       case EnvName.debug:
         return _debugConfig;

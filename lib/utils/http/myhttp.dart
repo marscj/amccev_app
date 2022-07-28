@@ -9,7 +9,7 @@ class MyHttp extends DioForNative {
 
   MyHttp._internal() : super() {
     options = BaseOptions(
-        baseUrl: Env.envConfig.appDomain,
+        baseUrl: Env.config.appDomain,
         connectTimeout: 10000,
         receiveTimeout: 10000);
 

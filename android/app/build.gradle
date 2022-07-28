@@ -21,6 +21,19 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+/// 设置默认配置参数
+def dartDefine = [
+    DART_DEFINE_APP_ENV: 'debug',
+]
+if (project.hasProperty('dart-defines')) {
+    dartDefine = dartDefine + project.property('dart-defines')
+            .split(',')
+            .collectEntries { entry ->
+                def pair = URLDecoder.decode(entry).split('=')
+                [(pair.first()): pair.last()]
+            }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -51,6 +64,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        resValue "string","app_name","flutter_flavor${dartDefine.DART_DEFINE_APP_ENV}"
     }
 
     buildTypes {
