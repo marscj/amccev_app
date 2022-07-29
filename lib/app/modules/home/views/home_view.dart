@@ -1,10 +1,7 @@
 import 'package:app/app/modules/booking/views/booking_view.dart';
-import 'package:app/app/modules/cart/views/cart_view.dart';
 import 'package:app/app/modules/homepage/views/homepage_view.dart';
 import 'package:app/app/modules/message/views/message_view.dart';
-import 'package:app/app/modules/notice/views/notice_view.dart';
 import 'package:app/app/modules/profile/views/profile_view.dart';
-import 'package:app/app/modules/shop/views/shop_view.dart';
 import 'package:app/common/persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
