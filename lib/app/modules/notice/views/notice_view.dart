@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/my_controller.dart';
+import '../controllers/notice_controller.dart';
 
-class MyView extends GetView<MyController> {
-  const MyView({Key? key}) : super(key: key);
+class NoticeView extends GetView<NoticeController> {
+  const NoticeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MyController>(
-      init: MyController(),
+    return GetBuilder<NoticeController>(
+      init: NoticeController(),
       initState: (state) {},
       builder: (controller) => Scaffold(
         appBar: AppBar(
-          title: const Text('MyView'),
+          title: const Text('NoticeView'),
           centerTitle: true,
         ),
         body: Center(
           child: Text(
-            'MyView is working',
+            'NoticeView is working',
             style: TextStyle(fontSize: 20),
           ),
         ),

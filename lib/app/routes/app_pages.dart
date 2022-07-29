@@ -8,8 +8,12 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/homepage/bindings/homepage_binding.dart';
 import '../modules/homepage/views/homepage_view.dart';
+import '../modules/message/bindings/message_binding.dart';
+import '../modules/message/views/message_view.dart';
 import '../modules/my/bindings/my_binding.dart';
 import '../modules/my/views/my_view.dart';
+import '../modules/notice/bindings/notice_binding.dart';
+import '../modules/notice/views/notice_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/setting/bindings/setting_binding.dart';
@@ -71,6 +75,16 @@ class AppPages {
       name: _Paths.MY,
       page: () => const MyView(),
       binding: MyBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTICE,
+      page: () => const NoticeView(),
+      binding: NoticeBinding(),
+    ),
+    GetPage(
+      name: _Paths.MESSAGE,
+      page: () => const MessageView(),
+      binding: MessageBinding(),
     ),
   ];
 }

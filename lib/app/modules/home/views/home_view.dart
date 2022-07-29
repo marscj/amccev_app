@@ -1,6 +1,8 @@
 import 'package:app/app/modules/booking/views/booking_view.dart';
 import 'package:app/app/modules/cart/views/cart_view.dart';
 import 'package:app/app/modules/homepage/views/homepage_view.dart';
+import 'package:app/app/modules/message/views/message_view.dart';
+import 'package:app/app/modules/notice/views/notice_view.dart';
 import 'package:app/app/modules/profile/views/profile_view.dart';
 import 'package:app/app/modules/shop/views/shop_view.dart';
 import 'package:app/common/persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -23,15 +25,17 @@ class HomeView extends GetView<HomeController> {
         screens: [
           HomePageView(),
           BookingView(),
-          ShopView(),
-          CartView(),
+          // ShopView(),
+          // CartView(),
+          MessageView(),
           ProfileView()
         ],
         items: [
-          HomeTab('tabs_home'.tr, FontAwesomeIcons.carBattery),
-          HomeTab('tabs_booking'.tr, FontAwesomeIcons.bookOpen),
-          HomeTab('tabs_shop'.tr, FontAwesomeIcons.bagShopping),
-          HomeTab('tabs_cart'.tr, FontAwesomeIcons.cartShopping),
+          HomeTab('tabs_home'.tr, FontAwesomeIcons.car),
+          HomeTab('tabs_booking'.tr, FontAwesomeIcons.book),
+          HomeTab('tabs_message'.tr, FontAwesomeIcons.message),
+          // HomeTab('tabs_shop'.tr, FontAwesomeIcons.bagShopping),
+          // HomeTab('tabs_cart'.tr, FontAwesomeIcons.cartShopping),
           HomeTab('tabs_my'.tr, FontAwesomeIcons.user),
         ]
             .map((e) => PersistentBottomNavBarItem(

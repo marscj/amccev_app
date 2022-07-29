@@ -8,15 +8,19 @@ class BookingView extends GetView<BookingController> {
   const BookingView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('BookingView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'BookingView is working',
-          style: TextStyle(fontSize: 20),
+    return GetBuilder<BookingController>(
+      init: BookingController(),
+      initState: (state) {},
+      builder: (controller) => Scaffold(
+        appBar: AppBar(
+          title: const Text('BookingView'),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Text(
+            'BookingView is working',
+            style: TextStyle(fontSize: 20),
+          ),
         ),
       ),
     );
