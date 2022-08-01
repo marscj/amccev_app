@@ -1,14 +1,10 @@
 {
   "app_name": "AMCCEV",
-  "buttons": {
-    "login": "登录"
-  },
-  "tabs": {
-    "home": "首页",
-    "booking": "预定",
-    "shop": "商店",
-    "cart": "购物车",
-    "my": "我的",
-    "message": "消息"
-  }
+  "login": "登录",
+  "home": "首页",
+  "booking": "预定",
+  "shop": "商店",
+  "cart": "购物车",
+  "my": "我的",
+  "message": "消息"
 }

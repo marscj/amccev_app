@@ -12,6 +12,8 @@ import '../modules/message/bindings/message_binding.dart';
 import '../modules/message/views/message_view.dart';
 import '../modules/my/bindings/my_binding.dart';
 import '../modules/my/views/my_view.dart';
+import '../modules/news/bindings/news_binding.dart';
+import '../modules/news/views/news_view.dart';
 import '../modules/notice/bindings/notice_binding.dart';
 import '../modules/notice/views/notice_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.MESSAGE,
       page: () => MessageView(),
       binding: MessageBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEWS,
+      page: () => NewsView(),
+      binding: NewsBinding(),
     ),
   ];
 }
