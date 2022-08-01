@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomepageController extends GetxController {
-  //TODO: Implement HomepageController
+  final RefreshController refreshController =
+      RefreshController(initialRefresh: false);
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +19,4 @@ class HomepageController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

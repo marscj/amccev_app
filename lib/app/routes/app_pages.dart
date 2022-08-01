@@ -33,57 +33,57 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
       name: _Paths.SIGNIN,
-      page: () => const SigninView(),
+      page: () => SigninView(),
       binding: SigninBinding(),
     ),
     GetPage(
       name: _Paths.BOOKING,
-      page: () => const BookingView(),
+      page: () => BookingView(),
       binding: BookingBinding(),
     ),
     GetPage(
       name: _Paths.SETTING,
-      page: () => const SettingView(),
+      page: () => SettingView(),
       binding: SettingBinding(),
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () => const ProfileView(),
+      page: () => ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
       name: _Paths.SHOP,
-      page: () => const ShopView(),
+      page: () => ShopView(),
       binding: ShopBinding(),
     ),
     GetPage(
       name: _Paths.CART,
-      page: () => const CartView(),
+      page: () => CartView(),
       binding: CartBinding(),
     ),
     GetPage(
       name: _Paths.HOMEPAGE,
-      page: () => const HomePageView(),
+      page: () => HomePageView(),
       binding: HomepageBinding(),
     ),
     GetPage(
       name: _Paths.MY,
-      page: () => const MyView(),
+      page: () => MyView(),
       binding: MyBinding(),
     ),
     GetPage(
       name: _Paths.NOTICE,
-      page: () => const NoticeView(),
+      page: () => NoticeView(),
       binding: NoticeBinding(),
     ),
     GetPage(
       name: _Paths.MESSAGE,
-      page: () => const MessageView(),
+      page: () => MessageView(),
       binding: MessageBinding(),
     ),
   ];
