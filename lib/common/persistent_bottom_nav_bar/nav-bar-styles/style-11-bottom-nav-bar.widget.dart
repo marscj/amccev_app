@@ -54,7 +54,7 @@ class _BottomNavStyle11State extends State<BottomNavStyle11>
         ? SizedBox.shrink()
         : AnimatedBuilder(
             animation: _animationList[itemIndex],
-            builder: (context, child) => Container(
+            builder: (context, child) => SizedBox(
               width: 150.0,
               height: height,
               child: Container(

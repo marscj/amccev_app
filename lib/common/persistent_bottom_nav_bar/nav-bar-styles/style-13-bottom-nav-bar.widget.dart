@@ -60,7 +60,7 @@ class _BottomNavStyle13State extends State<BottomNavStyle13>
         ? SizedBox.shrink()
         : AnimatedBuilder(
             animation: _animationList[itemIndex],
-            builder: (context, child) => Container(
+            builder: (context, child) => SizedBox(
               width: 150.0,
               height: height,
               child: Container(
@@ -75,12 +75,8 @@ class _BottomNavStyle13State extends State<BottomNavStyle13>
                         data: IconThemeData(
                             size: item.iconSize,
                             color: isSelected
-                                ? (item.activeColorSecondary == null
-                                    ? item.activeColorPrimary
-                                    : item.activeColorSecondary)
-                                : item.inactiveColorPrimary == null
-                                    ? item.activeColorPrimary
-                                    : item.inactiveColorPrimary),
+                                ? (item.activeColorSecondary ?? item.activeColorPrimary)
+                                : item.inactiveColorPrimary ?? item.activeColorPrimary),
                         child: isSelected
                             ? item.icon
                             : item.inactiveIcon ?? item.icon,
@@ -99,9 +95,7 @@ class _BottomNavStyle13State extends State<BottomNavStyle13>
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100.0),
                                   color: isSelected
-                                      ? (item.activeColorSecondary == null
-                                          ? item.activeColorPrimary
-                                          : item.activeColorSecondary)
+                                      ? (item.activeColorSecondary ?? item.activeColorPrimary)
                                       : Colors.transparent),
                             ),
                           ),

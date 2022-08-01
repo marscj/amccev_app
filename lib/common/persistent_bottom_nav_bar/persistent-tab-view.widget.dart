@@ -9,15 +9,19 @@ part of persistent_bottom_nav_bar;
 
 class PersistentTabView extends PersistentTabViewBase {
   ///Screens that will be displayed on tapping of persistent bottom navigation bar items.
+  @override
   final List<Widget> screens;
 
   ///Controller for persistent bottom navigation bar. Will be declared if left empty.
+  @override
   final PersistentTabController? controller;
 
   ///Background color of bottom navigation bar. `white` by default.
+  @override
   final Color backgroundColor;
 
   ///A custom widget which is displayed at the bottom right of the display at all times.
+  @override
   final Widget? floatingActionButton;
 
   ///Specifies the navBarHeight
@@ -26,9 +30,11 @@ class PersistentTabView extends PersistentTabViewBase {
   //final double navBarHeight;
 
   ///The margin around the navigation bar.
+  @override
   final EdgeInsets margin;
 
   ///Will confine the NavBar's items in the safe area defined by the device.
+  @override
   final bool confineInSafeArea;
 
   ///Handles android back button actions. Defaults to `true`.
@@ -37,30 +43,40 @@ class PersistentTabView extends PersistentTabViewBase {
   ///1. If the you are on the first tab with all screens popped of the given tab, the app will close.
   ///2. If you are on another tab with all screens popped of that given tab, you will be switched to first tab.
   ///3. If there are screens pushed on the selected tab, a screen will pop on a respective back button press.
+  @override
   final bool handleAndroidBackButtonPress;
 
   ///Bottom margin of the screen.
+  @override
   final double? bottomScreenMargin;
 
+  @override
   final bool resizeToAvoidBottomInset;
 
   ///Preserves the state of each tab's screen. `true` by default.
+  @override
   final bool stateManagement;
 
   ///If you want to perform a custom action on Android when exiting the app, you can write your logic here. Returns context of the selected screen.
+  @override
   final Future<bool> Function(BuildContext?)? onWillPop;
 
   ///Returns the context of the selected tab.
+  @override
   final Function(BuildContext?)? selectedTabScreenContext;
 
   ///Screen transition animation properties when switching tabs.
+  @override
   final ScreenTransitionAnimation screenTransitionAnimation;
 
+  @override
   final bool hideNavigationBarWhenKeyboardShows;
 
   ///Hides the navigation bar with an transition animation. Use it in conjuction with [Provider](https://pub.dev/packages/provider) for better results.
+  @override
   final bool? hideNavigationBar;
 
+  @override
   final BuildContext context;
 
   PersistentTabView(this.context,
@@ -358,10 +374,11 @@ class _PersistentTabViewState extends State<PersistentTabView> {
         if (widget.selectedTabScreenContext != null) {
           _sendScreenContext = true;
         }
-        if (mounted)
+        if (mounted) {
           setState(
             () => _currentIndex = _controller!.index,
           );
+        }
       }
     });
     if (widget.selectedTabScreenContext != null) {
@@ -372,7 +389,7 @@ class _PersistentTabViewState extends State<PersistentTabView> {
   }
 
   Widget _buildScreen(int index) {
-    RouteAndNavigatorSettings _routeAndNavigatorSettings = widget
+    RouteAndNavigatorSettings routeAndNavigatorSettings = widget
             .isCustomWidget!
         ? RouteAndNavigatorSettings(
             defaultTitle: widget.routeAndNavigatorSettings!.defaultTitle,
@@ -396,7 +413,7 @@ class _PersistentTabViewState extends State<PersistentTabView> {
         children: <Widget>[
           SizedBox.expand(
             child: CustomTabView(
-              routeAndNavigatorSettings: _routeAndNavigatorSettings,
+              routeAndNavigatorSettings: routeAndNavigatorSettings,
               builder: (BuildContext screenContext) {
                 _contextList[index] = screenContext;
                 if (_sendScreenContext) {
@@ -422,7 +439,7 @@ class _PersistentTabViewState extends State<PersistentTabView> {
         children: <Widget>[
           SizedBox.expand(
             child: CustomTabView(
-              routeAndNavigatorSettings: _routeAndNavigatorSettings,
+              routeAndNavigatorSettings: routeAndNavigatorSettings,
               builder: (BuildContext screenContext) {
                 _contextList[index] = screenContext;
                 if (_sendScreenContext) {
@@ -489,7 +506,7 @@ class _PersistentTabViewState extends State<PersistentTabView> {
         children: <Widget>[
           SizedBox.expand(
             child: CustomTabView(
-              routeAndNavigatorSettings: _routeAndNavigatorSettings,
+              routeAndNavigatorSettings: routeAndNavigatorSettings,
               builder: (BuildContext screenContext) {
                 _contextList[index] = screenContext;
                 if (_sendScreenContext) {
@@ -549,7 +566,7 @@ class _PersistentTabViewState extends State<PersistentTabView> {
       );
     } else {
       return CustomTabView(
-          routeAndNavigatorSettings: _routeAndNavigatorSettings,
+          routeAndNavigatorSettings: routeAndNavigatorSettings,
           builder: (BuildContext screenContext) {
             _contextList[index] = screenContext;
             if (_sendScreenContext) {

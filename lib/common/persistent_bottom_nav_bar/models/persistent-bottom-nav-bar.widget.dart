@@ -50,7 +50,7 @@ class PersistentBottomNavBar extends StatelessWidget {
                                 (this.hideNavigationBar ?? false)
                             ? false
                             : confineToSafeArea ?? true,
-                        child: Container(
+                        child: SizedBox(
                             height: this.navBarEssentials!.navBarHeight,
                             child: this.customNavBarWidget)),
                   )
