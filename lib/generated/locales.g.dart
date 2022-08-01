@@ -32,16 +32,17 @@ class Locales {
     'cart': '购物车',
     'my': '我的',
     'message': '消息',
+    'news': '新闻',
   };
   static const en_US = {
     'app_name': 'AMCCEV',
     'login': 'Login',
     'home': 'Home',
     'booking': 'Booking',
-    'shop': 'shop',
+    'shop': 'Shop',
     'cart': 'Cart',
     'my': 'My',
     'message': 'Message',
-    'news': 'news',
+    'news': 'News',
   };
 }

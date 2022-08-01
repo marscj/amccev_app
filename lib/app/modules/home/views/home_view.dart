@@ -1,6 +1,7 @@
 import 'package:app/app/modules/booking/views/booking_view.dart';
 import 'package:app/app/modules/homepage/views/homepage_view.dart';
 import 'package:app/app/modules/message/views/message_view.dart';
+import 'package:app/app/modules/news/views/news_view.dart';
 import 'package:app/app/modules/profile/views/profile_view.dart';
 import 'package:app/common/persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,21 +20,12 @@ class HomeView extends GetView<HomeController> {
       body: PersistentTabView(
         context,
         controller: controller.persistentTabController,
-        screens: [
-          HomePageView(),
-          BookingView(),
-          // ShopView(),
-          // CartView(),
-          MessageView(),
-          ProfileView()
-        ],
+        screens: [HomePageView(), BookingView(), NewsView(), ProfileView()],
         items: [
-          HomeTab('tabs_home'.tr, FontAwesomeIcons.car),
-          HomeTab('tabs_booking'.tr, FontAwesomeIcons.book),
-          HomeTab('tabs_message'.tr, FontAwesomeIcons.message),
-          // HomeTab('tabs_shop'.tr, FontAwesomeIcons.bagShopping),
-          // HomeTab('tabs_cart'.tr, FontAwesomeIcons.cartShopping),
-          HomeTab('tabs_my'.tr, FontAwesomeIcons.user),
+          HomeTab('home'.tr, FontAwesomeIcons.car),
+          HomeTab('booking'.tr, FontAwesomeIcons.book),
+          HomeTab('news'.tr, FontAwesomeIcons.newspaper),
+          HomeTab('my'.tr, FontAwesomeIcons.user),
         ]
             .map((e) => PersistentBottomNavBarItem(
                   icon: Icon(e.icon),
