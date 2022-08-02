@@ -18,6 +18,7 @@ class HomePageView extends GetView<HomepageController> {
       init: HomepageController(),
       initState: (state) {},
       builder: (controller) => Scaffold(
+        backgroundColor: Colors.white,
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return <Widget>[
@@ -36,34 +37,44 @@ class HomePageView extends GetView<HomepageController> {
               ),
             ];
           },
-          body: CustomScrollView(slivers: <Widget>[
-            SliverGrid.count(
-              crossAxisCount: 4,
-              children: List.generate(8, (index) {
-                return Container(
-                  color: Colors.primaries[index % Colors.primaries.length],
-                  alignment: Alignment.center,
-                  child: Text(
-                    '$index',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                );
-              }).toList(),
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate((content, index) {
-                return Container(
-                  height: 85,
-                  alignment: Alignment.center,
-                  color: Colors.primaries[index % Colors.primaries.length],
-                  child: Text(
-                    '$index',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                );
-              }, childCount: 25),
-            ),
-          ]).pull_to_refresh(controller, header: MaterialClassicHeader()),
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: CustomScrollView(slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child:
+                      Text('AMCC Services').bold().size(20).color(Colors.black),
+                ),
+              ),
+              SliverGrid.count(
+                crossAxisCount: 4,
+                children: List.generate(8, (index) {
+                  return Container(
+                    color: Colors.primaries[index % Colors.primaries.length],
+                    alignment: Alignment.center,
+                    child: Text(
+                      '$index',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  );
+                }).toList(),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate((content, index) {
+                  return Container(
+                    height: 85,
+                    alignment: Alignment.center,
+                    color: Colors.primaries[index % Colors.primaries.length],
+                    child: Text(
+                      '$index',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  );
+                }, childCount: 25),
+              ),
+            ]).pull_to_refresh(controller, header: MaterialClassicHeader()),
+          ),
         ),
       ),
     );

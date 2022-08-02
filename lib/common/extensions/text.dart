@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
 
-extension ExtensionText on Text {
+extension ExtensionText on dynamic {
   Widget size(double size) {
-    return DefaultTextStyle(
-      style: TextStyle(fontSize: size),
-      child: this,
-    );
+    assert(this != Widget);
+    return this is DefaultTextStyle
+        ? DefaultTextStyle.merge(
+            child: this.child,
+            style: TextStyle(fontSize: size).merge(this.style))
+        : DefaultTextStyle(child: this, style: TextStyle(fontSize: size));
   }
 
   Widget bold() {
-    return DefaultTextStyle(
-      style: TextStyle(fontWeight: FontWeight.bold),
-      child: this,
-    );
+    assert(this != Widget);
+    return this is DefaultTextStyle
+        ? DefaultTextStyle.merge(
+            child: this.child,
+            style: TextStyle(fontWeight: FontWeight.bold).merge(this.style))
+        : DefaultTextStyle(
+            child: this, style: TextStyle(fontWeight: FontWeight.bold));
   }
 
   Widget color(c) {
-    return DefaultTextStyle(
-      style: TextStyle(color: c),
-      child: this,
-    );
+    assert(this != Widget);
+    return this is DefaultTextStyle
+        ? DefaultTextStyle.merge(
+            child: this.child, style: TextStyle(color: c).merge(this.style))
+        : DefaultTextStyle(child: this, style: TextStyle(color: c));
   }
 }
