@@ -1,10 +1,7 @@
+import 'package:app/common/widgets/pull_to_refresh.dart';
 import 'package:get/get.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class BookingController extends GetxController {
-  final RefreshController refreshController =
-      RefreshController(initialRefresh: false);
-
+class BookingController extends GetxController with MinxRefreshController {
   @override
   void onInit() {
     super.onInit();
@@ -18,5 +15,15 @@ class BookingController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  @override
+  void onLoading() async {
+    refreshController.loadComplete();
+  }
+
+  @override
+  void onRefresh() {
+    refreshController.refreshCompleted();
   }
 }

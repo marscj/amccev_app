@@ -52,7 +52,7 @@ class BookingView extends GetView<BookingController> {
                   ),
                 )
               ],
-            ).pull_to_refresh(controller.refreshController,
+            ).pull_to_refresh(controller,
                 onLoading: _onLoading, onRefresh: _onRefresh),
           )),
     );

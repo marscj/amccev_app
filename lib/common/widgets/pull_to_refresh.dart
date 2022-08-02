@@ -2,25 +2,36 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+mixin MinxRefreshController {
+  final RefreshController refreshController =
+      RefreshController(initialRefresh: false);
+
+  void onLoading();
+
+  void onRefresh();
+}
+
 class PullToRefresh extends StatelessWidget {
   PullToRefresh({
     Key? key,
     required this.child,
     required this.controller,
-    this.onLoading,
-    this.onRefresh,
-  }) : super(key: key);
+    this.enablePullDown = true,
+    this.enablePullUp = false,
+  }) : super(
+          key: key,
+        );
 
   final Widget child;
-  final RefreshController controller;
-  final Function()? onRefresh;
-  final Function()? onLoading;
+  final MinxRefreshController controller;
+  final bool enablePullDown;
+  final bool enablePullUp;
 
   @override
   Widget build(BuildContext context) {
     return SmartRefresher(
-      enablePullDown: true,
-      enablePullUp: true,
+      enablePullDown: enablePullDown,
+      enablePullUp: enablePullUp,
       header: WaterDropHeader(),
       footer: CustomFooter(
         builder: (BuildContext context, LoadStatus? mode) {
@@ -44,9 +55,9 @@ class PullToRefresh extends StatelessWidget {
           );
         },
       ),
-      controller: controller,
-      onRefresh: onRefresh,
-      onLoading: onLoading,
+      controller: controller.refreshController,
+      onRefresh: controller.onRefresh,
+      onLoading: controller.onLoading,
       child: child,
     );
   }
