@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -32,7 +33,8 @@ class PullToRefresh extends StatelessWidget {
     return SmartRefresher(
       enablePullDown: enablePullDown,
       enablePullUp: enablePullUp,
-      header: WaterDropHeader(),
+      header: WaterDropHeader(
+          waterDropColor: Theme.of(context).colorScheme.primary),
       footer: CustomFooter(
         builder: (BuildContext context, LoadStatus? mode) {
           Widget body;

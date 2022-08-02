@@ -43,10 +43,12 @@ class App extends StatelessWidget {
           fallbackLocale: Locale('zh'),
           getPages: AppPages.routes,
           theme: ThemeData(
-              brightness: Brightness.light,
-              colorScheme:
-                  ColorScheme.highContrastLight(primary: Color(0xFF5449F8)),
-              appBarTheme: AppBarTheme()),
+            brightness: Brightness.light,
+            colorScheme: ColorScheme.fromSwatch(
+                primarySwatch: Colors.lightGreen,
+                accentColor: Colors.greenAccent),
+            appBarTheme: AppBarTheme(),
+          ),
           debugShowCheckedModeBanner: false,
         );
       },
