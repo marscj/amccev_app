@@ -1,10 +1,7 @@
+import 'package:app/common/widgets/pull_to_refresh.dart';
 import 'package:get/get.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class NewsController extends GetxController {
-  final RefreshController refreshController =
-      RefreshController(initialRefresh: false);
-
+class NewsController extends GetxController with RefreshMixin {
   @override
   void onInit() {
     super.onInit();
@@ -18,5 +15,15 @@ class NewsController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  @override
+  void onLoading() async {
+    refreshController.loadComplete();
+  }
+
+  @override
+  void onRefresh() {
+    refreshController.refreshCompleted();
   }
 }

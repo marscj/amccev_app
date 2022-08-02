@@ -1,9 +1,7 @@
+import 'package:app/common/widgets/pull_to_refresh.dart';
 import 'package:get/get.dart';
 
-class MyController extends GetxController {
-  //TODO: Implement MyController
-
-  final count = 0.obs;
+class MyController extends GetxController with RefreshMixin {
   @override
   void onInit() {
     super.onInit();
@@ -19,5 +17,13 @@ class MyController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  @override
+  void onLoading() async {
+    refreshController.loadComplete();
+  }
+
+  @override
+  void onRefresh() {
+    refreshController.refreshCompleted();
+  }
 }
