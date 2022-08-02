@@ -1,7 +1,6 @@
 import 'package:app/common/extensions/extensions.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -19,94 +18,52 @@ class HomePageView extends GetView<HomepageController> {
       init: HomepageController(),
       initState: (state) {},
       builder: (controller) => Scaffold(
-        backgroundColor: Colors.transparent,
         body: NestedScrollView(
-          headerSliverBuilder: (root, innerBoxIsScrolled) {
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
             return <Widget>[
-              // SliverAppBar(
-              //   foregroundColor: Colors.white,
-              //   pinned: true,
-              //   stretch: true,
-              //   expandedHeight: 230.0,
-              //   title: Row(children: [
-              //     Image.asset(
-              //       'assets/images/logo.png',
-              //       width: 80,
-              //     ),
-              //     SizedBox(
-              //       width: 5,
-              //     ),
-              //     Text('AMCCEV')
-              //   ]),
-              //   actions: [
-              //     Badge(
-              //       padding: EdgeInsets.all(3),
-              //       position: BadgePosition(top: 12, end: 12),
-              //       badgeContent: Text('3').size(8),
-              //       child: IconButton(
-              //           onPressed: () {}, icon: Icon(FontAwesomeIcons.bell)),
-              //     )
-              //   ],
-              //   flexibleSpace: FlexibleSpaceBar(
-              //     background: Image.network(
-              //       'https://www.amccev.com/wp-content/uploads/2021/11/image-rtv-11-copyright.jpg',
-              //       fit: BoxFit.fitHeight,
-              //     ),
-              //   ),
-              // ),
-
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: SliverCustomHeaderDelegate(
-                    title: '哪吒之魔童降世',
-                    collapsedHeight: kToolbarHeight,
-                    expandedHeight: 230,
-                    paddingTop: MediaQuery.of(context).padding.top,
-                    coverImgUrl:
-                        'https://www.amccev.com/wp-content/uploads/2021/11/image-rtv-11-copyright.jpg'),
+              SliverAppBar(
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.white,
+                actions: [
+                  Badge(
+                    padding: EdgeInsets.all(3),
+                    position: BadgePosition(top: 12, end: 12),
+                    badgeContent: Text('3').size(8),
+                    child: IconButton(
+                        onPressed: () {}, icon: Icon(FontAwesomeIcons.bell)),
+                  )
+                ],
               ),
             ];
           },
-          body: Builder(builder: (BuildContext context) {
-            return Container(
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-              ),
-              child: CustomScrollView(slivers: <Widget>[
-                SliverGrid.count(
-                  crossAxisCount: 4,
-                  children: List.generate(8, (index) {
-                    return Container(
-                      color: Colors.primaries[index % Colors.primaries.length],
-                      alignment: Alignment.center,
-                      child: Text(
-                        '$index',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    );
-                  }).toList(),
-                ),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate((content, index) {
-                    return Container(
-                      height: 85,
-                      alignment: Alignment.center,
-                      color: Colors.primaries[index % Colors.primaries.length],
-                      child: Text(
-                        '$index',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    );
-                  }, childCount: 25),
-                ),
-              ]).pull_to_refresh(controller, header: MaterialClassicHeader()),
-            );
-          }),
+          body: CustomScrollView(slivers: <Widget>[
+            SliverGrid.count(
+              crossAxisCount: 4,
+              children: List.generate(8, (index) {
+                return Container(
+                  color: Colors.primaries[index % Colors.primaries.length],
+                  alignment: Alignment.center,
+                  child: Text(
+                    '$index',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                );
+              }).toList(),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate((content, index) {
+                return Container(
+                  height: 85,
+                  alignment: Alignment.center,
+                  color: Colors.primaries[index % Colors.primaries.length],
+                  child: Text(
+                    '$index',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                );
+              }, childCount: 25),
+            ),
+          ]).pull_to_refresh(controller, header: MaterialClassicHeader()),
         ),
       ),
     );
