@@ -17,6 +17,7 @@ class PullToRefresh extends StatelessWidget {
     Key? key,
     required this.child,
     required this.controller,
+    this.header,
     this.enablePullDown = true,
     this.enablePullUp = false,
   }) : super(
@@ -24,6 +25,7 @@ class PullToRefresh extends StatelessWidget {
         );
 
   final Widget child;
+  final Widget? header;
   final RefreshMixin controller;
   final bool enablePullDown;
   final bool enablePullUp;
@@ -33,8 +35,9 @@ class PullToRefresh extends StatelessWidget {
     return SmartRefresher(
       enablePullDown: enablePullDown,
       enablePullUp: enablePullUp,
-      header: WaterDropHeader(
-          waterDropColor: Theme.of(context).colorScheme.primary),
+      header: header ??
+          WaterDropHeader(
+              waterDropColor: Theme.of(context).colorScheme.primary),
       footer: CustomFooter(
         builder: (BuildContext context, LoadStatus? mode) {
           Widget body;

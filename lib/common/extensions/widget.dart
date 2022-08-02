@@ -4,11 +4,11 @@ import 'package:app/common/widgets/widgets.dart';
 extension ExtensionWidget on Widget {
   Widget pull_to_refresh(
     RefreshMixin controller, {
-    Function()? onRefresh,
-    Function()? onLoading,
+    Widget? header,
   }) {
     return PullToRefresh(
       controller: controller,
+      header: header,
       child: this,
     );
   }

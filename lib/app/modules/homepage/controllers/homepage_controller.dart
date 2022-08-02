@@ -19,11 +19,13 @@ class HomepageController extends GetxController with RefreshMixin {
 
   @override
   void onLoading() async {
+    await Future.delayed(Duration(milliseconds: 1000));
     refreshController.loadComplete();
   }
 
   @override
-  void onRefresh() {
+  void onRefresh() async {
+    await Future.delayed(Duration(milliseconds: 1000));
     refreshController.refreshCompleted();
   }
 }
