@@ -3,7 +3,7 @@ import 'package:app/common/widgets/widgets.dart';
 
 extension ExtensionWidget on Widget {
   Widget pull_to_refresh(
-    MinxRefreshController controller, {
+    RefreshMixin controller, {
     Function()? onRefresh,
     Function()? onLoading,
   }) {

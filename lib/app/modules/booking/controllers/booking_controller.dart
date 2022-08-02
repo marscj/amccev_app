@@ -1,7 +1,7 @@
 import 'package:app/common/widgets/pull_to_refresh.dart';
 import 'package:get/get.dart';
 
-class BookingController extends GetxController with MinxRefreshController {
+class BookingController extends GetxController with RefreshMixin {
   @override
   void onInit() {
     super.onInit();

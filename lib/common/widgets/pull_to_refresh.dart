@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-mixin MinxRefreshController {
+mixin RefreshMixin {
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 
@@ -23,7 +23,7 @@ class PullToRefresh extends StatelessWidget {
         );
 
   final Widget child;
-  final MinxRefreshController controller;
+  final RefreshMixin controller;
   final bool enablePullDown;
   final bool enablePullUp;
 
