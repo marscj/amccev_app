@@ -7,5 +7,8 @@
   "cart": "Cart",
   "my": "My",
   "message": "Message",
-  "news": "News"
+  "news": "News",
+  "pull_up_load": "Pull up load",
+  "load_failed": "Load Failed!",
+  "no_more_data": "No more Data!"
 }

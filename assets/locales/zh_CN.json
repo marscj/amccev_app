@@ -7,5 +7,9 @@
   "cart": "购物车",
   "my": "我的",
   "message": "消息",
-  "news": "新闻"
+  "news": "新闻",
+  "pull_up_load": "上拉加载",
+  "load_failed": "加载失败！",
+  "no_more_data": "没有更多内容!"
+  
 }

@@ -20,6 +20,9 @@ class LocaleKeys {
   static const my = 'my';
   static const message = 'message';
   static const news = 'news';
+  static const pull_up_load = 'pull_up_load';
+  static const load_failed = 'load_failed';
+  static const no_more_data = 'no_more_data';
 }
 
 class Locales {
@@ -33,6 +36,9 @@ class Locales {
     'my': '我的',
     'message': '消息',
     'news': '新闻',
+    'pull_up_load': '上拉加载',
+    'load_failed': '加载失败！',
+    'no_more_data': '没有更多内容!',
   };
   static const en_US = {
     'app_name': 'AMCCEV',
@@ -44,5 +50,8 @@ class Locales {
     'my': 'My',
     'message': 'Message',
     'news': 'News',
+    'pull_up_load': 'Pull up load',
+    'load_failed': 'Load Failed!',
+    'no_more_data': 'No more Data!',
   };
 }
