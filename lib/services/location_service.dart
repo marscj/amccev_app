@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
@@ -40,8 +42,6 @@ class LocationService extends GetxService {
     }
 
     Position position = await Geolocator.getCurrentPosition();
-
-    print(position);
 
     return await placemarkFromCoordinates(
         position.latitude, position.longitude);
