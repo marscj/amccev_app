@@ -15,6 +15,7 @@ dependencies:
   pull_to_refresh: ^2.0.0
   card_swiper: 2.0.4
   badges: 2.0.3
+  geolocator: 9.0.1
   flutter: 
     sdk: flutter
 
