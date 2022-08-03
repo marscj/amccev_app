@@ -47,18 +47,18 @@ class App extends StatelessWidget {
             Get.put(LocationService());
           }),
           initialRoute: AppPages.INITIAL,
-          // builder: (context, child) {
-          //   return FutureBuilder<void>(
-          //     key: ValueKey('initFuture'),
-          //     future: Get.find<SplashService>().init(),
-          //     builder: (context, snapshot) {
-          //       if (snapshot.connectionState == ConnectionState.done) {
-          //         return child ?? SizedBox.shrink();
-          //       }
-          //       return SplashView();
-          //     },
-          //   );
-          // },
+          builder: (context, child) {
+            return FutureBuilder<void>(
+              key: ValueKey('initFuture'),
+              future: Get.find<SplashService>().init(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return child ?? SizedBox.shrink();
+                }
+                return SplashView();
+              },
+            );
+          },
           translationsKeys: AppTranslation.translations,
           locale: lang == null ? locale : Locale(lang),
           fallbackLocale: Locale('zh'),

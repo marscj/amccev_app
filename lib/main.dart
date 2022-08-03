@@ -24,14 +24,6 @@ parseJson(String text) {
 }
 
 void main() async {
-  runApp(
-    GetMaterialApp(
-      title: "Application",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-    ),
-  );
-
   //初始化 dio
   (MyHttp().transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
 
@@ -46,11 +38,12 @@ void main() async {
 
   //禁止横屏
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp(MaterialApp(
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  runApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       home: App(),
-    ));
-  });
+    ),
+  );
 }

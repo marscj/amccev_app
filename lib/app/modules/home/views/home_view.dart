@@ -1,8 +1,11 @@
 import 'package:app/common/extensions/extensions.dart';
+import 'package:app/services/location_service.dart';
 import 'package:badges/badges.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -25,6 +28,20 @@ class HomeView extends GetView<HomeController> {
                 backgroundColor: Colors.white,
                 // pinned: true,
                 // stretch: true,
+                title: FutureBuilder<List<Placemark>>(
+                  future: LocationService.instance.determinePosition(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(snapshot.data?.first.country ?? '').size(10);
+                    }
+
+                    if (snapshot.hasError) {
+                      return Text('获取地址位置失败！').size(10);
+                    }
+
+                    return CupertinoActivityIndicator();
+                  },
+                ),
                 actions: [
                   Badge(
                     padding: EdgeInsets.all(3),
@@ -78,10 +95,10 @@ class HomeView extends GetView<HomeController> {
                   );
                 }, childCount: 25),
               ),
-            ]).pull_to_refresh(controller, header: MaterialClassicHeader()),
+            ]),
           ),
         ),
-      ),
+      ).pull_to_refresh(controller, header: MaterialClassicHeader()),
     );
   }
 }
