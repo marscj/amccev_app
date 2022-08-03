@@ -1,8 +1,8 @@
 import 'dart:ui' as ui;
+import 'package:app/app/modules/splash/controllers/splash_service.dart';
 import 'package:app/services/auth_service.dart';
 import 'package:app/services/location_service.dart';
 import 'package:app/storage/user.dart';
-import 'package:app/utils/middlewares/auth_middleware.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -42,6 +42,7 @@ class App extends StatelessWidget {
           title: 'app_name'.tr,
           initialBinding: BindingsBuilder(() {
             Get.put(AuthService());
+            Get.put(SplashService());
             Get.put(LocationService());
           }),
           initialRoute: AppPages.INITIAL,

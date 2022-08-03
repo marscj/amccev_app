@@ -19,7 +19,6 @@ abstract class Routes {
   static String LOGIN_THEN(String afterSuccessfulLogin) =>
       '$SIGNIN?then=${Uri.encodeQueryComponent(afterSuccessfulLogin)}';
   static const BOOKING_DETAILS = _Paths.BOOKING + _Paths.BOOKING_DETAILS;
-  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -37,5 +36,4 @@ abstract class _Paths {
   static const MESSAGE = '/message';
   static const NEWS = '/news';
   static const BOOKING_DETAILS = '/:booking-details';
-  static const SPLASH = '/splash';
 }

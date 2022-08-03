@@ -1,8 +1,5 @@
 import 'package:get/get.dart';
 
-import '../../utils/middlewares/auth_middleware.dart';
-import '../modules/Splash/bindings/splash_binding.dart';
-import '../modules/Splash/views/splash_view.dart';
 import '../modules/booking/bindings/booking_binding.dart';
 import '../modules/booking/booking_details/bindings/booking_details_binding.dart';
 import '../modules/booking/booking_details/views/booking_details_view.dart';
@@ -104,11 +101,6 @@ class AppPages {
       name: _Paths.NEWS,
       page: () => NewsView(),
       binding: NewsBinding(),
-    ),
-    GetPage(
-      name: _Paths.SPLASH,
-      page: () => const SplashView(),
-      binding: SplashBinding(),
     ),
   ];
 }

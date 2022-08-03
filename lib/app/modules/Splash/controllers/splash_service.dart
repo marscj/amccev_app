@@ -8,6 +8,7 @@ class SplashService extends GetxService {
   final activeStr = 0.obs;
 
   final memo = AsyncMemoizer<void>();
+
   Future<void> init() {
     return memo.runOnce(_initFunction);
   }

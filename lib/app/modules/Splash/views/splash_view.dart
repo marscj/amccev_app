@@ -1,22 +1,24 @@
+import 'package:app/app/modules/splash/controllers/splash_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/splash_controller.dart';
-
-class SplashView extends GetView<SplashController> {
-  const SplashView({Key? key}) : super(key: key);
+class SplashView extends GetView<SplashService> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SplashView'),
-        centerTitle: true,
-      ),
       body: Center(
-        child: Text(
-          'SplashView is working',
-          style: TextStyle(fontSize: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Obx(
+              () => Text(
+                controller.welcomeStr[controller.activeStr.value],
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            CircularProgressIndicator(),
+          ],
         ),
       ),
     );
