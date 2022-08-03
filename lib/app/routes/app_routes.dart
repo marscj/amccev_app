@@ -10,7 +10,6 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const SHOP = _Paths.SHOP;
   static const CART = _Paths.CART;
-  static const HOMEPAGE = _Paths.HOMEPAGE;
   static const MY = _Paths.MY;
   static const NOTICE = _Paths.NOTICE;
   static const MESSAGE = _Paths.MESSAGE;
@@ -19,6 +18,7 @@ abstract class Routes {
   static String LOGIN_THEN(String afterSuccessfulLogin) =>
       '$SIGNIN?then=${Uri.encodeQueryComponent(afterSuccessfulLogin)}';
   static const BOOKING_DETAILS = _Paths.BOOKING + _Paths.BOOKING_DETAILS;
+  static const ROOT = _Paths.ROOT;
 }
 
 abstract class _Paths {
@@ -30,10 +30,10 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const SHOP = '/shop';
   static const CART = '/cart';
-  static const HOMEPAGE = '/homepage';
   static const MY = '/my';
   static const NOTICE = '/notice';
   static const MESSAGE = '/message';
   static const NEWS = '/news';
   static const BOOKING_DETAILS = '/:booking-details';
+  static const ROOT = '/root';
 }

@@ -8,8 +8,6 @@ import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/homepage/bindings/homepage_binding.dart';
-import '../modules/homepage/views/homepage_view.dart';
 import '../modules/message/bindings/message_binding.dart';
 import '../modules/message/views/message_view.dart';
 import '../modules/my/bindings/my_binding.dart';
@@ -20,6 +18,8 @@ import '../modules/notice/bindings/notice_binding.dart';
 import '../modules/notice/views/notice_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/root/bindings/root_binding.dart';
+import '../modules/root/views/root_view.dart';
 import '../modules/setting/bindings/setting_binding.dart';
 import '../modules/setting/views/setting_view.dart';
 import '../modules/shop/bindings/shop_binding.dart';
@@ -32,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.ROOT;
 
   static final routes = [
     GetPage(
@@ -78,11 +78,6 @@ class AppPages {
       binding: CartBinding(),
     ),
     GetPage(
-      name: _Paths.HOMEPAGE,
-      page: () => HomePageView(),
-      binding: HomepageBinding(),
-    ),
-    GetPage(
       name: _Paths.MY,
       page: () => MyView(),
       binding: MyBinding(),
@@ -101,6 +96,11 @@ class AppPages {
       name: _Paths.NEWS,
       page: () => NewsView(),
       binding: NewsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ROOT,
+      page: () => RootView(),
+      binding: RootBinding(),
     ),
   ];
 }

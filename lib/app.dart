@@ -6,6 +6,7 @@ import 'package:app/storage/user.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'app/modules/splash/views/splash_view.dart';
 import 'app/routes/app_pages.dart';
 import 'generated/locales.g.dart';
 
@@ -46,6 +47,18 @@ class App extends StatelessWidget {
             Get.put(LocationService());
           }),
           initialRoute: AppPages.INITIAL,
+          builder: (context, child) {
+            return FutureBuilder<void>(
+              key: ValueKey('initFuture'),
+              future: Get.find<SplashService>().init(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return child ?? SizedBox.shrink();
+                }
+                return SplashView();
+              },
+            );
+          },
           translationsKeys: AppTranslation.translations,
           locale: lang == null ? locale : Locale(lang),
           fallbackLocale: Locale('zh'),

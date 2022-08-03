@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-class HomeTab {
+class Tab {
   String title;
   IconData icon;
 
-  HomeTab(this.title, this.icon);
+  Tab(this.title, this.icon);
 }

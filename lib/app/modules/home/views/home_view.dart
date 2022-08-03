@@ -1,68 +1,88 @@
-import 'package:app/app/modules/booking/views/booking_view.dart';
-import 'package:app/app/modules/homepage/views/homepage_view.dart';
-import 'package:app/app/modules/message/views/message_view.dart';
-import 'package:app/app/modules/news/views/news_view.dart';
-import 'package:app/app/modules/profile/views/profile_view.dart';
-import 'package:app/common/persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:app/common/extensions/extensions.dart';
+import 'package:badges/badges.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../controllers/home_controller.dart';
-import 'home_tab.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PersistentTabView(
-        context,
-        controller: controller.persistentTabController,
-        screens: [HomePageView(), BookingView(), NewsView(), ProfileView()],
-        items: [
-          HomeTab('home'.tr, FontAwesomeIcons.car),
-          HomeTab('booking'.tr, FontAwesomeIcons.book),
-          HomeTab('news'.tr, FontAwesomeIcons.newspaper),
-          HomeTab('my'.tr, FontAwesomeIcons.user),
-        ]
-            .map((e) => PersistentBottomNavBarItem(
-                  icon: Icon(e.icon),
-                  title: e.title,
-                  iconSize: 20,
-                  textStyle: TextStyle(fontSize: 10),
-                  activeColorPrimary: Theme.of(context).colorScheme.primary,
-                  inactiveColorPrimary: Colors.grey,
-                ))
-            .toList(),
-        confineInSafeArea: true,
-        backgroundColor: Colors.white, // Default is Colors.white.
-        handleAndroidBackButtonPress: false, // Default is true.
-        resizeToAvoidBottomInset:
-            true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-        stateManagement: true, // Default is true.
-        hideNavigationBarWhenKeyboardShows:
-            true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-        decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          colorBehindNavBar: Colors.white,
+    return GetBuilder<HomeController>(
+      init: HomeController(),
+      initState: (state) {},
+      builder: (controller) => Scaffold(
+        backgroundColor: Colors.white,
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.white,
+                actions: [
+                  Badge(
+                    padding: EdgeInsets.all(3),
+                    position: BadgePosition(top: 12, end: 12),
+                    badgeContent: Text('3').size(8),
+                    child: IconButton(
+                        onPressed: () {}, icon: Icon(FontAwesomeIcons.bell)),
+                  )
+                ],
+              ),
+            ];
+          },
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: CustomScrollView(slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: Row(children: [
+                    Image.asset(
+                      'assets/images/logo.png',
+                      fit: BoxFit.cover,
+                      width: 60,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('AMCC Services').bold().size(18).color(Colors.black)
+                  ]),
+                ),
+              ),
+              SliverGrid.count(
+                crossAxisCount: 4,
+                children: List.generate(8, (index) {
+                  return Container(
+                    color: Colors.primaries[index % Colors.primaries.length],
+                    alignment: Alignment.center,
+                    child: Text(
+                      '$index',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  );
+                }).toList(),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate((content, index) {
+                  return Container(
+                    height: 85,
+                    alignment: Alignment.center,
+                    color: Colors.primaries[index % Colors.primaries.length],
+                    child: Text(
+                      '$index',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                  );
+                }, childCount: 25),
+              ),
+            ]).pull_to_refresh(controller, header: MaterialClassicHeader()),
+          ),
         ),
-        popAllScreensOnTapOfSelectedTab: true,
-        popActionScreens: PopActionScreensType.all,
-        itemAnimationProperties: ItemAnimationProperties(
-          // Navigation Bar's items animation properties.
-          duration: Duration(milliseconds: 200),
-          curve: Curves.ease,
-        ),
-        // screenTransitionAnimation: ScreenTransitionAnimation(
-        //   // Screen transition animation on change of selected tab.
-        //   animateTabTransition: true,
-        //   curve: Curves.ease,
-        //   duration: Duration(milliseconds: 200),
-        // ),
-        navBarStyle:
-            NavBarStyle.simple, // Choose the nav bar style with this property.
       ),
     );
   }
