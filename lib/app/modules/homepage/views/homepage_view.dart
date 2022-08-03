@@ -25,6 +25,16 @@ class HomePageView extends GetView<HomepageController> {
               SliverAppBar(
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.white,
+                pinned: true,
+                stretch: true,
+                leading: Image.asset(
+                  'assets/images/logo.png',
+                  fit: BoxFit.fitWidth,
+                  width: 60,
+                ),
+                title:
+                    Text('AMCC Services').bold().size(18).color(Colors.black),
+                leadingWidth: 60,
                 actions: [
                   Badge(
                     padding: EdgeInsets.all(3),
@@ -43,8 +53,6 @@ class HomePageView extends GetView<HomepageController> {
               SliverToBoxAdapter(
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 16),
-                  child:
-                      Text('AMCC Services').bold().size(20).color(Colors.black),
                 ),
               ),
               SliverGrid.count(
