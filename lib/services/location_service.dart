@@ -2,7 +2,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 class LocationService extends GetxService {
-  static LocationService get to => Get.find();
+  static LocationService get instance => Get.find();
 
   Future<Position> determinePosition() async {
     bool serviceEnabled;
@@ -10,6 +10,7 @@ class LocationService extends GetxService {
 
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
     if (!serviceEnabled) {
       // Location services are not enabled don't continue
       // accessing the position and request users of the
