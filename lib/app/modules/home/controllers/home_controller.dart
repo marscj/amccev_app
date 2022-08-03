@@ -21,11 +21,6 @@ class HomeController extends GetxController with RefreshMixin {
     super.onClose();
   }
 
-  void fetchLocation() async {
-    // var posion = await locationService.determinePosition();
-    // print(posion);
-  }
-
   @override
   void onLoading() async {
     await Future.delayed(Duration(milliseconds: 1000));

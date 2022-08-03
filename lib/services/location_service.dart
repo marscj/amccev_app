@@ -1,10 +1,11 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 
 class LocationService extends GetxService {
   static LocationService get instance => Get.find();
 
-  Future<Position> determinePosition() async {
+  Future<List<Placemark>> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -38,8 +39,11 @@ class LocationService extends GetxService {
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
+    Position position = await Geolocator.getCurrentPosition();
+
+    print(position);
+
+    return await placemarkFromCoordinates(
+        position.latitude, position.longitude);
   }
 }

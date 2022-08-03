@@ -23,6 +23,8 @@ class HomeView extends GetView<HomeController> {
               SliverAppBar(
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.white,
+                // pinned: true,
+                // stretch: true,
                 actions: [
                   Badge(
                     padding: EdgeInsets.all(3),
@@ -45,12 +47,8 @@ class HomeView extends GetView<HomeController> {
                     Image.asset(
                       'assets/images/logo.png',
                       fit: BoxFit.cover,
-                      width: 60,
+                      width: 100,
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('AMCC Services').bold().size(18).color(Colors.black)
                   ]),
                 ),
               ),
