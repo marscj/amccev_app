@@ -1,13 +1,17 @@
 import 'package:get/get.dart';
 
 class AuthService extends GetxService {
-  Future<AuthService> init() async => this;
+  static AuthService get to => Get.find();
 
-  final token = ''.obs;
+  final isLoggedIn = false.obs;
 
-  get hasToken => token.isNotEmpty;
+  bool get isLoggedInValue => isLoggedIn.value;
 
-  void setToken(newValue) {
-    token.value = newValue;
+  void login() {
+    isLoggedIn.value = true;
+  }
+
+  void logout() {
+    isLoggedIn.value = false;
   }
 }

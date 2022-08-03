@@ -1,5 +1,8 @@
 import 'dart:ui' as ui;
+import 'package:app/services/auth_service.dart';
+import 'package:app/services/location_service.dart';
 import 'package:app/storage/user.dart';
+import 'package:app/utils/middlewares/auth_middleware.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,6 +40,10 @@ class App extends StatelessWidget {
       builder: (context) {
         return GetMaterialApp(
           title: 'app_name'.tr,
+          initialBinding: BindingsBuilder(() {
+            Get.put(AuthService());
+            Get.put(LocationService());
+          }),
           initialRoute: AppPages.INITIAL,
           translationsKeys: AppTranslation.translations,
           locale: lang == null ? locale : Locale(lang),

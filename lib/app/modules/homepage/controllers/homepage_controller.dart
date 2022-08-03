@@ -1,4 +1,6 @@
+import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/common/widgets/pull_to_refresh.dart';
+
 import 'package:get/get.dart';
 
 class HomepageController extends GetxController with RefreshMixin {
@@ -10,6 +12,8 @@ class HomepageController extends GetxController with RefreshMixin {
   @override
   void onReady() {
     super.onReady();
+
+    Get.find<HomeController>().fetchLocation();
   }
 
   @override

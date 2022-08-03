@@ -1,6 +1,11 @@
 import 'package:get/get.dart';
 
+import '../../utils/middlewares/auth_middleware.dart';
+import '../modules/Splash/bindings/splash_binding.dart';
+import '../modules/Splash/views/splash_view.dart';
 import '../modules/booking/bindings/booking_binding.dart';
+import '../modules/booking/booking_details/bindings/booking_details_binding.dart';
+import '../modules/booking/booking_details/views/booking_details_view.dart';
 import '../modules/booking/views/booking_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
@@ -34,10 +39,10 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      binding: HomeBinding(),
-    ),
+        name: _Paths.HOME,
+        page: () => HomeView(),
+        binding: HomeBinding(),
+        middlewares: []),
     GetPage(
       name: _Paths.SIGNIN,
       page: () => SigninView(),
@@ -47,6 +52,13 @@ class AppPages {
       name: _Paths.BOOKING,
       page: () => BookingView(),
       binding: BookingBinding(),
+      children: [
+        GetPage(
+          name: _Paths.BOOKING_DETAILS,
+          page: () => const BookingDetailsView(),
+          binding: BookingDetailsBinding(),
+        ),
+      ],
     ),
     GetPage(
       name: _Paths.SETTING,
@@ -92,6 +104,11 @@ class AppPages {
       name: _Paths.NEWS,
       page: () => NewsView(),
       binding: NewsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }

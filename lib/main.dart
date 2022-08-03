@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:app/services/auth_service.dart';
+import 'package:app/services/location_service.dart';
 import 'package:app/utils/http/myhttp.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -42,9 +43,6 @@ void main() async {
 
   //初始化缓存
   await GetStorage.init();
-
-  //路由守护
-  await Get.putAsync(() => AuthService().init());
 
   //禁止横屏
   WidgetsFlutterBinding.ensureInitialized();
