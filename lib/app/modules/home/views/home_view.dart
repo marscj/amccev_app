@@ -26,17 +26,19 @@ class HomeView extends GetView<HomeController> {
               SliverAppBar(
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.white,
-                // pinned: true,
-                // stretch: true,
+                pinned: true,
+                stretch: true,
                 title: FutureBuilder<List<Placemark>>(
                   future: LocationService.instance.determinePosition(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      return Text(snapshot.data?.first.country ?? '').size(10);
+                      return Text(snapshot.data?.first.country ?? '')
+                          .size(12)
+                          .color(Colors.black);
                     }
 
                     if (snapshot.hasError) {
-                      return Text('获取地址位置失败！').size(10);
+                      return Text('获取地址位置失败！').size(10).color(Colors.black);
                     }
 
                     return CupertinoActivityIndicator();
