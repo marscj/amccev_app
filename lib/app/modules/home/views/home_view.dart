@@ -52,18 +52,8 @@ class HomeView extends GetView<HomeController> {
             ];
           },
           body: CustomScrollView(slivers: <Widget>[
-            SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Row(children: [
-                  Image.asset(
-                    'assets/images/logo.png',
-                    fit: BoxFit.cover,
-                    width: 100,
-                  ),
-                ]),
-              ),
-            ),
+            SliverToBoxAdapter(child: LogoView()),
+            SliverPadding(padding: EdgeInsets.symmetric(vertical: 16)),
             SliverToBoxAdapter(
               child: BannerView(),
             ),
@@ -103,33 +93,31 @@ class HomeView extends GetView<HomeController> {
 class LogoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FlutterLogo();
+    return FlutterLogo().container();
+    // Image.asset(
+    //             'assets/images/logo.png',
+    //             fit: BoxFit.cover,
+    //             width: 100,
+    //           ).container(),
   }
 }
 
 class BannerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 8),
-      height: 150,
-      child: Swiper(
-        autoplay: true,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage("https://via.placeholder.com/288x188"),
-                    fit: BoxFit.fill),
-                borderRadius: BorderRadius.circular(4)),
-          );
-        },
-        itemCount: 3,
-        viewportFraction: 0.8,
-        scale: 0.95,
-        pagination: SwiperPagination(
-            builder: DotSwiperPaginationBuilder(size: 5, activeSize: 8)),
-      ),
-    );
+    return Swiper(
+      autoplay: true,
+      itemBuilder: (BuildContext context, int index) {
+        return Container().network_image(
+            'http://img.haote.com/upload/20180918/2018091815372344164.jpg',
+            fit: BoxFit.cover,
+            radius: 10);
+      },
+      itemCount: 3,
+      viewportFraction: 0.8,
+      scale: 0.95,
+      pagination: SwiperPagination(
+          builder: DotSwiperPaginationBuilder(size: 5, activeSize: 8)),
+    ).container(h: 150);
   }
 }

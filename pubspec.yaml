@@ -17,6 +17,7 @@ dependencies:
   badges: 2.0.3
   geolocator: 9.0.1
   geocoding: 2.0.4
+  cached_network_image: 3.2.1
   flutter: 
     sdk: flutter
 

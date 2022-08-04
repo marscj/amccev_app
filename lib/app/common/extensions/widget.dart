@@ -1,21 +1,66 @@
 import 'dart:convert';
 import 'package:app/app/common/widgets/widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 extension ExtensionWidget on Widget {
-  Widget container({w, h, color, radius, border, image, shadow}) {
+  Widget container({
+    double? w,
+    double? h,
+    EdgeInsetsGeometry? margin,
+    EdgeInsetsGeometry? padding,
+    Color? color,
+    double radius = 0.0,
+    BoxBorder? border,
+    DecorationImage? image,
+    Gradient? gradient,
+    BoxShape shape = BoxShape.rectangle,
+    List<BoxShadow>? shadow,
+  }) {
     return Container(
         width: w,
         height: h,
+        margin: margin,
+        padding: padding,
         decoration: BoxDecoration(
           border: border,
           color: color,
-          image: DecorationImage(image: image),
-          boxShadow: [shadow],
-          borderRadius: BorderRadius.circular(radius),
+          image: image,
+          boxShadow: shadow,
+          borderRadius: BorderRadius.circular(radius ?? 0),
+          gradient: gradient,
+          shape: shape,
         ),
         child: this);
+  }
+
+  Widget network_image(
+    url, {
+    double? w,
+    double? h,
+    BoxBorder? border,
+    List<BoxShadow>? shadow,
+    double radius = 0.0,
+    Gradient? gradient,
+    BoxShape shape = BoxShape.rectangle,
+    BoxFit fit = BoxFit.cover,
+  }) {
+    return CachedNetworkImage(
+      imageUrl: url,
+      width: w,
+      height: h,
+      imageBuilder: (context, imageProvider) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: imageProvider, fit: fit),
+          border: border,
+          boxShadow: shadow,
+          borderRadius: BorderRadius.circular(radius),
+          gradient: gradient,
+          shape: shape,
+        ),
+      ),
+    );
   }
 
   Widget loadJson<T>(
