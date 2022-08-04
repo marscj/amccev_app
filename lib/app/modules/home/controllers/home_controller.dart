@@ -1,12 +1,8 @@
-import 'package:app/common/persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController with RefreshMixin {
-  final PersistentTabController? persistentTabController =
-      PersistentTabController();
-
   final SwiperControl swiperControl = SwiperControl();
 
   @override

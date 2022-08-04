@@ -2,10 +2,9 @@ import 'package:app/app/modules/booking/views/booking_view.dart';
 import 'package:app/app/modules/home/views/home_view.dart';
 import 'package:app/app/modules/news/views/news_view.dart';
 import 'package:app/app/modules/profile/views/profile_view.dart';
-import 'package:app/common/persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:app/package/persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:get/get.dart';
 
 import '../controllers/root_controller.dart';
