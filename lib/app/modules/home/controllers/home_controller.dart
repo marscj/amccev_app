@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 class HomeController extends GetxController with RefreshMixin {
   final SwiperControl swiperControl = SwiperControl();
 
+  final times = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -13,6 +15,15 @@ class HomeController extends GetxController with RefreshMixin {
   @override
   void onReady() {
     super.onReady();
+
+    repat();
+  }
+
+  void repat() async {
+    Future.delayed(Duration(seconds: 4), () {
+      times.value++;
+      repat();
+    });
   }
 
   @override

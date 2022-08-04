@@ -1,2 +1,3 @@
-export 'widget.dart';
 export 'animate.dart';
+export 'widget.dart';
+export 'widgets.dart';

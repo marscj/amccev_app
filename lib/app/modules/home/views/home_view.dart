@@ -15,15 +15,20 @@ class HomeView extends GetView<HomeController> {
       init: HomeController(),
       initState: (state) {},
       builder: (controller) => Scaffold(
-        backgroundColor: Colors.white,
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
                 foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 pinned: true,
                 stretch: true,
+                title: Image.asset(
+                  key: ValueKey('value1'),
+                  'assets/images/logo.png',
+                  fit: BoxFit.contain,
+                  width: 100,
+                ).container(alignment: Alignment.centerLeft).elasticInLeft(),
                 // title: FutureBuilder<List<Placemark>>(
                 //   future: LocationService.instance.determinePosition(),
                 //   builder: (context, snapshot) {
@@ -53,23 +58,17 @@ class HomeView extends GetView<HomeController> {
             ];
           },
           body: CustomScrollView(slivers: <Widget>[
-            LogoView().sliver,
-            SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
+            // LogoView().sliver,
+            // SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
+            TitleView(
+              title: 'Hi! Jhon Smith',
+            ),
             BannerView().sliver,
             SliverPadding(padding: EdgeInsets.symmetric(vertical: 4)),
-            SliverGrid.count(
-              crossAxisCount: 4,
-              children: List.generate(8, (index) {
-                return Container(
-                  color: Colors.primaries[index % Colors.primaries.length],
-                  alignment: Alignment.center,
-                  child: Text(
-                    '$index',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                );
-              }).toList(),
+            TitleView(
+              title: 'Our Services',
             ),
+            ServiceView(),
             SliverList(
               delegate: SliverChildBuilderDelegate((content, index) {
                 return Container(
@@ -98,7 +97,7 @@ class LogoView extends StatelessWidget {
       'assets/images/logo.png',
       fit: BoxFit.contain,
       width: 100,
-    ).container(alignment: Alignment.centerLeft).fadeInLeft();
+    ).container(alignment: Alignment.centerLeft).elasticInLeft();
   }
 }
 
@@ -109,16 +108,46 @@ class BannerView extends StatelessWidget {
       autoplay: true,
       itemBuilder: (BuildContext context, int index) {
         return Container().network_image(
-          'http://img.haote.com/upload/20180918/2018091815372344164.jpg',
-          fit: BoxFit.cover,
-        );
+            'http://img.haote.com/upload/20180918/2018091815372344164.jpg',
+            fit: BoxFit.cover,
+            radius: 5);
       },
       itemCount: 3,
-      // viewportFraction: 1,
-      // scale: 1,
+      viewportFraction: 1,
+      scale: 0.95,
       pagination: SwiperPagination(
-        builder: DotSwiperPaginationBuilder(size: 5, activeSize: 8),
+        builder: DotSwiperPaginationBuilder(size: 5, activeSize: 6),
       ),
-    ).container(h: 150, radius: 10);
+    ).container(h: 150);
+  }
+}
+
+class TitleView extends StatelessWidget {
+  final String title;
+
+  const TitleView({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(title).s14.bold.paddingSymmetric(vertical: 8).sliver;
+  }
+}
+
+class ServiceView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverGrid.count(
+      crossAxisCount: 4,
+      children: List.generate(8, (index) {
+        return Container(
+          color: Colors.primaries[index % Colors.primaries.length],
+          alignment: Alignment.center,
+          child: Text(
+            '$index',
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        );
+      }).toList(),
+    );
   }
 }
