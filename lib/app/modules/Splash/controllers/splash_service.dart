@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:async/async.dart';
+import 'package:async/async.dart' show AsyncMemoizer;
 import 'package:get/get.dart';
 
 class SplashService extends GetxService {
@@ -23,7 +23,7 @@ class SplashService extends GetxService {
       (t) => _changeActiveString(),
     );
     //simulate some long running operation
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 3));
     //cancel the timer once we are done
     t.cancel();
   }

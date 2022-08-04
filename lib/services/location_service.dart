@@ -10,7 +10,8 @@ class LocationService extends GetxService {
     LocationPermission permission;
 
     // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    serviceEnabled =
+        await Geolocator.isLocationServiceEnabled().catchError((e) {});
 
     if (!serviceEnabled) {
       // Location services are not enabled don't continue

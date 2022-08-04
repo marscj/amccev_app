@@ -1,16 +1,11 @@
-import 'package:app/common/extensions/extensions.dart';
-import 'package:app/services/location_service.dart';
+import 'package:app/app/modules/home/controllers/home_controller.dart';
+import 'package:app/app/common/extensions/extensions.dart';
 import 'package:badges/badges.dart';
-import 'package:flutter/cupertino.dart';
-
+import 'package:card_swiper/card_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
-
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-
-import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -28,22 +23,22 @@ class HomeView extends GetView<HomeController> {
                 backgroundColor: Colors.white,
                 pinned: true,
                 stretch: true,
-                title: FutureBuilder<List<Placemark>>(
-                  future: LocationService.instance.determinePosition(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(snapshot.data?.first.country ?? '')
-                          .size(12)
-                          .color(Colors.black);
-                    }
+                // title: FutureBuilder<List<Placemark>>(
+                //   future: LocationService.instance.determinePosition(),
+                //   builder: (context, snapshot) {
+                //     if (snapshot.hasData) {
+                //       return Text(snapshot.data?.first.country ?? '')
+                //           .size(12)
+                //           .color(Colors.black);
+                //     }
 
-                    if (snapshot.hasError) {
-                      return Text('获取地址位置失败！').size(10).color(Colors.black);
-                    }
+                //     if (snapshot.hasError) {
+                //       return Text('获取地址位置失败！').size(10).color(Colors.black);
+                //     }
 
-                    return CupertinoActivityIndicator();
-                  },
-                ),
+                //     return CupertinoActivityIndicator();
+                //   },
+                // ),
                 actions: [
                   Badge(
                     padding: EdgeInsets.all(3),
@@ -61,7 +56,7 @@ class HomeView extends GetView<HomeController> {
             child: CustomScrollView(slivers: <Widget>[
               SliverToBoxAdapter(
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 16),
+                  padding: EdgeInsets.symmetric(vertical: 8),
                   child: Row(children: [
                     Image.asset(
                       'assets/images/logo.png',
@@ -70,6 +65,9 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ]),
                 ),
+              ),
+              SliverToBoxAdapter(
+                child: BannerView(),
               ),
               SliverGrid.count(
                 crossAxisCount: 4,
@@ -101,6 +99,40 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ).pull_to_refresh(controller, header: MaterialClassicHeader()),
+    );
+  }
+}
+
+class LogoView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FlutterLogo();
+  }
+}
+
+class BannerView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 8),
+      height: 150,
+      child: Swiper(
+        autoplay: true,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage("https://via.placeholder.com/288x188"),
+                    fit: BoxFit.fill),
+                borderRadius: BorderRadius.circular(4)),
+          );
+        },
+        itemCount: 3,
+        viewportFraction: 0.8,
+        scale: 0.95,
+        pagination: SwiperPagination(
+            builder: DotSwiperPaginationBuilder(size: 5, activeSize: 8)),
+      ),
     );
   }
 }
