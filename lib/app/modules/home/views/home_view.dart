@@ -43,7 +43,7 @@ class HomeView extends GetView<HomeController> {
                   Badge(
                     padding: EdgeInsets.all(3),
                     position: BadgePosition(top: 12, end: 12),
-                    badgeContent: Text('3').size(8),
+                    badgeContent: Text('3').s8(),
                     child: IconButton(
                         onPressed: () {}, icon: Icon(FontAwesomeIcons.bell)),
                   )
@@ -51,54 +51,51 @@ class HomeView extends GetView<HomeController> {
               ),
             ];
           },
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: CustomScrollView(slivers: <Widget>[
-              SliverToBoxAdapter(
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: Row(children: [
-                    Image.asset(
-                      'assets/images/logo.png',
-                      fit: BoxFit.cover,
-                      width: 100,
-                    ),
-                  ]),
-                ),
+          body: CustomScrollView(slivers: <Widget>[
+            SliverToBoxAdapter(
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: Row(children: [
+                  Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.cover,
+                    width: 100,
+                  ),
+                ]),
               ),
-              SliverToBoxAdapter(
-                child: BannerView(),
-              ),
-              SliverGrid.count(
-                crossAxisCount: 4,
-                children: List.generate(8, (index) {
-                  return Container(
-                    color: Colors.primaries[index % Colors.primaries.length],
-                    alignment: Alignment.center,
-                    child: Text(
-                      '$index',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  );
-                }).toList(),
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate((content, index) {
-                  return Container(
-                    height: 85,
-                    alignment: Alignment.center,
-                    color: Colors.primaries[index % Colors.primaries.length],
-                    child: Text(
-                      '$index',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  );
-                }, childCount: 25),
-              ),
-            ]),
-          ),
+            ),
+            SliverToBoxAdapter(
+              child: BannerView(),
+            ),
+            SliverGrid.count(
+              crossAxisCount: 4,
+              children: List.generate(8, (index) {
+                return Container(
+                  color: Colors.primaries[index % Colors.primaries.length],
+                  alignment: Alignment.center,
+                  child: Text(
+                    '$index',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                );
+              }).toList(),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate((content, index) {
+                return Container(
+                  height: 85,
+                  alignment: Alignment.center,
+                  color: Colors.primaries[index % Colors.primaries.length],
+                  child: Text(
+                    '$index',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                );
+              }, childCount: 25),
+            ),
+          ]).paddingSymmetric(horizontal: 16),
         ),
-      ).pull_to_refresh(controller, header: MaterialClassicHeader()),
+      ).refresh(controller, header: MaterialClassicHeader()),
     );
   }
 }
