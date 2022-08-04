@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:app/app/common/widgets/widgets.dart';
+import 'package:app/theme/theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +9,7 @@ extension ExtensionWidget on Widget {
   Widget container({
     double? w,
     double? h,
+    Alignment? alignment,
     EdgeInsetsGeometry? margin,
     EdgeInsetsGeometry? padding,
     Color? color,
@@ -23,12 +25,13 @@ extension ExtensionWidget on Widget {
         height: h,
         margin: margin,
         padding: padding,
+        alignment: alignment,
         decoration: BoxDecoration(
           border: border,
           color: color,
           image: image,
           boxShadow: shadow,
-          borderRadius: BorderRadius.circular(radius ?? 0),
+          borderRadius: BorderRadius.circular(radius),
           gradient: gradient,
           shape: shape,
         ),
@@ -89,38 +92,36 @@ extension ExtensionWidget on Widget {
     );
   }
 
-  Widget sbox() {
-    return SliverToBoxAdapter(
-      child: this,
-    );
-  }
+  Widget get sliver => SliverToBoxAdapter(child: this);
 }
 
 extension ExtensionText on Text {
-  Text s96() => Text(data ?? '', style: style?.copyWith(fontSize: 96));
-  Text s60() => Text(data ?? '', style: style?.copyWith(fontSize: 60));
-  Text s48() => Text(data ?? '', style: style?.copyWith(fontSize: 48));
-  Text s40() => Text(data ?? '', style: style?.copyWith(fontSize: 40));
-  Text s34() => Text(data ?? '', style: style?.copyWith(fontSize: 34));
-  Text s24() => Text(data ?? '', style: style?.copyWith(fontSize: 24));
-  Text s18() => Text(data ?? '', style: style?.copyWith(fontSize: 18));
-  Text s16() => Text(data ?? '', style: style?.copyWith(fontSize: 16));
-  Text s14() => Text(data ?? '', style: style?.copyWith(fontSize: 14));
-  Text s12() => Text(data ?? '', style: style?.copyWith(fontSize: 12));
-  Text s10() => Text(data ?? '', style: style?.copyWith(fontSize: 10));
-  Text s8() => Text(data ?? '', style: style?.copyWith(fontSize: 8));
+  void adf() {}
+  Text get s96 => Text(data ?? '', style: style?.copyWith(fontSize: 96) ?? W96);
+  Text get s60 => Text(data ?? '', style: style?.copyWith(fontSize: 60) ?? W60);
+  Text get s48 => Text(data ?? '', style: style?.copyWith(fontSize: 48) ?? W48);
+  Text get s40 => Text(data ?? '', style: style?.copyWith(fontSize: 40) ?? W40);
+  Text get s34 => Text(data ?? '', style: style?.copyWith(fontSize: 34) ?? W34);
+  Text get s24 => Text(data ?? '', style: style?.copyWith(fontSize: 24) ?? W24);
+  Text get s18 => Text(data ?? '', style: style?.copyWith(fontSize: 18) ?? W18);
+  Text get s16 => Text(data ?? '', style: style?.copyWith(fontSize: 16) ?? W16);
+  Text get s14 => Text(data ?? '', style: style?.copyWith(fontSize: 14) ?? W14);
+  Text get s12 => Text(data ?? '', style: style?.copyWith(fontSize: 12) ?? W12);
+  Text get s10 => Text(data ?? '', style: style?.copyWith(fontSize: 10) ?? W10);
+  Text get s8 => Text(data ?? '', style: style?.copyWith(fontSize: 8) ?? W8);
 
-  Text white() => Text(data ?? '', style: style?.copyWith(color: Colors.white));
+  Text get white =>
+      Text(data ?? '', style: style?.copyWith(color: Colors.white));
 
-  Text black() =>
+  Text get black =>
       Text(data ?? '', style: style?.copyWith(color: Colors.black87));
 
-  Text grey() => Text(data ?? '', style: style?.copyWith(color: Colors.grey));
+  Text get grey => Text(data ?? '', style: style?.copyWith(color: Colors.grey));
 
-  Text light() =>
+  Text get light =>
       Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.w200));
 
-  Text bold() =>
+  Text get bold =>
       Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.bold));
 }
 

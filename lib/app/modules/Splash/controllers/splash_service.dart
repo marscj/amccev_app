@@ -23,7 +23,7 @@ class SplashService extends GetxService {
       (t) => _changeActiveString(),
     );
     //simulate some long running operation
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
     //cancel the timer once we are done
     t.cancel();
   }
