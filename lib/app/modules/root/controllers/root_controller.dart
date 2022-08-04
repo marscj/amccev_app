@@ -2,7 +2,7 @@ import 'package:app/package/persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:get/get.dart';
 
 class RootController extends GetxController {
-  final PersistentTabController? persistentTabController =
+  final PersistentTabController persistentTabController =
       PersistentTabController();
 
   @override
