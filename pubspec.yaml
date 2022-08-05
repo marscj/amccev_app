@@ -18,7 +18,7 @@ dependencies:
   animate_do: 2.1.0
   geolocator: 9.0.1
   getwidget: 3.0.1
-  flutter_webview_plugin: 0.4.0
+
   flutter: 
     sdk: flutter
 
@@ -32,5 +32,6 @@ flutter:
   assets: 
     - assets/
     - assets/images/
+
   uses-material-design: true
 

@@ -19,6 +19,7 @@ abstract class Routes {
       '$SIGNIN?then=${Uri.encodeQueryComponent(afterSuccessfulLogin)}';
   static const BOOKING_DETAILS = _Paths.BOOKING + _Paths.BOOKING_DETAILS;
   static const ROOT = _Paths.ROOT;
+  static const GETWIDGET = _Paths.GETWIDGET;
 }
 
 abstract class _Paths {
@@ -36,4 +37,5 @@ abstract class _Paths {
   static const NEWS = '/news';
   static const BOOKING_DETAILS = '/:booking-details';
   static const ROOT = '/root';
+  static const GETWIDGET = '/getwidget';
 }

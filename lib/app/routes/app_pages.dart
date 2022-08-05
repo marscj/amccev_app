@@ -6,6 +6,8 @@ import '../modules/booking/booking_details/views/booking_details_view.dart';
 import '../modules/booking/views/booking_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
+import '../modules/getwidget/bindings/getwidget_binding.dart';
+import '../modules/getwidget/views/getwidget_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/message/bindings/message_binding.dart';
@@ -101,6 +103,11 @@ class AppPages {
       name: _Paths.ROOT,
       page: () => RootView(),
       binding: RootBinding(),
+    ),
+    GetPage(
+      name: _Paths.GETWIDGET,
+      page: () => const GetwidgetView(),
+      binding: GetwidgetBinding(),
     ),
   ];
 }

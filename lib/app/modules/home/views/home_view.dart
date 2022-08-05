@@ -1,5 +1,6 @@
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
+import 'package:app/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -52,8 +53,19 @@ class ToolbarView extends StatelessWidget {
       leading: LogoView(),
       title: Text('AMCCEV SERVICES').s14.bold,
       actions: [
-        GFBadge(
-          child: IconButton(onPressed: () {}, icon: Icon(Icons.support_agent)),
+        GFIconBadge(
+          padding: EdgeInsets.zero,
+          position: GFBadgePosition(top: 16, end: 12),
+          counterChild: GFBadge(
+            size: 20,
+            text: '1',
+            shape: GFBadgeShape.circle,
+          ),
+          child: IconButton(
+              onPressed: () {
+                Get.toNamed(Routes.GETWIDGET);
+              },
+              icon: Icon(Icons.support_agent)),
         )
       ],
       flexibleSpace: FlexibleSpaceBar(
