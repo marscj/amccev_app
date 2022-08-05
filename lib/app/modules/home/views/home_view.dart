@@ -1,7 +1,5 @@
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
-import 'package:badges/badges.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -54,9 +52,7 @@ class ToolbarView extends StatelessWidget {
       leading: LogoView(),
       title: Text('AMCCEV SERVICES').s14.bold,
       actions: [
-        Badge(
-          padding: EdgeInsets.all(4),
-          position: BadgePosition(top: 16, end: 12),
+        GFBadge(
           child: IconButton(onPressed: () {}, icon: Icon(Icons.support_agent)),
         )
       ],
@@ -93,42 +89,14 @@ class LogoView extends GetView<HomeController> {
 class BannerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Swiper(
-      autoplay: true,
-      itemBuilder: (BuildContext context, int index) {
-        return Container().network_image(
-            'http://img.haote.com/upload/20180918/2018091815372344164.jpg',
-            fit: BoxFit.cover,
-            radius: 5);
-      },
-      itemCount: 3,
-      viewportFraction: 1,
-      scale: 0.95,
-      pagination: SwiperPagination(
-        builder: DotSwiperPaginationBuilder(size: 5, activeSize: 6),
-      ),
-    ).container(h: 150);
+    return Container();
   }
 }
 
 class ServiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Swiper(
-      layout: SwiperLayout.DEFAULT,
-      itemBuilder: (BuildContext context, int index) {
-        return Container()
-            .network_image(
-                'http://img.haote.com/upload/20180918/2018091815372344164.jpg',
-                fit: BoxFit.cover,
-                radius: 5)
-            .paddingSymmetric(horizontal: 4);
-      },
-      loop: false,
-      itemCount: 5,
-      viewportFraction: 0.45,
-      scale: 1,
-    ).container(h: 200);
+    return Container();
   }
 }
 

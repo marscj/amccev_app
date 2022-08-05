@@ -1,10 +1,8 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/app/modules/root/controllers/root_controller.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController with RefreshMixin {
-  final SwiperControl swiperControl = SwiperControl();
   final RootController rootController = Get.find<RootController>();
 
   final index = 0.obs;
