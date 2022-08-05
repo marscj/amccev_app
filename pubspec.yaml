@@ -33,5 +33,8 @@ flutter:
     - assets/
     - assets/images/
 
+    - lib/
+    - lib/assets/
+    - lib/assets/images/
   uses-material-design: true
 
