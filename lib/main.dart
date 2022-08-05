@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:app/services/auth_service.dart';
-import 'package:app/services/location_service.dart';
 import 'package:app/utils/http/myhttp.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -9,11 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'app.dart';
-import 'app/routes/app_pages.dart';
 
 _parseAndDecode(String response) {
   return jsonDecode(response);
