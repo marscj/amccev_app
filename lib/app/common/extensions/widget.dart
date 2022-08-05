@@ -21,6 +21,7 @@ extension ExtensionWidget on Widget {
     BoxShape shape = BoxShape.rectangle,
     List<BoxShadow>? shadow,
     BlendMode? backgroundBlendMode,
+    BoxConstraints? constraints,
   }) {
     return Container(
         width: w,
@@ -28,6 +29,7 @@ extension ExtensionWidget on Widget {
         margin: margin,
         padding: padding,
         alignment: alignment,
+        constraints: constraints,
         decoration: BoxDecoration(
           border: border,
           color: color,
@@ -95,7 +97,7 @@ extension ExtensionWidget on Widget {
     );
   }
 
-  Widget expanded({int flex = 1}) => Expanded(flex: flex, child: this);
+  Widget get expanded => Expanded(flex: 1, child: this);
 
   Widget get sliver => SliverToBoxAdapter(child: this);
 }
