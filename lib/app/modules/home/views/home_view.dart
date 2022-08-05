@@ -4,6 +4,7 @@ import 'package:badges/badges.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -18,11 +19,23 @@ class HomeView extends GetView<HomeController> {
         SizedBox(height: 16).sliver,
         BannerView().paddingSymmetric(horizontal: 16).sliver,
         SizedBox(height: 16).sliver,
+        Text('Our Service')
+            .s14
+            .black
+            .bold
+            .container(h: 24, padding: EdgeInsets.symmetric(horizontal: 16))
+            .sliver,
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 16),
-          sliver: ServiceView(),
+          sliver: ServiceView().sliver,
         ),
         SizedBox(height: 16).sliver,
+        Text('Popular Services Center')
+            .s14
+            .black
+            .bold
+            .container(h: 24, padding: EdgeInsets.symmetric(horizontal: 16))
+            .sliver,
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           sliver: BranchView(),
@@ -101,19 +114,21 @@ class BannerView extends StatelessWidget {
 class ServiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverGrid.count(
-      crossAxisCount: 4,
-      children: List.generate(8, (index) {
-        return Container(
-          color: Colors.primaries[index % Colors.primaries.length],
-          alignment: Alignment.center,
-          child: Text(
-            '$index',
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        );
-      }).toList(),
-    );
+    return Swiper(
+      layout: SwiperLayout.DEFAULT,
+      itemBuilder: (BuildContext context, int index) {
+        return Container()
+            .network_image(
+                'http://img.haote.com/upload/20180918/2018091815372344164.jpg',
+                fit: BoxFit.cover,
+                radius: 5)
+            .paddingSymmetric(horizontal: 4);
+      },
+      loop: false,
+      itemCount: 5,
+      viewportFraction: 0.45,
+      scale: 1,
+    ).container(h: 200);
   }
 }
 
@@ -121,7 +136,7 @@ class BranchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid.count(
-      crossAxisCount: 4,
+      crossAxisCount: 2,
       children: List.generate(8, (index) {
         return Container(
           color: Colors.primaries[index % Colors.primaries.length],
