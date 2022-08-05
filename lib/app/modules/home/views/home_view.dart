@@ -14,91 +14,95 @@ class HomeView extends GetView<HomeController> {
       init: HomeController(),
       initState: (state) {},
       builder: (controller) => Scaffold(
-          body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return <Widget>[
-            SliverAppBar(
-              foregroundColor: Colors.black,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              pinned: true,
-              stretch: true,
-              shadowColor: Colors.transparent,
-              title: LogoView(),
-              // title: FutureBuilder<List<Placemark>>(
-              //   future: LocationService.instance.determinePosition(),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       return Text(snapshot.data?.first.country ?? '')
-              //           .size(12)
-              //           .color(Colors.black);
-              //     }
-
-              //     if (snapshot.hasError) {
-              //       return Text('获取地址位置失败！').size(10).color(Colors.black);
-              //     }
-
-              //     return CupertinoActivityIndicator();
-              //   },
-              // ),
-              actions: [
-                Badge(
-                  padding: EdgeInsets.all(5),
-                  position: BadgePosition(top: 4, end: 4),
-                  badgeContent: Text('1').s8.white,
-                  child: IconButton(
-                      onPressed: () {}, icon: Icon(FontAwesomeIcons.bell)),
-                )
-              ],
-              expandedHeight: 130,
-              flexibleSpace: FlexibleSpaceBar(
-                  background: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).padding.top + kToolbarHeight,
-                  ),
-                  Text('Hi Jhon Smith ')
-                      .s14
-                      .white
-                      .bold
-                      .paddingOnly(top: 8, left: 16),
-                  Text(
-                    'Good Moring',
-                  ).s18.white.bold.paddingOnly(top: 4, bottom: 8, left: 16),
-                ],
-              ).container(
-                      alignment: Alignment.topLeft,
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.lightGreenAccent.shade100,
-                            Colors.lightGreenAccent.shade700
-                          ]))),
-            ),
-          ];
-        },
-        body: CustomScrollView(slivers: <Widget>[
-          SizedBox(height: 8).sliver,
-          BannerView(),
-          SizedBox(height: 8).sliver,
-          ServiceView(),
-          SliverList(
-            delegate: SliverChildBuilderDelegate((content, index) {
-              return Container(
-                height: 85,
-                alignment: Alignment.center,
-                color: Colors.primaries[index % Colors.primaries.length],
-                child: Text(
-                  '$index',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+          body: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [
+                    0.0,
+                    0.3,
+                    0.3,
+                  ],
+                      colors: [
+                    Colors.lightGreenAccent.shade700,
+                    Colors.lightGreenAccent.shade100,
+                    Colors.white,
+                  ])),
+              child: CustomScrollView(slivers: <Widget>[
+                ToolbarView(),
+                SizedBox(height: 16).sliver,
+                BannerView().paddingSymmetric(horizontal: 16).sliver,
+                SizedBox(height: 16).sliver,
+                ServiceView(),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate((content, index) {
+                    return Container(
+                      height: 85,
+                      alignment: Alignment.center,
+                      color: Colors.primaries[index % Colors.primaries.length],
+                      child: Text(
+                        '$index',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    );
+                  }, childCount: 25),
                 ),
-              );
-            }, childCount: 25),
+              ]).refresh(controller, header: MaterialClassicHeader()))),
+    );
+  }
+}
+
+class ToolbarView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      foregroundColor: Colors.black,
+      backgroundColor: Colors.transparent,
+      // pinned: true,
+      // stretch: true,
+      shadowColor: Colors.transparent,
+      title: LogoView(),
+      // title: FutureBuilder<List<Placemark>>(
+      //   future: LocationService.instance.determinePosition(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.hasData) {
+      //       return Text(snapshot.data?.first.country ?? '')
+      //           .size(12)
+      //           .color(Colors.black);
+      //     }
+
+      //     if (snapshot.hasError) {
+      //       return Text('获取地址位置失败！').size(10).color(Colors.black);
+      //     }
+
+      //     return CupertinoActivityIndicator();
+      //   },
+      // ),
+      actions: [
+        Badge(
+          padding: EdgeInsets.all(5),
+          position: BadgePosition(top: 4, end: 4),
+          badgeContent: Text('1').s8.white,
+          child:
+              IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.bell)),
+        )
+      ],
+      expandedHeight: 130,
+      flexibleSpace: FlexibleSpaceBar(
+          background: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).padding.top + kToolbarHeight,
           ),
-        ]).paddingSymmetric(horizontal: 16),
-      )).refresh(controller, header: MaterialClassicHeader()),
+          Text('Hi Jhon Smith ').s14.white.bold.paddingOnly(top: 8, left: 16),
+          Text(
+            'Good Moring',
+          ).s18.white.bold.paddingOnly(top: 4, bottom: 8, left: 16),
+        ],
+      ).container(alignment: Alignment.topLeft)),
     );
   }
 }
@@ -133,7 +137,7 @@ class BannerView extends StatelessWidget {
       pagination: SwiperPagination(
         builder: DotSwiperPaginationBuilder(size: 5, activeSize: 6),
       ),
-    ).container(h: 150).sliver;
+    ).container(h: 150);
   }
 }
 

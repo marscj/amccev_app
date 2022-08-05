@@ -15,6 +15,7 @@ extension ExtensionWidget on Widget {
     EdgeInsetsGeometry? padding,
     Color? color,
     double radius = 0.0,
+    BorderRadiusGeometry? borderRadius,
     BoxBorder? border,
     DecorationImage? image,
     Gradient? gradient,
@@ -32,7 +33,7 @@ extension ExtensionWidget on Widget {
           color: color,
           image: image,
           boxShadow: shadow,
-          borderRadius: BorderRadius.circular(radius),
+          borderRadius: borderRadius ?? BorderRadius.circular(radius),
           gradient: gradient,
           shape: shape,
         ),
@@ -92,6 +93,8 @@ extension ExtensionWidget on Widget {
       child: this,
     );
   }
+
+  Widget expanded({int flex = 1}) => Expanded(flex: flex, child: this);
 
   Widget get sliver => SliverToBoxAdapter(child: this);
 }

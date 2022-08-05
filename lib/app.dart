@@ -44,7 +44,7 @@ class App extends StatelessWidget {
           initialBinding: BindingsBuilder(() {
             Get.put(AuthService());
             Get.put(SplashService());
-            Get.put(LocationService());
+            // Get.put(LocationService());
           }),
           initialRoute: AppPages.INITIAL,
           builder: (context, child) {
