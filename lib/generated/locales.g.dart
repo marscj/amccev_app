@@ -4,7 +4,6 @@
 // ignore: avoid_classes_with_only_static_members
 class AppTranslation {
   static Map<String, Map<String, String>> translations = {
-    'zh_CN': Locales.zh_CN,
     'en_US': Locales.en_US,
   };
 }
@@ -26,20 +25,6 @@ class LocaleKeys {
 }
 
 class Locales {
-  static const zh_CN = {
-    'app_name': 'AMCCEV',
-    'login': '登录',
-    'home': '首页',
-    'booking': '预定',
-    'shop': '商店',
-    'cart': '购物车',
-    'my': '我的',
-    'message': '消息',
-    'news': '新闻',
-    'pull_up_load': '上拉加载',
-    'load_failed': '加载失败！',
-    'no_more_data': '没有更多内容!',
-  };
   static const en_US = {
     'app_name': 'AMCCEV',
     'login': 'Login',

@@ -61,7 +61,7 @@ class App extends StatelessWidget {
           },
           translationsKeys: AppTranslation.translations,
           locale: lang == null ? locale : Locale(lang),
-          fallbackLocale: Locale('zh'),
+          fallbackLocale: Locale('en'),
           getPages: AppPages.routes,
           theme: ThemeData(
             brightness: Brightness.light,

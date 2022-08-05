@@ -104,8 +104,6 @@ class _GFXItemsCarouselState extends State<GFXItemsCarousel>
         (MediaQuery.of(context).size.width - widget.start - widget.end) -
         widget.space;
 
-    print('rightLimit = $rightLimit, shift=$shift');
-
     /// Check cells container limits
     if (localOffset > 0) {
       localOffset = 0;
