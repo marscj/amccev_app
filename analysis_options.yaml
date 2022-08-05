@@ -11,7 +11,7 @@ linter:
     unnecessary_this: false
     unnecessary_overrides: false
     library_private_types_in_public_api: false
-    
+    sort_child_properties_last: false
 
 analyzer: 
   errors:
