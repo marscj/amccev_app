@@ -63,22 +63,7 @@ class ToolbarView extends StatelessWidget {
       // stretch: true,
       shadowColor: Colors.transparent,
       title: LogoView(),
-      // title: FutureBuilder<List<Placemark>>(
-      //   future: LocationService.instance.determinePosition(),
-      //   builder: (context, snapshot) {
-      //     if (snapshot.hasData) {
-      //       return Text(snapshot.data?.first.country ?? '')
-      //           .size(12)
-      //           .color(Colors.black);
-      //     }
 
-      //     if (snapshot.hasError) {
-      //       return Text('获取地址位置失败！').size(10).color(Colors.black);
-      //     }
-
-      //     return CupertinoActivityIndicator();
-      //   },
-      // ),
       actions: [
         Badge(
           padding: EdgeInsets.all(5),

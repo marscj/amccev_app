@@ -18,6 +18,7 @@ dependencies:
   geocoding: 2.0.4
   cached_network_image: 3.2.1
   animate_do: 2.1.0
+  geolocator: 9.0.1
   flutter: 
     sdk: flutter
 
