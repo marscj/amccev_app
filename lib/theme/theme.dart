@@ -25,7 +25,7 @@ import 'package:flutter/material.dart';
 /// overline     10.0  regular  1.5
 
 // const TextStyle tdl = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 96.0,
 //     fontWeight: FontWeight.w300,
@@ -33,7 +33,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: -1.5);
 
 // const TextStyle tdm = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 60.0,
 //     fontWeight: FontWeight.w300,
@@ -41,7 +41,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: -0.5);
 
 // const TextStyle tds = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 48.0,
 //     fontWeight: FontWeight.w400,
@@ -49,7 +49,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.0);
 
 // const TextStyle thl = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 40.0,
 //     fontWeight: FontWeight.w400,
@@ -57,7 +57,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.25);
 
 // const TextStyle thm = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 34.0,
 //     fontWeight: FontWeight.w400,
@@ -65,7 +65,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.25);
 
 // const TextStyle ths = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 24.0,
 //     fontWeight: FontWeight.w400,
@@ -73,7 +73,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.0);
 
 // const TextStyle ttl = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 20.0,
 //     fontWeight: FontWeight.w500,
@@ -81,7 +81,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.15);
 
 // const TextStyle ttm = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 16.0,
 //     fontWeight: FontWeight.w400,
@@ -89,7 +89,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.15);
 
 // const TextStyle tts = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 14.0,
 //     fontWeight: FontWeight.w500,
@@ -97,7 +97,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.1);
 
 // const TextStyle tbl = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 16.0,
 //     fontWeight: FontWeight.w400,
@@ -105,7 +105,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.5);
 
 // const TextStyle tbm = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 14.0,
 //     fontWeight: FontWeight.w400,
@@ -113,7 +113,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.25);
 
 // const TextStyle tbs = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 12.0,
 //     fontWeight: FontWeight.w400,
@@ -121,7 +121,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 0.4);
 
 // const TextStyle tll = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 14.0,
 //     fontWeight: FontWeight.w500,
@@ -129,7 +129,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 1.25);
 
 // const TextStyle tlm = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 11.0,
 //     fontWeight: FontWeight.w400,
@@ -137,7 +137,7 @@ import 'package:flutter/material.dart';
 //     letterSpacing: 1.5);
 
 // const TextStyle tls = TextStyle(
-//     color: Colors.black87,
+//
 //     overflow: TextOverflow.clip,
 //     fontSize: 10.0,
 //     fontWeight: FontWeight.w400,
@@ -146,56 +146,48 @@ import 'package:flutter/material.dart';
 
 const TextStyle W96 = TextStyle(
     fontSize: 96.0,
-    color: Colors.black87,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: -1.5);
 
 const TextStyle W60 = TextStyle(
     fontSize: 60.0,
-    color: Colors.black87,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: -0.5);
 
 const TextStyle W48 = TextStyle(
     fontSize: 48.0,
-    color: Colors.black87,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.0);
 
 const TextStyle W40 = TextStyle(
     fontSize: 40.0,
-    color: Colors.black87,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25);
 
 const TextStyle W34 = TextStyle(
     fontSize: 34.0,
-    color: Colors.black87,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25);
 
 const TextStyle W24 = TextStyle(
     fontSize: 24.0,
-    color: Colors.black87,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.0);
 
 const TextStyle W20 = TextStyle(
     fontSize: 20.0,
-    color: Colors.black87,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.15);
 
 const TextStyle W18 = TextStyle(
   fontSize: 18,
-  color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.15,
@@ -203,7 +195,6 @@ const TextStyle W18 = TextStyle(
 
 const TextStyle W16 = TextStyle(
   fontSize: 16,
-  color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.15,
@@ -211,7 +202,6 @@ const TextStyle W16 = TextStyle(
 
 const TextStyle W14 = TextStyle(
   fontSize: 14,
-  color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.5,
@@ -219,7 +209,6 @@ const TextStyle W14 = TextStyle(
 
 const TextStyle W12 = TextStyle(
   fontSize: 12,
-  color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.4,
@@ -227,7 +216,6 @@ const TextStyle W12 = TextStyle(
 
 const TextStyle W10 = TextStyle(
   fontSize: 10,
-  color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 1.5,
@@ -235,7 +223,6 @@ const TextStyle W10 = TextStyle(
 
 const TextStyle W8 = TextStyle(
   fontSize: 8,
-  color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 1.5,

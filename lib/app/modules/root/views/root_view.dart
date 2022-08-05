@@ -16,6 +16,7 @@ class RootView extends GetView<RootController> {
       body: PersistentTabView(
         context,
         controller: controller.persistentTabController,
+
         screens: [HomeView(), BookingView(), NewsView(), ProfileView()],
         items: [
           Tab(text: 'home'.tr, icon: Icon(FontAwesomeIcons.car)),
@@ -43,9 +44,12 @@ class RootView extends GetView<RootController> {
         hideNavigationBarWhenKeyboardShows:
             true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
         decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          colorBehindNavBar: Colors.white,
-        ),
+            borderRadius: BorderRadius.circular(10.0),
+            colorBehindNavBar: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.lightGreen.shade100, offset: Offset(0, -0.5))
+            ]),
         popAllScreensOnTapOfSelectedTab: true,
         popActionScreens: PopActionScreensType.all,
         itemAnimationProperties: ItemAnimationProperties(
@@ -53,6 +57,7 @@ class RootView extends GetView<RootController> {
           duration: Duration(milliseconds: 200),
           curve: Curves.ease,
         ),
+
         // screenTransitionAnimation: ScreenTransitionAnimation(
         //   // Screen transition animation on change of selected tab.
         //   animateTabTransition: true,

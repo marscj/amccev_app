@@ -389,8 +389,7 @@ class _PersistentTabViewState extends State<PersistentTabView> {
   }
 
   Widget _buildScreen(int index) {
-    RouteAndNavigatorSettings routeAndNavigatorSettings = widget
-            .isCustomWidget!
+    RouteAndNavigatorSettings routeAndNavigatorSettings = widget.isCustomWidget!
         ? RouteAndNavigatorSettings(
             defaultTitle: widget.routeAndNavigatorSettings!.defaultTitle,
             initialRoute: widget.routeAndNavigatorSettings!.initialRoute,

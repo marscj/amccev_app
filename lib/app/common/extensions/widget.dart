@@ -20,6 +20,7 @@ extension ExtensionWidget on Widget {
     Gradient? gradient,
     BoxShape shape = BoxShape.rectangle,
     List<BoxShadow>? shadow,
+    BlendMode? backgroundBlendMode,
   }) {
     return Container(
         width: w,
@@ -34,6 +35,7 @@ extension ExtensionWidget on Widget {
           boxShadow: shadow,
           borderRadius: borderRadius ?? BorderRadius.circular(radius),
           gradient: gradient,
+          backgroundBlendMode: backgroundBlendMode,
           shape: shape,
         ),
         child: this);
@@ -126,6 +128,8 @@ extension ExtensionText on Text {
 
   Text get bold =>
       Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.bold));
+
+  Text color(color) => Text(data ?? '', style: style?.copyWith(color: color));
 }
 
 extension ExtensionContainer on Container {
