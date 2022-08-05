@@ -29,7 +29,7 @@ class MessageView extends GetView<MessageController> {
       initState: (state) {},
       builder: (controller) => Scaffold(
           appBar: AppBar(
-            title: const Text('BookingView'),
+            title: Text('BookingView'),
             centerTitle: true,
           ),
           body: Scaffold(

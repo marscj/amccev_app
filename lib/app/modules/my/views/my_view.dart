@@ -13,7 +13,7 @@ class MyView extends GetView<MyController> {
       initState: (state) {},
       builder: (controller) => Scaffold(
         appBar: AppBar(
-          title: const Text('MyView'),
+          title: Text('MyView'),
           centerTitle: true,
         ),
         body: Center(

@@ -10,7 +10,7 @@ class CartView extends GetView<CartController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CartView'),
+        title: Text('CartView'),
         centerTitle: true,
       ),
       body: Center(

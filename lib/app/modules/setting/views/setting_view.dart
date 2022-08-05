@@ -10,7 +10,7 @@ class SettingView extends GetView<SettingController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SettingView'),
+        title: Text('SettingView'),
         centerTitle: true,
       ),
       body: Center(

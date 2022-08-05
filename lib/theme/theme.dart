@@ -24,7 +24,7 @@ import 'package:flutter/material.dart';
 /// caption      12.0  regular  0.4
 /// overline     10.0  regular  1.5
 
-// const TextStyle tdl = TextStyle(
+// TextStyle tdl = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 96.0,
@@ -32,7 +32,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: -1.5);
 
-// const TextStyle tdm = TextStyle(
+// TextStyle tdm = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 60.0,
@@ -40,7 +40,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: -0.5);
 
-// const TextStyle tds = TextStyle(
+// TextStyle tds = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 48.0,
@@ -48,7 +48,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.0);
 
-// const TextStyle thl = TextStyle(
+// TextStyle thl = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 40.0,
@@ -56,7 +56,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.25);
 
-// const TextStyle thm = TextStyle(
+// TextStyle thm = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 34.0,
@@ -64,7 +64,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.25);
 
-// const TextStyle ths = TextStyle(
+// TextStyle ths = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 24.0,
@@ -72,7 +72,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.0);
 
-// const TextStyle ttl = TextStyle(
+// TextStyle ttl = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 20.0,
@@ -80,7 +80,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.15);
 
-// const TextStyle ttm = TextStyle(
+// TextStyle ttm = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 16.0,
@@ -88,7 +88,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.15);
 
-// const TextStyle tts = TextStyle(
+// TextStyle tts = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 14.0,
@@ -96,7 +96,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.1);
 
-// const TextStyle tbl = TextStyle(
+// TextStyle tbl = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 16.0,
@@ -104,7 +104,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.5);
 
-// const TextStyle tbm = TextStyle(
+// TextStyle tbm = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 14.0,
@@ -112,7 +112,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.25);
 
-// const TextStyle tbs = TextStyle(
+// TextStyle tbs = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 12.0,
@@ -120,7 +120,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 0.4);
 
-// const TextStyle tll = TextStyle(
+// TextStyle tll = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 14.0,
@@ -128,7 +128,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 1.25);
 
-// const TextStyle tlm = TextStyle(
+// TextStyle tlm = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 11.0,
@@ -136,7 +136,7 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 1.5);
 
-// const TextStyle tls = TextStyle(
+// TextStyle tls = TextStyle(
 //
 //     overflow: TextOverflow.clip,
 //     fontSize: 10.0,
@@ -144,84 +144,84 @@ import 'package:flutter/material.dart';
 //
 //     letterSpacing: 1.5);
 
-const TextStyle W96 = TextStyle(
+TextStyle W96 = TextStyle(
     fontSize: 96.0,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: -1.5);
 
-const TextStyle W60 = TextStyle(
+TextStyle W60 = TextStyle(
     fontSize: 60.0,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: -0.5);
 
-const TextStyle W48 = TextStyle(
+TextStyle W48 = TextStyle(
     fontSize: 48.0,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.0);
 
-const TextStyle W40 = TextStyle(
+TextStyle W40 = TextStyle(
     fontSize: 40.0,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25);
 
-const TextStyle W34 = TextStyle(
+TextStyle W34 = TextStyle(
     fontSize: 34.0,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25);
 
-const TextStyle W24 = TextStyle(
+TextStyle W24 = TextStyle(
     fontSize: 24.0,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.0);
 
-const TextStyle W20 = TextStyle(
+TextStyle W20 = TextStyle(
     fontSize: 20.0,
     overflow: TextOverflow.clip,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.15);
 
-const TextStyle W18 = TextStyle(
+TextStyle W18 = TextStyle(
   fontSize: 18,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.15,
 );
 
-const TextStyle W16 = TextStyle(
+TextStyle W16 = TextStyle(
   fontSize: 16,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.15,
 );
 
-const TextStyle W14 = TextStyle(
+TextStyle W14 = TextStyle(
   fontSize: 14,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.5,
 );
 
-const TextStyle W12 = TextStyle(
+TextStyle W12 = TextStyle(
   fontSize: 12,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.4,
 );
 
-const TextStyle W10 = TextStyle(
+TextStyle W10 = TextStyle(
   fontSize: 10,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 1.5,
 );
 
-const TextStyle W8 = TextStyle(
+TextStyle W8 = TextStyle(
   fontSize: 8,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,

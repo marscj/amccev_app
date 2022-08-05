@@ -13,7 +13,7 @@ class ProfileView extends GetView<ProfileController> {
       initState: (state) {},
       builder: (controller) => Scaffold(
         appBar: AppBar(
-          title: const Text('ProfileView'),
+          title: Text('ProfileView'),
           centerTitle: true,
         ),
         body: Center(

@@ -10,7 +10,7 @@ class SigninView extends GetView<SigninController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SigninView'),
+        title: Text('SigninView'),
         centerTitle: true,
       ),
       body: Center(

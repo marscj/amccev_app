@@ -10,7 +10,7 @@ class BookingDetailsView extends GetView<BookingDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BookingDetailsView'),
+        title: Text('BookingDetailsView'),
         centerTitle: true,
       ),
       body: Center(
