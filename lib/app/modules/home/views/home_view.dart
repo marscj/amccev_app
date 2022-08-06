@@ -16,31 +16,16 @@ class HomeView extends GetView<HomeController> {
       builder: (controller) => Scaffold(
           body: CustomScrollView(slivers: <Widget>[
         ToolbarView(),
-        SizedBox(height: 16).sliver,
+        SpaceView().sliver,
         BannerView().sliver,
-        SizedBox(height: 16).sliver,
-        Text('Our Service')
-            .s14
-            .black
-            .bold
-            .container(h: 24, padding: EdgeInsets.symmetric(horizontal: 16))
-            .sliver,
+        SpaceView().sliver,
+        TitleView('Our Service').sliver,
         ServiceView().sliver,
-        SizedBox(height: 16).sliver,
-        Text('Popular Services Center')
-            .s14
-            .black
-            .bold
-            .container(h: 24, padding: EdgeInsets.symmetric(horizontal: 16))
-            .sliver,
+        SpaceView().sliver,
+        TitleView('Popular Services Center').sliver,
         BranchView().sliver,
-        SizedBox(height: 16).sliver,
-        Text('News Center')
-            .s14
-            .black
-            .bold
-            .container(h: 24, padding: EdgeInsets.symmetric(horizontal: 16))
-            .sliver,
+        SpaceView().sliver,
+        TitleView('News Center').sliver,
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           sliver: PostView(),
@@ -75,17 +60,7 @@ class ToolbarView extends StatelessWidget {
               icon: Icon(Icons.support_agent)),
         )
       ],
-      expandedHeight: 80,
-      flexibleSpace: FlexibleSpaceBar(
-          background: [
-        SizedBox(
-          height: MediaQuery.of(context).padding.top + kToolbarHeight,
-        ),
-        Text('Hi, Good Morinig').s14.black.bold,
-      ]
-              .col(crossAxisAlignment: CrossAxisAlignment.start)
-              .paddingSymmetric(horizontal: 16)
-              .container(color: Theme.of(context).scaffoldBackgroundColor)),
+
       // flexibleSpace: FlexibleSpaceBar(
       //     background: Column(
       //   mainAxisAlignment: MainAxisAlignment.start,
@@ -101,6 +76,33 @@ class ToolbarView extends StatelessWidget {
       //   ),
       // ),
     );
+  }
+}
+
+class SpaceView extends StatelessWidget {
+  final double height;
+
+  const SpaceView({super.key, this.height = 16});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: this.height);
+  }
+}
+
+class TitleView extends StatelessWidget {
+  final double height;
+  final String title;
+
+  TitleView(this.title, {super.key, this.height = 24});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(title)
+        .s14
+        .black
+        .bold
+        .container(h: 24, padding: EdgeInsets.symmetric(horizontal: 16));
   }
 }
 
@@ -127,13 +129,14 @@ class BannerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GFCarousel(
+    return GFXCarousel(
       autoPlay: true,
       hasPagination: true,
-      viewportFraction: 1.0,
       activeIndicator: GFColors.SUCCESS,
       passiveIndicator: GFColors.DARK,
-      height: 160,
+      enlargeMainPage: false,
+      viewportFraction: 1.0,
+      height: 200,
       items: imageList
           .map(
             (url) => GFImageOverlay(
@@ -141,7 +144,6 @@ class BannerView extends StatelessWidget {
               margin: const EdgeInsets.only(
                 left: 15,
                 right: 15,
-                bottom: 30,
               ),
               borderRadius: const BorderRadius.all(Radius.circular(4)),
               child: Padding(
