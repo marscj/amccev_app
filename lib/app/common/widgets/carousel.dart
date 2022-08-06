@@ -219,6 +219,7 @@ class GFXCarousel extends StatefulWidget {
     Key? key,
     required this.items,
     this.pagerSize,
+    this.activeSize,
     this.passiveIndicator,
     this.activeIndicator,
     this.activeDotBorder,
@@ -243,6 +244,8 @@ class GFXCarousel extends StatefulWidget {
 
   /// The pagination dots size can be defined using [double].
   final double? pagerSize;
+
+  final double? activeSize;
 
   /// The slider pagination's active color.
   final Color? activeIndicator;
@@ -420,11 +423,6 @@ class _GFXCarouselState extends State<GFXCarousel>
             scrollDirection: widget.scrollDirection,
             controller: pageController,
             reverse: widget.reverse,
-            // itemCount: widget.items.length == 1
-            //     ? widget.items.length
-            //     : widget.enableInfiniteScroll
-            //         ? null
-            //         : widget.items.length,
             itemCount: widget.enableInfiniteScroll ? null : widget.items.length,
             onPageChanged: (int index) {
               int currentPage;
@@ -500,20 +498,20 @@ class _GFXCarouselState extends State<GFXCarousel>
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  child: Container(
+                  child: SizedBox(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: widget.map<Widget>(
                           widget.items,
                           (pagerIndex, url) => Container(
-                                width: widget.pagerSize == null
-                                    ? 8.0
-                                    : widget.pagerSize,
-                                height: widget.pagerSize == null
-                                    ? 8.0
-                                    : widget.pagerSize,
+                                width: currentSlide == pagerIndex
+                                    ? widget.activeSize ?? 8.0
+                                    : widget.pagerSize ?? 8.0,
+                                height: currentSlide == pagerIndex
+                                    ? widget.activeSize ?? 8.0
+                                    : widget.pagerSize ?? 8.0,
                                 margin: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 2),
+                                    vertical: 10, horizontal: 3),
                                 decoration: BoxDecoration(
                                   border: currentSlide == pagerIndex
                                       ? widget.activeDotBorder

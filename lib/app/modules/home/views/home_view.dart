@@ -16,6 +16,9 @@ class HomeView extends GetView<HomeController> {
       builder: (controller) => Scaffold(
           body: CustomScrollView(slivers: <Widget>[
         ToolbarView(),
+        TitleView(
+          'Good Morning!',
+        ).sliver,
         SpaceView().sliver,
         BannerView().sliver,
         SpaceView().sliver,
@@ -93,16 +96,17 @@ class SpaceView extends StatelessWidget {
 class TitleView extends StatelessWidget {
   final double height;
   final String title;
+  final Alignment alignment;
 
-  TitleView(this.title, {super.key, this.height = 24});
+  TitleView(this.title,
+      {super.key, this.alignment = Alignment.centerLeft, this.height = 24});
 
   @override
   Widget build(BuildContext context) {
-    return Text(title)
-        .s14
-        .black
-        .bold
-        .container(h: 24, padding: EdgeInsets.symmetric(horizontal: 16));
+    return Text(title).s14.black.bold.container(
+        h: 24,
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        alignment: alignment);
   }
 }
 
@@ -133,42 +137,17 @@ class BannerView extends StatelessWidget {
       autoPlay: true,
       hasPagination: true,
       activeIndicator: GFColors.SUCCESS,
-      passiveIndicator: GFColors.DARK,
-      enlargeMainPage: false,
+      passiveIndicator: GFColors.WHITE,
       viewportFraction: 1.0,
-      height: 200,
+      pagerSize: 4,
+      activeSize: 6,
+      height: 140,
       items: imageList
-          .map(
-            (url) => GFImageOverlay(
-              height: 200,
-              margin: const EdgeInsets.only(
-                left: 15,
-                right: 15,
-              ),
-              borderRadius: const BorderRadius.all(Radius.circular(4)),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 30, left: 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const <Widget>[
-                    Text(
-                      'Title',
-                      style: TextStyle(color: GFColors.WHITE),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30, top: 30),
-                      child: Text(
-                        'GetWidget is an open source library that comes with pre-build 1000+ UI components. ',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: GFColors.LIGHT),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              image: AssetImage(url),
-            ),
-          )
+          .map((url) => SizedBox.expand().container(
+              margin: EdgeInsets.only(left: 16, right: 16),
+              radius: 4,
+              image:
+                  DecorationImage(image: AssetImage(url), fit: BoxFit.cover)))
           .toList(),
       onPageChanged: (index) {},
     );
