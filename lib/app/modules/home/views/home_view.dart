@@ -3,6 +3,7 @@ import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
 import 'package:app/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -19,11 +20,10 @@ class HomeView extends GetView<HomeController> {
         TitleView(
           'Good Morning!',
         ).sliver,
-        SpaceView().sliver,
         BannerView().sliver,
         SpaceView().sliver,
         TitleView('Our Service').sliver,
-        ServiceView().sliver,
+        ServiceView(),
         SpaceView().sliver,
         TitleView('Popular Services Center').sliver,
         BranchView().sliver,
@@ -154,62 +154,62 @@ class BannerView extends StatelessWidget {
   }
 }
 
-class ServiceView extends StatelessWidget {
-  final List<String> assetImg = [
-    'lib/assets/images/red.png',
-    'lib/assets/images/purple.png',
-    'lib/assets/images/orange.png',
-    'lib/assets/images/red.png',
-  ];
+// class ServiceView extends StatelessWidget {
+//   final List<String> assetImg = [
+//     'lib/assets/images/red.png',
+//     'lib/assets/images/purple.png',
+//     'lib/assets/images/orange.png',
+//     'lib/assets/images/red.png',
+//   ];
 
-  final List<Color> gradientColors = [
-    const Color(0xffFFD633),
-    const Color(0xFFFF8F33),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return GFXItemsCarousel(
-      start: 16,
-      end: 16,
-      space: 6,
-      itemHeight: 120,
-      itemWidth: (MediaQuery.of(context).size.width) * 0.29,
-      children: assetImg
-          .map(
-            (url) => GFCard(
-              gradient: LinearGradient(
-                begin: FractionalOffset.topCenter,
-                end: FractionalOffset.bottomCenter,
-                colors: gradientColors,
-              ),
-              margin: EdgeInsets.zero,
-              borderRadius: const BorderRadius.all(Radius.circular(4)),
-              content: Column(
-                children: <Widget>[
-                  Text(
-                    'Title',
-                    style: TextStyle(
-                      color: GFColors.WHITE,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 5, top: 10),
-                    child: Text(
-                      'GetWidget is an open source UI components ',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: GFColors.LIGHT,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-          .toList(),
-    );
-  }
-}
+//   final List<Color> gradientColors = [
+//     const Color(0xffFFD633),
+//     const Color(0xFFFF8F33),
+//   ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return GFXItemsCarousel(
+//       start: 16,
+//       end: 16,
+//       space: 6,
+//       itemHeight: 120,
+//       itemWidth: (MediaQuery.of(context).size.width) * 0.29,
+//       children: assetImg
+//           .map(
+//             (url) => GFCard(
+//               gradient: LinearGradient(
+//                 begin: FractionalOffset.topCenter,
+//                 end: FractionalOffset.bottomCenter,
+//                 colors: gradientColors,
+//               ),
+//               margin: EdgeInsets.zero,
+//               borderRadius: const BorderRadius.all(Radius.circular(4)),
+//               content: Column(
+//                 children: <Widget>[
+//                   Text(
+//                     'Title',
+//                     style: TextStyle(
+//                       color: GFColors.WHITE,
+//                     ),
+//                   ),
+//                   Padding(
+//                     padding: EdgeInsets.only(right: 5, top: 10),
+//                     child: Text(
+//                       'GetWidget is an open source UI components ',
+//                       style: TextStyle(
+//                         fontSize: 10,
+//                         color: GFColors.LIGHT,
+//                       ),
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           )
+//           .toList(),
+//     );
+//   }
+// }
 
 class BranchView extends StatelessWidget {
   final List<String> assetImg = [
@@ -271,18 +271,78 @@ class BranchView extends StatelessWidget {
 class PostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate((content, index) {
-        return Container(
-          height: 85,
-          alignment: Alignment.center,
-          color: Colors.primaries[index % Colors.primaries.length],
-          child: Text(
-            '$index',
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        );
-      }, childCount: 25),
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate((content, index) {
+          return Container(
+            height: 85,
+            alignment: Alignment.center,
+            color: Colors.primaries[index % Colors.primaries.length],
+            child: Text(
+              '$index',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          );
+        }, childCount: 25),
+      ),
     );
+  }
+}
+
+class ServiceView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      sliver: SliverLayoutBuilder(
+        builder: (context, constraints) {
+          return SliverGrid.count(
+            crossAxisCount: 3,
+            childAspectRatio:
+                (constraints.crossAxisExtent / 3 - 10) / (120 - 10),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            children: [
+              ItemView(
+                icon: Icon(FontAwesomeIcons.instalod),
+                title: Text('Warranty'),
+              ),
+              ItemView(
+                icon: Icon(FontAwesomeIcons.instalod),
+                title: Text('Warranty'),
+              ),
+              ItemView(
+                icon: Icon(FontAwesomeIcons.instalod),
+                title: Text('Warranty'),
+              )
+            ].map((e) => e.container(color: Colors.white, radius: 10)).toList(),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ItemView extends StatelessWidget {
+  final Icon icon;
+  final Text title;
+
+  ItemView({super.key, required this.icon, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return [
+      icon.container(
+          color: Color.fromARGB(16, 81, 243, 194),
+          shape: BoxShape.circle,
+          padding: EdgeInsets.all(20)),
+      SizedBox(
+        height: 8,
+      ),
+      title.s12.bold.black,
+    ].col(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center);
   }
 }

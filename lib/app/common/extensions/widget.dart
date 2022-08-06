@@ -35,7 +35,9 @@ extension ExtensionWidget on Widget {
           color: color,
           image: image,
           boxShadow: shadow,
-          borderRadius: borderRadius ?? BorderRadius.circular(radius),
+          borderRadius: shape != BoxShape.rectangle
+              ? null
+              : borderRadius ?? BorderRadius.circular(radius),
           gradient: gradient,
           backgroundBlendMode: backgroundBlendMode,
           shape: shape,
