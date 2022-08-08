@@ -44,6 +44,7 @@ class ToolbarView extends StatelessWidget {
       leading: LogoView(),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       title: Text('AMCCEV SERVICES').s14.bold,
+      leadingWidth: 80,
       actions: [
         GFIconBadge(
           padding: EdgeInsets.zero,
@@ -115,7 +116,7 @@ class LogoView extends GetView<HomeController> {
           key: ValueKey('${controller.index}'),
           'assets/images/logo.png',
           fit: BoxFit.contain,
-        ).fadeInLeft(key: ValueKey('${controller.index}')));
+        ).elasticInLeft(key: ValueKey('${controller.index}')));
   }
 }
 
@@ -225,7 +226,7 @@ class BranchView extends StatelessWidget {
       end: 16,
       space: 6,
       itemHeight: 180,
-      itemWidth: (MediaQuery.of(context).size.width - 16) * 0.45,
+      itemWidth: (MediaQuery.of(context).size.width - 32) * 0.45,
       children: assetImg
           .map(
             (url) => GFCard(

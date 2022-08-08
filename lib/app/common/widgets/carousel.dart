@@ -78,9 +78,6 @@ class _GFXItemsCarouselState extends State<GFXItemsCarousel>
   /// In milliseconds
   static const int shiftAnimationDuration = 300;
 
-  /// Size of cell
-  double size = 0;
-
   late AnimationController animationController;
 
   /// Shift of cells container
@@ -89,7 +86,6 @@ class _GFXItemsCarouselState extends State<GFXItemsCarousel>
   @override
   void initState() {
     offset = 0;
-    size = widget.itemWidth;
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: dragAnimationDuration),
@@ -167,7 +163,8 @@ class _GFXItemsCarouselState extends State<GFXItemsCarousel>
   void slideAnimation() {
     final double beginAnimation = offset;
 
-    final double endAnimation = size * (offset / size).toDouble();
+    final double endAnimation =
+        widget.itemWidth * (offset / widget.itemWidth).toDouble();
     animationController = AnimationController(
         duration: const Duration(milliseconds: shiftAnimationDuration),
         vsync: this);
@@ -198,7 +195,7 @@ class _GFXItemsCarouselState extends State<GFXItemsCarousel>
                   child: Row(
                     children: widget.children
                         .map((child) => Container(
-                              width: size,
+                              width: widget.itemWidth,
                               height: widget.itemHeight,
                               padding: EdgeInsets.only(right: widget.space),
                               child: child,
