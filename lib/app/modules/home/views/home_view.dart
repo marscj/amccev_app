@@ -29,10 +29,7 @@ class HomeView extends GetView<HomeController> {
         BranchView().sliver,
         SpaceView().sliver,
         TitleView('News Center').sliver,
-        SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          sliver: PostView(),
-        )
+        PostView()
       ]).refresh(controller, header: MaterialClassicHeader())),
     );
   }
@@ -124,11 +121,9 @@ class LogoView extends GetView<HomeController> {
 
 class BannerView extends StatelessWidget {
   final List<String> imageList = [
-    'lib/assets/images/card5.png',
-    'lib/assets/images/image.png',
-    'lib/assets/images/image1.png',
-    'lib/assets/images/image2.png',
-    'lib/assets/images/card4.png',
+    'assets/images/bg_1.jpg',
+    'assets/images/bg_1.jpg',
+    'assets/images/bg_1.jpg',
   ];
 
   @override
@@ -300,21 +295,21 @@ class ServiceView extends StatelessWidget {
           return SliverGrid.count(
             crossAxisCount: 3,
             childAspectRatio:
-                (constraints.crossAxisExtent / 3 - 10) / (120 - 10),
+                (constraints.crossAxisExtent / 3 - 10) / (140 - 10),
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             children: [
               ItemView(
-                icon: Icon(FontAwesomeIcons.instalod),
+                icon: Icon(FontAwesomeIcons.trophy),
                 title: Text('Warranty'),
               ),
               ItemView(
-                icon: Icon(FontAwesomeIcons.instalod),
-                title: Text('Warranty'),
+                icon: Icon(FontAwesomeIcons.carOn),
+                title: Text('Inspection'),
               ),
               ItemView(
-                icon: Icon(FontAwesomeIcons.instalod),
-                title: Text('Warranty'),
+                icon: Icon(FontAwesomeIcons.carBurst),
+                title: Text('Repair'),
               )
             ].map((e) => e.container(color: Colors.white, radius: 10)).toList(),
           );
@@ -333,16 +328,20 @@ class ItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return [
-      icon.container(
-          color: Color.fromARGB(16, 81, 243, 194),
-          shape: BoxShape.circle,
-          padding: EdgeInsets.all(20)),
+      IconTheme(
+          data: IconThemeData(size: 24, color: Colors.lightGreen),
+          child: icon.container(
+              color: Color.fromARGB(16, 81, 243, 194),
+              shape: BoxShape.circle,
+              padding: EdgeInsets.all(20))),
       SizedBox(
-        height: 8,
+        height: 12,
       ),
       title.s12.bold.black,
-    ].col(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center);
+    ]
+        .col(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center)
+        .container(color: Colors.white, radius: 10);
   }
 }
