@@ -1,3 +1,4 @@
+import 'package:app/app/common/gfx/card.dart';
 import 'package:app/app/common/gfx/carousel.dart';
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
@@ -207,66 +208,53 @@ class BannerView extends StatelessWidget {
 // }
 
 class BranchView extends StatelessWidget {
-  final List<String> assetImg = [
-    'lib/assets/images/red.png',
-    'lib/assets/images/purple.png',
-    'lib/assets/images/orange.png',
-    'lib/assets/images/red.png',
-  ];
-
-  final List<Color> gradientColors = [
-    const Color(0xffFFD633),
-    const Color(0xFFFF8F33),
-  ];
   @override
   Widget build(BuildContext context) {
     double itemWidth = (MediaQuery.of(context).size.width - 32) * 0.45;
-    double itemHeight = itemWidth * 1.1;
+
     return GFXItemsCarousel(
-      start: 16,
-      end: 16,
-      space: 6,
-      itemHeight: itemHeight,
-      itemWidth: itemWidth,
-      children: assetImg
-          .map(
-            (url) => GFCard(
-              showImage: true,
-              image: Image.asset(
-                'assets/images/bg_1.jpg',
-                height: 100,
-              ),
-              gradient: LinearGradient(
-                begin: FractionalOffset.topCenter,
-                end: FractionalOffset.bottomCenter,
-                colors: gradientColors,
-              ),
-              margin: EdgeInsets.zero,
-              borderRadius: const BorderRadius.all(Radius.circular(4)),
-              content: Column(
-                children: <Widget>[
-                  Text(
-                    'Title1',
-                    style: TextStyle(
-                      color: GFColors.WHITE,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 5, top: 10),
-                    child: Text(
-                      'GetWidget is an open source UI components ',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: GFColors.LIGHT,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-          .toList(),
-    );
+        start: 16,
+        end: 16,
+        space: 6,
+        itemHeight: 300,
+        itemWidth: itemWidth,
+        children: [
+          ItemCardView(
+            url: 'assets/images/branch_1.jpg',
+            title: 'Al Quoz',
+            subtitle: 'Dubai',
+          ),
+          ItemCardView(
+            url: 'assets/images/branch_2.jpg',
+            title: 'Industrial City',
+            subtitle: 'Dubai',
+          ),
+          ItemCardView(
+            url: 'assets/images/branch_3.jpg',
+            title: 'Umm Ramool',
+            subtitle: 'Dubai',
+          ),
+          ItemCardView(
+            url: 'assets/images/branch_4.jpg',
+            title: 'Abu Dhabi',
+          ),
+          ItemCardView(
+            url: 'assets/images/branch_5.jpg',
+            title: 'Sharjah',
+          ),
+          ItemCardView(
+            url: 'assets/images/branch_6.jpg',
+            title: 'Ras Al-Khaimah',
+          ),
+          ItemCardView(
+            url: 'assets/images/branch_7.jpg',
+            title: 'Fujairah',
+          ),
+          ItemCardView(
+            url: 'assets/images/branch_8.jpg',
+            title: 'Al Ain',
+          ),
+        ]);
   }
 }
 
@@ -354,10 +342,45 @@ class ItemView extends StatelessWidget {
 }
 
 class ItemCardView extends StatelessWidget {
-  const ItemCardView({Key? key}) : super(key: key);
+  final String url;
+  final String title;
+  final String? subtitle;
+
+  const ItemCardView({
+    Key? key,
+    required this.url,
+    required this.title,
+    this.subtitle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return GFXCard(
+      // showImage: true,
+      showOverlayImage: true,
+      imageOverlay: AssetImage(url),
+      boxFit: BoxFit.cover,
+      margin: EdgeInsets.zero,
+      padding: EdgeInsets.zero,
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(title).s14.black.bold.single.clip,
+          SizedBox(height: 6),
+          Text(subtitle ?? '').s12.black.clip
+        ],
+      )
+          .container(
+              alignment: Alignment.center,
+              color: Colors.white,
+              w: double.infinity,
+              h: 60,
+              radius: 10,
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              margin: EdgeInsets.symmetric(horizontal: 16))
+          .container(
+              alignment: Alignment.bottomCenter,
+              padding: EdgeInsets.symmetric(vertical: 20)),
+    );
   }
 }

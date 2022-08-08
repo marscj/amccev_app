@@ -99,6 +99,23 @@ extension ExtensionWidget on Widget {
     );
   }
 
+  Widget positioned({
+    double? left,
+    double? top,
+    double? right,
+    double? bottom,
+    double? width,
+    double? height,
+  }) =>
+      Positioned(
+          left: left,
+          top: top,
+          right: right,
+          bottom: bottom,
+          width: width,
+          height: height,
+          child: this);
+
   Widget get expanded => Expanded(flex: 1, child: this);
 
   Widget get sliver => SliverToBoxAdapter(child: this);
@@ -119,21 +136,47 @@ extension ExtensionText on Text {
   Text get s10 => Text(data ?? '', style: style?.copyWith(fontSize: 10) ?? W10);
   Text get s8 => Text(data ?? '', style: style?.copyWith(fontSize: 8) ?? W8);
 
-  Text get white =>
-      Text(data ?? '', style: style?.copyWith(color: Colors.white));
+  Text get white => Text(data ?? '',
+      style: style?.copyWith(color: Colors.white),
+      maxLines: maxLines,
+      overflow: overflow);
 
-  Text get black =>
-      Text(data ?? '', style: style?.copyWith(color: Colors.black87));
+  Text get black => Text(data ?? '',
+      style: style?.copyWith(color: Colors.black87),
+      maxLines: maxLines,
+      overflow: overflow);
 
-  Text get grey => Text(data ?? '', style: style?.copyWith(color: Colors.grey));
+  Text get grey => Text(data ?? '',
+      style: style?.copyWith(color: Colors.grey),
+      maxLines: maxLines,
+      overflow: overflow);
 
-  Text get light =>
-      Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.w200));
+  Text get light => Text(data ?? '',
+      style: style?.copyWith(fontWeight: FontWeight.w200),
+      maxLines: maxLines,
+      overflow: overflow);
 
-  Text get bold =>
-      Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.bold));
+  Text get bold => Text(data ?? '',
+      style: style?.copyWith(fontWeight: FontWeight.bold),
+      maxLines: maxLines,
+      overflow: overflow);
 
-  Text color(color) => Text(data ?? '', style: style?.copyWith(color: color));
+  Text color(color) => Text(data ?? '',
+      style: style?.copyWith(color: color),
+      maxLines: maxLines,
+      overflow: overflow);
+
+  Text get single =>
+      Text(data ?? '', style: style, maxLines: 1, overflow: overflow);
+
+  Text get ellipsis => Text(data ?? '',
+      style: style, maxLines: maxLines, overflow: TextOverflow.ellipsis);
+
+  Text get clip => Text(data ?? '',
+      style: style, maxLines: maxLines, overflow: TextOverflow.clip);
+
+  Text get fade => Text(data ?? '',
+      style: style, maxLines: maxLines, overflow: TextOverflow.fade);
 }
 
 extension ExtensionContainer on Container {

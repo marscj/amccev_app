@@ -124,30 +124,36 @@ class GFXCard extends StatelessWidget {
 
     final Widget cardChild = Padding(
       padding: padding,
-      child: Column(
-        children: <Widget>[
-          titlePosition == GFXPosition.start
-              ? title ?? Container()
-              : showImage != false
-                  ? ClipRRect(
-                      // ignore: avoid_as
-                      borderRadius: borderRadius as BorderRadius? ??
-                          const BorderRadius.vertical(top: Radius.circular(4)),
-                      child: image,
-                    )
-                  : Container(),
-          titlePosition == GFXPosition.start
-              ? showImage != false
-                  ? Container(child: image)
-                  : Container()
-              : title ?? Container(),
-          Padding(
-            padding: padding,
-            child: content ?? Container(),
-          ),
-          buttonBar ?? Container(),
-        ],
-      ),
+      child: image != null
+          ? Column(
+              children: <Widget>[
+                titlePosition == GFXPosition.start
+                    ? title ?? Container()
+                    : showImage != false
+                        ? ClipRRect(
+                            // ignore: avoid_as
+                            borderRadius: borderRadius as BorderRadius? ??
+                                const BorderRadius.vertical(
+                                    top: Radius.circular(4)),
+                            child: image,
+                          )
+                        : Container(),
+                titlePosition == GFXPosition.start
+                    ? showImage != false
+                        ? Container(child: image)
+                        : Container()
+                    : title ?? Container(),
+                Padding(
+                  padding: padding,
+                  child: content ?? Container(),
+                ),
+                buttonBar ?? Container(),
+              ],
+            )
+          : Padding(
+              padding: padding,
+              child: content ?? Container(),
+            ),
     );
 
     final Widget overlayImage = GFXImageOverlay(
