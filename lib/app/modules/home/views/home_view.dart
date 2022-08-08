@@ -1,4 +1,4 @@
-import 'package:app/app/common/widgets/carousel.dart';
+import 'package:app/app/common/gfx/carousel.dart';
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
 import 'package:app/app/routes/app_pages.dart';
@@ -25,7 +25,7 @@ class HomeView extends GetView<HomeController> {
         TitleView('Our Service').sliver,
         ServiceView(),
         SpaceView().sliver,
-        TitleView('Popular Services Center').sliver,
+        TitleView('Popular Center Branch').sliver,
         BranchView().sliver,
         SpaceView().sliver,
         TitleView('News Center').sliver,
@@ -61,7 +61,6 @@ class ToolbarView extends StatelessWidget {
               icon: Icon(Icons.support_agent)),
         )
       ],
-
       // flexibleSpace: FlexibleSpaceBar(
       //     background: Column(
       //   mainAxisAlignment: MainAxisAlignment.start,
@@ -221,15 +220,22 @@ class BranchView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    double itemWidth = (MediaQuery.of(context).size.width - 32) * 0.45;
+    double itemHeight = itemWidth * 1.1;
     return GFXItemsCarousel(
       start: 16,
       end: 16,
       space: 6,
-      itemHeight: 180,
-      itemWidth: (MediaQuery.of(context).size.width - 32) * 0.45,
+      itemHeight: itemHeight,
+      itemWidth: itemWidth,
       children: assetImg
           .map(
             (url) => GFCard(
+              showImage: true,
+              image: Image.asset(
+                'assets/images/bg_1.jpg',
+                height: 100,
+              ),
               gradient: LinearGradient(
                 begin: FractionalOffset.topCenter,
                 end: FractionalOffset.bottomCenter,
@@ -240,7 +246,7 @@ class BranchView extends StatelessWidget {
               content: Column(
                 children: <Widget>[
                   Text(
-                    'Title',
+                    'Title1',
                     style: TextStyle(
                       color: GFColors.WHITE,
                     ),
@@ -344,5 +350,14 @@ class ItemView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center)
         .container(color: Colors.white, radius: 10);
+  }
+}
+
+class ItemCardView extends StatelessWidget {
+  const ItemCardView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
