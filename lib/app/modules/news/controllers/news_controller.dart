@@ -4,7 +4,7 @@ import 'package:app/package/wp/wordpress_api.dart';
 class NewsAPIController {
   final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
 
-  Future<WPResponse> fetchPost({int page = 1, int? per_page}) {
+  Future<WPResponse> fetchNews({int page = 1, int? per_page}) {
     return api.posts.fetch(args: {
       'format': 'standard',
       'status': 'publish',
@@ -31,7 +31,7 @@ class NewsAPIController {
   // }
 }
 
-class NewsController extends RefreshBaseController<List<Post>>
+class NewsController extends RefreshBaseController<Post>
     with NewsAPIController {
   @override
   Future<List<Post>> onFetch() {

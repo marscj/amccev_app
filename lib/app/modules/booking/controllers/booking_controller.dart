@@ -17,17 +17,7 @@ class BookingController extends RefreshBaseController {
   }
 
   @override
-  void onLoading() async {
-    refreshController.loadComplete();
-  }
-
-  @override
-  void onRefresh() {
-    refreshController.refreshCompleted();
-  }
-
-  @override
-  Future onFetch() {
+  Future<List> onFetch() {
     // TODO: implement onFetch
     throw UnimplementedError();
   }

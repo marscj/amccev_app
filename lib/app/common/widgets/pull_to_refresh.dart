@@ -1,10 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 abstract class RefreshBaseController<T> extends GetxController
-    with StateMixin<T> {
+    with StateMixin<List<T>> {
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 
@@ -22,16 +24,29 @@ abstract class RefreshBaseController<T> extends GetxController
 
   get hasMore => page < pageTotal;
 
-  Future<T> onFetch();
-
-  void onLoading() {
-    if (hasMore) {
-      refreshController.loadNoData();
-    }
-  }
+  Future<List<T>> onFetch();
 
   void onRefresh() {
-    refreshController.resetNoData();
+    onFetch().then((data) {
+      value = data;
+      page = 1;
+    }).whenComplete(() {
+      refreshController.resetNoData();
+      refreshController.refreshCompleted();
+    });
+  }
+
+  void onLoading() {
+    if (page < pageTotal) {
+      onFetch().then((value) {
+        page++;
+        value.addAll(value);
+      }).whenComplete(() {
+        refreshController.loadComplete();
+      });
+    } else {
+      refreshController.loadNoData();
+    }
   }
 }
 

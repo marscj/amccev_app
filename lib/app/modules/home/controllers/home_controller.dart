@@ -1,9 +1,11 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/app/modules/news/controllers/news_controller.dart';
 import 'package:app/app/modules/root/controllers/root_controller.dart';
+import 'package:app/package/wp/wordpress_api.dart';
 import 'package:get/get.dart';
 
-class HomeController extends RefreshBaseController with NewsAPIController {
+class HomeController extends RefreshBaseController<Post>
+    with NewsAPIController {
   final RootController rootController = Get.find<RootController>();
 
   final index = 0.obs;
@@ -28,27 +30,10 @@ class HomeController extends RefreshBaseController with NewsAPIController {
   }
 
   @override
-  void onLoading() async {
-    onPostLoading().then((value) {
-      refreshController.loadComplete();
-
-      if (isNoMore) {
-        refreshController.loadNoData();
-      }
+  Future<List<Post>> onFetch() {
+    return fetchNews(page: page, per_page: pageSize).then((value) {
+      pageTotal = value.meta?.totalPages;
+      return value.data;
     });
-  }
-
-  @override
-  void onRefresh() async {
-    refreshController.resetNoData();
-    onPostRefresh().then((value) {
-      refreshController.refreshCompleted();
-    });
-  }
-
-  @override
-  Future onFetch() {
-    // TODO: implement onFetch
-    throw UnimplementedError();
   }
 }

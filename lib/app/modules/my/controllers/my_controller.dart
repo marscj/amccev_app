@@ -27,7 +27,7 @@ class MyController extends RefreshBaseController {
   }
 
   @override
-  Future onFetch() {
+  Future<List> onFetch() {
     // TODO: implement onFetch
     throw UnimplementedError();
   }
