@@ -3,7 +3,6 @@ import 'package:app/app/common/gfx/carousel.dart';
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
 import 'package:app/app/routes/app_pages.dart';
-import 'package:app/package/getwidget/screens/button/shadow_buttons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
