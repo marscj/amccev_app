@@ -1,28 +1,8 @@
 import 'dart:io';
+import 'package:app/package/getwidget/screens/appbar/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:webview_flutter/webview_flutter.dart';
-
-import '../controllers/webpage_controller.dart';
-
-// class WebpageView extends GetView<WebpageController> {
-//   const WebpageView({Key? key}) : super(key: key);
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('WebpageView'),
-//         centerTitle: true,
-//       ),
-//       body: Center(
-//         child: Text(
-//           'WebpageView is working',
-//           style: TextStyle(fontSize: 20),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class WebpageView extends StatefulWidget {
   @override
@@ -39,8 +19,12 @@ class WebViewExampleState extends State<WebpageView> {
 
   @override
   Widget build(BuildContext context) {
-    return WebView(
-      initialUrl: 'https://flutter.dev',
+    return Scaffold(
+      appBar: AppBar(),
+      body: WebView(
+        initialUrl:
+            'https://www.amccev.com/product/180kw-all-in-one-dual-gun-dc-charger-european-standard/',
+      ),
     );
   }
 }

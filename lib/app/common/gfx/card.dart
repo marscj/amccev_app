@@ -88,7 +88,7 @@ class GFXCard extends StatelessWidget {
   final bool showOverlayImage;
 
   /// image widget can be used
-  final Image? image;
+  final Widget? image;
 
   /// overlay image [GFXImageOverlay] widget can be used
   /// to display image with shaded overlay

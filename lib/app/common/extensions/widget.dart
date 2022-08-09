@@ -167,11 +167,6 @@ extension ExtensionText on Text {
       maxLines: maxLines,
       overflow: overflow);
 
-  Text color(color) => Text(data ?? '',
-      style: style?.copyWith(color: color),
-      maxLines: maxLines,
-      overflow: overflow);
-
   Text get single =>
       Text(data ?? '', style: style, maxLines: 1, overflow: overflow);
 
@@ -183,6 +178,14 @@ extension ExtensionText on Text {
 
   Text get fade => Text(data ?? '',
       style: style, maxLines: maxLines, overflow: TextOverflow.fade);
+
+  Text color(color) => Text(data ?? '',
+      style: style?.copyWith(color: color),
+      maxLines: maxLines,
+      overflow: overflow);
+
+  Text lines(lines) =>
+      Text(data ?? '', style: style, maxLines: lines, overflow: overflow);
 }
 
 extension ExtensionContainer on Container {

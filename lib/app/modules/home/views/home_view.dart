@@ -3,6 +3,7 @@ import 'package:app/app/common/gfx/carousel.dart';
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
 import 'package:app/app/routes/app_pages.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -26,11 +27,13 @@ class HomeView extends GetView<HomeController> {
         TitleView('Our Service').sliver,
         ServiceView(),
         SpaceView().sliver,
-        TitleView('Popular Center Branch').sliver,
+        TitleView('Center Branch').sliver,
         BranchView().sliver,
         SpaceView().sliver,
-        TitleView('News Center').sliver,
-        PostView()
+        TitleView('Featured Products').sliver,
+        ProductView(),
+        SpaceView().sliver,
+        SpaceView().sliver,
       ]).refresh(controller, header: MaterialClassicHeader())),
     );
   }
@@ -80,34 +83,6 @@ class ToolbarView extends StatelessWidget {
   }
 }
 
-class SpaceView extends StatelessWidget {
-  final double height;
-
-  const SpaceView({super.key, this.height = 16});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(height: this.height);
-  }
-}
-
-class TitleView extends StatelessWidget {
-  final double height;
-  final String title;
-  final Alignment alignment;
-
-  TitleView(this.title,
-      {super.key, this.alignment = Alignment.centerLeft, this.height = 24});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(title).s14.black.bold.container(
-        h: 24,
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        alignment: alignment);
-  }
-}
-
 class LogoView extends GetView<HomeController> {
   LogoView({Key? key}) : super(key: key);
   @override
@@ -149,63 +124,6 @@ class BannerView extends StatelessWidget {
     );
   }
 }
-
-// class ServiceView extends StatelessWidget {
-//   final List<String> assetImg = [
-//     'lib/assets/images/red.png',
-//     'lib/assets/images/purple.png',
-//     'lib/assets/images/orange.png',
-//     'lib/assets/images/red.png',
-//   ];
-
-//   final List<Color> gradientColors = [
-//     const Color(0xffFFD633),
-//     const Color(0xFFFF8F33),
-//   ];
-//   @override
-//   Widget build(BuildContext context) {
-//     return GFXItemsCarousel(
-//       start: 16,
-//       end: 16,
-//       space: 6,
-//       itemHeight: 120,
-//       itemWidth: (MediaQuery.of(context).size.width) * 0.29,
-//       children: assetImg
-//           .map(
-//             (url) => GFCard(
-//               gradient: LinearGradient(
-//                 begin: FractionalOffset.topCenter,
-//                 end: FractionalOffset.bottomCenter,
-//                 colors: gradientColors,
-//               ),
-//               margin: EdgeInsets.zero,
-//               borderRadius: const BorderRadius.all(Radius.circular(4)),
-//               content: Column(
-//                 children: <Widget>[
-//                   Text(
-//                     'Title',
-//                     style: TextStyle(
-//                       color: GFColors.WHITE,
-//                     ),
-//                   ),
-//                   Padding(
-//                     padding: EdgeInsets.only(right: 5, top: 10),
-//                     child: Text(
-//                       'GetWidget is an open source UI components ',
-//                       style: TextStyle(
-//                         fontSize: 10,
-//                         color: GFColors.LIGHT,
-//                       ),
-//                     ),
-//                   )
-//                 ],
-//               ),
-//             ),
-//           )
-//           .toList(),
-//     );
-//   }
-// }
 
 class BranchView extends StatelessWidget {
   @override
@@ -258,28 +176,6 @@ class BranchView extends StatelessWidget {
   }
 }
 
-class PostView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      sliver: SliverList(
-        delegate: SliverChildBuilderDelegate((content, index) {
-          return Container(
-            height: 85,
-            alignment: Alignment.center,
-            color: Colors.primaries[index % Colors.primaries.length],
-            child: Text(
-              '$index',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          );
-        }, childCount: 25),
-      ),
-    );
-  }
-}
-
 class ServiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -311,6 +207,84 @@ class ServiceView extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class ProductView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      sliver: SliverLayoutBuilder(
+        builder: (context, constraints) {
+          return SliverGrid.count(
+            crossAxisCount: 2,
+            childAspectRatio:
+                (constraints.crossAxisExtent / 2 - 10) / (250 - 10),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            children: [
+              ProductItemView(
+                url:
+                    'https://www.amccev.com/wp-content/uploads/2022/08/3.3-180kW-all-in-one-DUAL-gun-DC-charger-European-standard-min-1.png',
+                title:
+                    '180kW All-in-One dual-Gun DC Charger (China Standard + European Standard)',
+              ),
+            ].map((e) => e.container(color: Colors.white, radius: 10)).toList(),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class PostView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate((content, index) {
+          return Container(
+            height: 85,
+            alignment: Alignment.center,
+            color: Colors.primaries[index % Colors.primaries.length],
+            child: Text(
+              '$index',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          );
+        }, childCount: 25),
+      ),
+    );
+  }
+}
+
+class SpaceView extends StatelessWidget {
+  final double height;
+
+  const SpaceView({super.key, this.height = 16});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: this.height);
+  }
+}
+
+class TitleView extends StatelessWidget {
+  final double height;
+  final String title;
+  final Alignment alignment;
+
+  TitleView(this.title,
+      {super.key, this.alignment = Alignment.centerLeft, this.height = 24});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(title).s14.black.bold.container(
+        h: 24,
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        alignment: alignment);
   }
 }
 
@@ -383,6 +357,32 @@ class ItemCardView extends StatelessWidget {
           .gesture(() {
         Get.toNamed(Routes.WEBPAGE);
       }),
+    );
+  }
+}
+
+class ProductItemView extends StatelessWidget {
+  final String url;
+  final String title;
+
+  ProductItemView({super.key, required this.url, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return GFXCard(
+      showImage: true,
+      image: CachedNetworkImage(imageUrl: url),
+      boxFit: BoxFit.cover,
+      margin: EdgeInsets.zero,
+      padding: EdgeInsets.zero,
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(title).s12.black.bold.lines(1).clip,
+          SizedBox(height: 6),
+          Text('199 AED').color(Colors.red).bold
+        ],
+      ).container(padding: EdgeInsets.symmetric(horizontal: 8)),
     );
   }
 }
