@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:mine_flutter/wp/src/utils.dart';
+import 'package:app/package/wp/src/utils.dart';
 
 class Page {
   ///The date the object was published, in the site's timezone.

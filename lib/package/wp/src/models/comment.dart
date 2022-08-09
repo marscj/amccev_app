@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:app/package/wp/src/utils.dart';
 import 'package:collection/collection.dart';
-import 'package:mine_flutter/wp/src/utils.dart';
 
 class Comment {
   ///Unique identifier for the object.

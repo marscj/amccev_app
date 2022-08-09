@@ -21,6 +21,8 @@ dependencies:
   flutter_inappwebview: 5.4.3+7
   webview_flutter: 3.0.4
   shared_preferences: 2.0.15
+  equatable: 2.0.3
+  html: 0.15.0
   flutter: 
     sdk: flutter
 

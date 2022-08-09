@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:mine_flutter/wp/src/constants.dart';
-import 'package:mine_flutter/wp/src/helpers.dart';
+import 'package:app/package/wp/src/constants.dart';
+import 'package:app/package/wp/src/helpers.dart';
 
 import 'models.dart';
 

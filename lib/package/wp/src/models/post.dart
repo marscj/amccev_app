@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
-import 'package:mine_flutter/wp/src/utils.dart';
+import 'package:app/package/wp/src/utils.dart';
 
 import 'embedded.dart';
 
