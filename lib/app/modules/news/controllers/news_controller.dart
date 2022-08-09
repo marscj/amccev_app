@@ -35,6 +35,7 @@ class NewsController extends GetxController with RefreshMixin {
     });
   }
 
+  @override
   void onRefresh() {
     fetchPost().then((data) {
       posts = data;
@@ -45,6 +46,7 @@ class NewsController extends GetxController with RefreshMixin {
     });
   }
 
+  @override
   void onLoading() {
     if (page_num < meta.totalPages) {
       fetchPost(page: ++page_num).then((data) {

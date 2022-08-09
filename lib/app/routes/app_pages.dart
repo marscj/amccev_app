@@ -16,6 +16,8 @@ import '../modules/my/bindings/my_binding.dart';
 import '../modules/my/views/my_view.dart';
 import '../modules/news/bindings/news_binding.dart';
 import '../modules/news/views/news_view.dart';
+import '../modules/news_detail/bindings/news_detail_binding.dart';
+import '../modules/news_detail/views/news_detail_view.dart';
 import '../modules/notice/bindings/notice_binding.dart';
 import '../modules/notice/views/notice_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
@@ -115,6 +117,11 @@ class AppPages {
       name: _Paths.WEBPAGE,
       page: () => WebpageView(),
       binding: WebpageBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEWS_DETAIL,
+      page: () => const NewsDetailView(),
+      binding: NewsDetailBinding(),
     ),
   ];
 }

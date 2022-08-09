@@ -21,6 +21,7 @@ abstract class Routes {
   static const ROOT = _Paths.ROOT;
   static const GETWIDGET = _Paths.GETWIDGET;
   static const WEBPAGE = _Paths.WEBPAGE;
+  static const NEWS_DETAIL = _Paths.NEWS_DETAIL;
 }
 
 abstract class _Paths {
@@ -40,4 +41,5 @@ abstract class _Paths {
   static const ROOT = '/root';
   static const GETWIDGET = '/getwidget';
   static const WEBPAGE = '/webpage';
+  static const NEWS_DETAIL = '/news-detail';
 }
