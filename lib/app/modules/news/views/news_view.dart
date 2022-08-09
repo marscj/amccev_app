@@ -90,7 +90,6 @@ class PostItemView extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          // color: Colors.red,
           border: !isLast
               ? Border(
                   bottom: Divider.createBorderSide(context,
@@ -146,8 +145,6 @@ class ThreeLineListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       isThreeLine: true,
-      // dense: true,
-      // minVerticalPadding: 20,
       visualDensity: VisualDensity.comfortable,
       contentPadding: EdgeInsets.zero,
       leading: LeadingView(post.embedded!.first.medium!.sourceUrl),
