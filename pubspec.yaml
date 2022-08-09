@@ -20,6 +20,7 @@ dependencies:
   getwidget: 3.0.1
   flutter_inappwebview: 5.4.3+7
   webview_flutter: 3.0.4
+  shared_preferences: 2.0.15
   flutter: 
     sdk: flutter
 
