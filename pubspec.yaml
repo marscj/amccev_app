@@ -24,7 +24,6 @@ dependencies:
   equatable: 2.0.3
   html: 0.15.0
   intl: 0.17.0
-  wordpress_api: 1.2.0
   flutter: 
     sdk: flutter
 
