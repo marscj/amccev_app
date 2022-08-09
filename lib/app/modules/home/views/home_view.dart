@@ -216,43 +216,43 @@ class BranchView extends StatelessWidget {
         start: 16,
         end: 16,
         space: 6,
-        itemHeight: 300,
+        itemHeight: itemWidth * 1.2,
         itemWidth: itemWidth,
         children: [
           ItemCardView(
             url: 'assets/images/branch_1.jpg',
-            title: 'Al Quoz',
+            title: 'Al Quoz'.toUpperCase(),
             subtitle: 'Dubai',
           ),
           ItemCardView(
             url: 'assets/images/branch_2.jpg',
-            title: 'Industrial City',
+            title: 'Industrial City'.toUpperCase(),
             subtitle: 'Dubai',
           ),
           ItemCardView(
             url: 'assets/images/branch_3.jpg',
-            title: 'Umm Ramool',
+            title: 'Umm Ramool'.toUpperCase(),
             subtitle: 'Dubai',
           ),
           ItemCardView(
             url: 'assets/images/branch_4.jpg',
-            title: 'Abu Dhabi',
+            title: 'Abu Dhabi'.toUpperCase(),
           ),
           ItemCardView(
             url: 'assets/images/branch_5.jpg',
-            title: 'Sharjah',
+            title: 'Sharjah'.toUpperCase(),
           ),
           ItemCardView(
             url: 'assets/images/branch_6.jpg',
-            title: 'Ras Al-Khaimah',
+            title: 'Ras Al-Khaimah'.toUpperCase(),
           ),
           ItemCardView(
             url: 'assets/images/branch_7.jpg',
-            title: 'Fujairah',
+            title: 'Fujairah'.toUpperCase(),
           ),
           ItemCardView(
             url: 'assets/images/branch_8.jpg',
-            title: 'Al Ain',
+            title: 'Al Ain'.toUpperCase(),
           ),
         ]);
   }
@@ -356,7 +356,6 @@ class ItemCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GFXCard(
-      // showImage: true,
       showOverlayImage: true,
       imageOverlay: AssetImage(url),
       boxFit: BoxFit.cover,
@@ -380,7 +379,10 @@ class ItemCardView extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 16))
           .container(
               alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.symmetric(vertical: 20)),
+              padding: EdgeInsets.symmetric(vertical: 20))
+          .gesture(() {
+        Get.toNamed(Routes.WEBPAGE);
+      }),
     );
   }
 }

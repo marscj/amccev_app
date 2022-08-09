@@ -20,6 +20,7 @@ abstract class Routes {
   static const BOOKING_DETAILS = _Paths.BOOKING + _Paths.BOOKING_DETAILS;
   static const ROOT = _Paths.ROOT;
   static const GETWIDGET = _Paths.GETWIDGET;
+  static const WEBPAGE = _Paths.WEBPAGE;
 }
 
 abstract class _Paths {
@@ -38,4 +39,5 @@ abstract class _Paths {
   static const BOOKING_DETAILS = '/:booking-details';
   static const ROOT = '/root';
   static const GETWIDGET = '/getwidget';
+  static const WEBPAGE = '/webpage';
 }

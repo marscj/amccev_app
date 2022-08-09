@@ -28,6 +28,8 @@ import '../modules/shop/bindings/shop_binding.dart';
 import '../modules/shop/views/shop_view.dart';
 import '../modules/signin/bindings/signin_binding.dart';
 import '../modules/signin/views/signin_view.dart';
+import '../modules/webpage/bindings/webpage_binding.dart';
+import '../modules/webpage/views/webpage_view.dart';
 
 part 'app_routes.dart';
 
@@ -108,6 +110,11 @@ class AppPages {
       name: _Paths.GETWIDGET,
       page: () => const GetwidgetView(),
       binding: GetwidgetBinding(),
+    ),
+    GetPage(
+      name: _Paths.WEBPAGE,
+      page: () => WebpageView(),
+      binding: WebpageBinding(),
     ),
   ];
 }

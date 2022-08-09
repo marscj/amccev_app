@@ -116,6 +116,12 @@ extension ExtensionWidget on Widget {
           height: height,
           child: this);
 
+  Widget gesture(GestureTapCallback? onPressed) =>
+      GestureDetector(onTap: onPressed, child: this);
+
+  Widget inkWell({GestureTapCallback? onPressed}) =>
+      InkWell(onTap: onPressed, child: this);
+
   Widget get expanded => Expanded(flex: 1, child: this);
 
   Widget get sliver => SliverToBoxAdapter(child: this);
