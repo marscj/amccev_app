@@ -20,7 +20,7 @@ class E extends RefreshBaseController with B, C {
   }
 }
 
-class NewsAPIController {
+class NewsAPIController<T> {
   final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
 
   final _page_num = 1.obs;
@@ -73,7 +73,8 @@ class NewsAPIController {
   }
 }
 
-class NewsController extends RefreshBaseController with NewsAPIController {
+class NewsController extends RefreshBaseController<List<Post>>
+    with NewsAPIController {
   @override
   void onRefresh() {
     refreshController.resetNoData();

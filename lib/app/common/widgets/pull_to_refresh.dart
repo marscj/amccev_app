@@ -1,15 +1,34 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-abstract class RefreshBaseController extends GetxController {
+abstract class RefreshBaseController<T> extends GetxController
+    with StateMixin<T> {
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 
+  final _page = 0.obs;
+  get page => this._page.value;
+  set page(value) => this._page.value = value;
+
+  final _pageSize = 10.obs;
+  get pageSize => this._pageSize.value;
+  set pageSize(value) => this._pageSize.value = value;
+
+  final _pageTotal = 1.obs;
+  get pageTotal => this._pageTotal.value;
+  set pageTotal(value) => this._pageTotal.value = value;
+
+  int get netxPage => ++page;
+
   void onLoading();
 
-  void onRefresh();
+  void onRefresh() {
+    page = 0;
+  }
 }
 
 class PullToRefresh extends StatelessWidget {
