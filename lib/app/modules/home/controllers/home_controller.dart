@@ -30,13 +30,17 @@ class HomeController extends GetxController
 
   @override
   void onLoading() async {
-    await Future.delayed(Duration(milliseconds: 1000));
+    onPostLoading();
     refreshController.loadComplete();
+    if (isNoMore) {
+      refreshController.loadNoData();
+    }
   }
 
   @override
   void onRefresh() async {
-    await Future.delayed(Duration(milliseconds: 1000));
+    refreshController.resetNoData();
+    onPostRefresh();
     refreshController.refreshCompleted();
   }
 }

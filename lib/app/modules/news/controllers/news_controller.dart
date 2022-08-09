@@ -17,6 +17,8 @@ class NewsAPIController {
   get posts => this._posts.value;
   set posts(value) => this._posts.value = value;
 
+  bool get isNoMore => page_num >= meta.totalPages;
+
   Future<List<Post>> fetchPost({int? page, int? per_page}) {
     return api.posts
         .fetch(
@@ -35,31 +37,21 @@ class NewsAPIController {
     });
   }
 
-  Future<void> onPostRefresh([completed, resetNoData]) {
-    resetNoData();
+  Future<void> onPostRefresh() {
     return fetchPost().then((data) {
       posts = data;
       page_num = 1;
-    }).whenComplete(() {
-      completed?.call();
-      resetNoData?.call();
     });
   }
 
-  Future<void> onPostLoading([completed, nodata]) {
-    if (page_num < meta.totalPages) {
-      return fetchPost(page: ++page_num).then((data) {
-        posts?.addAll(data);
+  Future<void> onPostLoading() {
+    return fetchPost(page: ++page_num).then((data) {
+      posts?.addAll(data);
 
-        //去重
-        var ids = posts!.map((e) => e.id).toSet();
-        posts!.retainWhere((x) => ids.remove(x.id));
-      }).whenComplete(() {
-        completed?.call();
-      });
-    } else {
-      return Future.sync(() => nodata?.call());
-    }
+      //去重
+      var ids = posts!.map((e) => e.id).toSet();
+      posts!.retainWhere((x) => ids.remove(x.id));
+    });
   }
 }
 
@@ -67,13 +59,18 @@ class NewsController extends GetxController
     with NewsAPIController, RefreshBaseController {
   @override
   void onRefresh() {
-    onPostRefresh(
-        refreshController.loadComplete, refreshController.resetNoData);
+    refreshController.resetNoData();
+    onPostLoading();
+    refreshController.loadComplete();
   }
 
   @override
   void onLoading() {
-    onPostLoading(refreshController.loadComplete, refreshController.loadNoData);
+    onPostRefresh();
+    refreshController.refreshCompleted();
+    if (isNoMore) {
+      refreshController.loadNoData();
+    }
   }
 
   @override
