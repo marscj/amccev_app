@@ -45,4 +45,10 @@ class HomeController extends RefreshBaseController with NewsAPIController {
       refreshController.refreshCompleted();
     });
   }
+
+  @override
+  Future onFetch() {
+    // TODO: implement onFetch
+    throw UnimplementedError();
+  }
 }

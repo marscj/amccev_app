@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,11 +8,11 @@ abstract class RefreshBaseController<T> extends GetxController
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 
-  final _page = 0.obs;
+  final _page = 1.obs;
   get page => this._page.value;
   set page(value) => this._page.value = value;
 
-  final _pageSize = 10.obs;
+  final _pageSize = 20.obs;
   get pageSize => this._pageSize.value;
   set pageSize(value) => this._pageSize.value = value;
 
@@ -22,12 +20,18 @@ abstract class RefreshBaseController<T> extends GetxController
   get pageTotal => this._pageTotal.value;
   set pageTotal(value) => this._pageTotal.value = value;
 
-  int get netxPage => ++page;
+  get hasMore => page < pageTotal;
 
-  void onLoading();
+  Future<T> onFetch();
+
+  void onLoading() {
+    if (hasMore) {
+      refreshController.loadNoData();
+    }
+  }
 
   void onRefresh() {
-    page = 0;
+    refreshController.resetNoData();
   }
 }
 

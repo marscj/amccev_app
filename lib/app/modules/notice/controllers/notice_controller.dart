@@ -25,4 +25,10 @@ class NoticeController extends RefreshBaseController {
   void onRefresh() {
     refreshController.refreshCompleted();
   }
+
+  @override
+  Future onFetch() {
+    // TODO: implement onFetch
+    throw UnimplementedError();
+  }
 }

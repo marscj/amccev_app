@@ -35,7 +35,7 @@ class NewsView extends GetView<NewsController> {
                 child: CustomScrollView(
                   slivers: [
                     PostListView(
-                      posts: controller.posts ?? [],
+                      posts: controller.value ?? [],
                     )
                   ],
                 ))),
