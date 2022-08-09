@@ -2,6 +2,24 @@ import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/package/wp/wordpress_api.dart';
 import 'package:get/get.dart';
 
+abstract class A extends GetxController {}
+
+class B {}
+
+mixin C {}
+
+class E extends RefreshBaseController with B, C {
+  @override
+  void onLoading() {
+    // TODO: implement onLoading
+  }
+
+  @override
+  void onRefresh() {
+    // TODO: implement onRefresh
+  }
+}
+
 class NewsAPIController {
   final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
 
@@ -55,8 +73,7 @@ class NewsAPIController {
   }
 }
 
-class NewsController extends GetxController
-    with NewsAPIController, RefreshBaseController {
+class NewsController extends RefreshBaseController with NewsAPIController {
   @override
   void onRefresh() {
     refreshController.resetNoData();

@@ -1,7 +1,6 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
-import 'package:get/get.dart';
 
-class MessageController extends GetxController with RefreshBaseController {
+class MessageController extends RefreshBaseController {
   @override
   void onInit() {
     super.onInit();

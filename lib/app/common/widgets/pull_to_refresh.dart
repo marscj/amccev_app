@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-abstract class RefreshBaseController {
+abstract class RefreshBaseController extends GetxController {
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 

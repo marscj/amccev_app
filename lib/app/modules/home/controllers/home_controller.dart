@@ -3,8 +3,7 @@ import 'package:app/app/modules/news/controllers/news_controller.dart';
 import 'package:app/app/modules/root/controllers/root_controller.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController
-    with NewsAPIController, RefreshBaseController {
+class HomeController extends RefreshBaseController with NewsAPIController {
   final RootController rootController = Get.find<RootController>();
 
   final index = 0.obs;
@@ -21,8 +20,6 @@ class HomeController extends GetxController
   @override
   void onReady() {
     super.onReady();
-
-    onPostRefresh();
   }
 
   @override
@@ -32,17 +29,20 @@ class HomeController extends GetxController
 
   @override
   void onLoading() async {
-    onPostLoading();
-    refreshController.loadComplete();
-    if (isNoMore) {
-      refreshController.loadNoData();
-    }
+    onPostLoading().then((value) {
+      refreshController.loadComplete();
+
+      if (isNoMore) {
+        refreshController.loadNoData();
+      }
+    });
   }
 
   @override
   void onRefresh() async {
     refreshController.resetNoData();
-    onPostRefresh();
-    refreshController.refreshCompleted();
+    onPostRefresh().then((value) {
+      refreshController.refreshCompleted();
+    });
   }
 }

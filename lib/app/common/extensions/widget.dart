@@ -4,6 +4,7 @@ import 'package:app/theme/theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 extension ExtensionWidget on Widget {
   Widget container({
@@ -145,6 +146,8 @@ extension ExtensionWidget on Widget {
 
   Widget inkWell({GestureTapCallback? onPressed}) =>
       InkWell(onTap: onPressed, child: this);
+
+  Widget get obx => Obx(() => this);
 
   Widget get expanded => Expanded(flex: 1, child: this);
 
