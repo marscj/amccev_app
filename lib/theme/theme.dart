@@ -218,12 +218,12 @@ TextStyle W10 = TextStyle(
   fontSize: 10,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
-  letterSpacing: 1.5,
+  letterSpacing: 0.5,
 );
 
 TextStyle W8 = TextStyle(
   fontSize: 8,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
-  letterSpacing: 1.5,
+  letterSpacing: 0.5,
 );

@@ -1,3 +1,4 @@
+import 'package:app/app/common/extensions/extensions.dart';
 import 'package:app/app/routes/app_pages.dart';
 import 'package:app/package/wp/src/utils.dart';
 import 'package:app/package/wp/wordpress_api.dart';
@@ -51,37 +52,52 @@ class PostListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList(
-        delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-      return PostItemView(post: posts[index]);
-    }, childCount: posts.length));
+      delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+        return PostItemView(
+          post: posts[index],
+          isFirst: index == 0,
+          isLast: index == posts.length - 1,
+        );
+      }, childCount: posts.length),
+    );
 
-    // SliverFillRemaining(
-    //     fillOverscroll: false,
-    //     hasScrollBody: true,
-    //     child: ListView.separated(
-    //         itemBuilder: (context, index) => PostItemView(post: posts[index]),
-    //         separatorBuilder: (context, index) => Divider(height: 1),
-    //         itemCount: posts.length));
+    //  return SliverFillRemaining(
+    //       fillOverscroll: false,
+    //       hasScrollBody: true,
+    //       child: ListView.separated(
+    //           itemBuilder: (context, index) => PostItemView(post: posts[index]),
+    //           separatorBuilder: (context, index) => Divider(height: 1),
+    //           itemCount: posts.length));
   }
 }
 
 class PostItemView extends StatelessWidget {
-  const PostItemView({Key? key, required this.post}) : super(key: key);
+  const PostItemView(
+      {Key? key, required this.post, this.isFirst = false, this.isLast = true})
+      : super(key: key);
 
   final Post post;
+
+  final bool isFirst;
+
+  final bool isLast;
 
   bool get isThreeLineStye =>
       post.embedded != null && post.embedded!.isNotEmpty;
 
-  // bool get isVideo => post.content!.contains('iframe');
-
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(color: Colors.grey.shade300, width: 0.5))),
-      padding: EdgeInsets.symmetric(vertical: 15),
+          // color: Colors.red,
+          border: !isLast
+              ? Border(
+                  bottom: Divider.createBorderSide(context,
+                      color: Theme.of(context).dividerColor))
+              : null),
+      margin: EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.only(top: isFirst ? 0 : 10, bottom: 10),
       child:
           isThreeLineStye ? ThreeLineListWidget(post) : TwoLineListWidget(post),
     );
@@ -96,9 +112,10 @@ class TwoLineListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      isThreeLine: true,
-      dense: true,
+      // isThreeLine: true,
+      // dense: true,
       title: Text(post.title ?? ''),
+      contentPadding: EdgeInsets.zero,
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -108,10 +125,11 @@ class TwoLineListWidget extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
-            height: 10,
+            height: 5,
           ),
           Text(DateFormat('yyyy-MM-dd HH:mm')
-              .format(DateTime.parse(post.date ?? '')))
+                  .format(DateTime.parse(post.date ?? '')))
+              .s10
         ],
       ),
       onTap: () => Get.toNamed(Routes.NEWS_DETAIL, arguments: {'post': post}),
@@ -128,11 +146,15 @@ class ThreeLineListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       isThreeLine: true,
-      dense: true,
+      // dense: true,
+      // minVerticalPadding: 20,
+      visualDensity: VisualDensity.comfortable,
+      contentPadding: EdgeInsets.zero,
       leading: LeadingView(post.embedded!.first.medium!.sourceUrl),
       title: Text(post.title ?? ''),
       subtitle: Text(DateFormat('yyyy-MM-dd HH:mm')
-          .format(DateTime.parse(post.date ?? ''))),
+              .format(DateTime.parse(post.date ?? '')))
+          .s10,
       onTap: () => Get.toNamed(Routes.NEWS_DETAIL, arguments: {'post': post}),
     );
   }
