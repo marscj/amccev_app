@@ -99,6 +99,30 @@ extension ExtensionWidget on Widget {
     );
   }
 
+  Widget material(
+          {double elevation = 0.0,
+          Color? color,
+          Color? shadowColor,
+          Color? surfaceTintColor,
+          TextStyle? textStyle,
+          BorderRadiusGeometry? borderRadius,
+          ShapeBorder? shape,
+          double radius = 0.0}) =>
+      Material(
+        type: MaterialType.card,
+        elevation: elevation,
+        color: color,
+        shadowColor: shadowColor,
+        surfaceTintColor: surfaceTintColor,
+        textStyle: textStyle,
+        // borderRadius: borderRadius ?? BorderRadius.circular(radius),
+        shape: shape ??
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4)),
+            ),
+        child: this,
+      );
+
   Widget positioned({
     double? left,
     double? top,

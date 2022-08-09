@@ -312,9 +312,7 @@ class ItemView extends StatelessWidget {
         .col(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center)
-        .container(color: Colors.white, radius: 10, shadow: [
-      BoxShadow(color: Colors.black12, blurRadius: 1, offset: Offset(1, 1))
-    ]);
+        .material(elevation: 1, radius: 10, color: Colors.white);
   }
 }
 
@@ -355,8 +353,9 @@ class ItemCardView extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16),
               margin: EdgeInsets.symmetric(horizontal: 16))
           .container(
-              alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.symmetric(vertical: 20))
+            alignment: Alignment.bottomCenter,
+            padding: EdgeInsets.symmetric(vertical: 20),
+          )
           .gesture(() {
         Get.toNamed(Routes.WEBPAGE);
       }),
