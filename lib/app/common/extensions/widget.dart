@@ -143,27 +143,32 @@ extension ExtensionText on Text {
   Text get s8 => Text(data ?? '', style: style?.copyWith(fontSize: 8) ?? W8);
 
   Text get white => Text(data ?? '',
-      style: style?.copyWith(color: Colors.white),
+      style: style?.copyWith(color: Colors.white) ??
+          TextStyle(color: Colors.white),
       maxLines: maxLines,
       overflow: overflow);
 
   Text get black => Text(data ?? '',
-      style: style?.copyWith(color: Colors.black87),
+      style: style?.copyWith(color: Colors.black87) ??
+          TextStyle(color: Colors.black87),
       maxLines: maxLines,
       overflow: overflow);
 
   Text get grey => Text(data ?? '',
-      style: style?.copyWith(color: Colors.grey),
+      style:
+          style?.copyWith(color: Colors.grey) ?? TextStyle(color: Colors.grey),
       maxLines: maxLines,
       overflow: overflow);
 
   Text get light => Text(data ?? '',
-      style: style?.copyWith(fontWeight: FontWeight.w200),
+      style: style?.copyWith(fontWeight: FontWeight.w200) ??
+          TextStyle(fontWeight: FontWeight.w200),
       maxLines: maxLines,
       overflow: overflow);
 
   Text get bold => Text(data ?? '',
-      style: style?.copyWith(fontWeight: FontWeight.bold),
+      style: style?.copyWith(fontWeight: FontWeight.bold) ??
+          TextStyle(fontWeight: FontWeight.bold),
       maxLines: maxLines,
       overflow: overflow);
 
@@ -180,7 +185,7 @@ extension ExtensionText on Text {
       style: style, maxLines: maxLines, overflow: TextOverflow.fade);
 
   Text color(color) => Text(data ?? '',
-      style: style?.copyWith(color: color),
+      style: style?.copyWith(color: color) ?? TextStyle(color: color),
       maxLines: maxLines,
       overflow: overflow);
 

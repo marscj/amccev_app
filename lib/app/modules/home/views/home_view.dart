@@ -3,6 +3,7 @@ import 'package:app/app/common/gfx/carousel.dart';
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
 import 'package:app/app/routes/app_pages.dart';
+import 'package:app/package/getwidget/screens/button/shadow_buttons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -311,7 +312,9 @@ class ItemView extends StatelessWidget {
         .col(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center)
-        .container(color: Colors.white, radius: 10);
+        .container(color: Colors.white, radius: 10, shadow: [
+      BoxShadow(color: Colors.black12, blurRadius: 1, offset: Offset(1, 1))
+    ]);
   }
 }
 
@@ -377,10 +380,11 @@ class ProductItemView extends StatelessWidget {
       padding: EdgeInsets.zero,
       content: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(title).s12.black.bold.lines(1).clip,
+          Text(title).s14.black.bold.lines(1).clip,
           SizedBox(height: 6),
-          Text('199 AED').color(Colors.red).bold
+          Text('199 AED').s12.color(Colors.red)
         ],
       ).container(padding: EdgeInsets.symmetric(horizontal: 8)),
     );
