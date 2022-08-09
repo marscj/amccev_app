@@ -3,7 +3,7 @@ import 'package:app/package/wp/wordpress_api.dart';
 import 'package:get/get.dart';
 
 class NewsController extends GetxController with RefreshMixin {
-  final WordPressAPI api = WordPressAPI('mecloudlab.com');
+  final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
 
   final _page_num = 1.obs;
   get page_num => this._page_num.value;
@@ -26,7 +26,7 @@ class NewsController extends GetxController with RefreshMixin {
       'status': 'publish',
       'page': page ?? 1,
       'per_page': per_page ?? 20,
-      'lang': Get.locale?.languageCode ?? 'zh',
+      // 'lang': Get.locale?.languageCode ?? 'zh',
     }..removeWhere((key, value) => value == null))
         .then((value) {
       meta = value.meta;

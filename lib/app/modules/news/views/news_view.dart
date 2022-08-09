@@ -87,8 +87,6 @@ class PostItemView extends StatelessWidget {
   bool get isThreeLineStye =>
       post.embedded != null && post.embedded!.isNotEmpty;
 
-  bool get isVideoStyle => post.metaBox != null;
-
   // bool get isVideo => post.content!.contains('iframe');
 
   @override
@@ -98,76 +96,9 @@ class PostItemView extends StatelessWidget {
           border: Border(
               bottom: BorderSide(color: Colors.grey.shade300, width: 0.5))),
       padding: EdgeInsets.symmetric(vertical: 15),
-      child: isVideoStyle
-          ? VideoListWidget(post)
-          : isThreeLineStye
-              ? ThreeLineListWidget(post)
-              : TwoLineListWidget(post),
+      child:
+          isThreeLineStye ? ThreeLineListWidget(post) : TwoLineListWidget(post),
     );
-  }
-}
-
-class VideoListWidget extends StatelessWidget {
-  const VideoListWidget(this.post, {Key? key}) : super(key: key);
-
-  final Post post;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ListTile(
-          contentPadding: EdgeInsets.zero,
-          dense: true,
-          title: Text(post.title ?? ''),
-        ),
-        CachedNetworkImage(
-            imageUrl: post.embedded!.first.medium!.sourceUrl ?? '',
-            imageBuilder: (context, imageProvider) => Stack(
-                  children: [
-                    Opacity(
-                      opacity: 0.8,
-                      child: Container(
-                          height: 150,
-                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: imageProvider, fit: BoxFit.cover),
-                              borderRadius: BorderRadius.horizontal(
-                                  left: Radius.circular(0)))),
-                    ),
-                    Positioned(
-                      top: 0,
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.play_arrow,
-                          size: 80,
-                        ),
-                        onPressed: () {
-                          Get.toNamed(Routes.NEWS_DETAIL,
-                              arguments: {'post': post});
-                        },
-                      ),
-                    )
-                  ],
-                ),
-            errorWidget: (_, url, error) => Container(
-                  height: 50,
-                  child: Icon(
-                    Icons.image,
-                    size: 50,
-                  ),
-                )),
-        Text(DateFormat('yyyy-MM-dd HH:mm')
-            .format(DateTime.parse(post.date ?? '')))
-      ],
-    ));
   }
 }
 

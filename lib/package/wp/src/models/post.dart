@@ -95,10 +95,6 @@ class Post extends Equatable {
 
   final List<Embedded>? embedded;
 
-  final MetaBox? metaBox;
-
-  final int? orderid;
-
   Post(
       {this.date,
       this.dateGmt,
@@ -126,9 +122,7 @@ class Post extends Equatable {
       this.template,
       this.categories,
       this.tags,
-      this.embedded,
-      this.metaBox,
-      this.orderid});
+      this.embedded});
 
   factory Post.fromMap(Map<String, dynamic> map) {
     return Post(
@@ -165,9 +159,7 @@ class Post extends Equatable {
             ? map['_embedded']['wp:featuredmedia']
                 .map<Embedded>((json) => Embedded.fromMap(json))
                 .toList()
-            : null,
-        metaBox: metaBoxMap(map),
-        orderid: int.parse(map['meta_box']['orderid']));
+            : null);
   }
 
   factory Post.fromJson(String source) => Post.fromMap(json.decode(source));
@@ -178,106 +170,20 @@ class Post extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id];
-}
-
-MetaBox? metaBoxMap(json) {
-  dynamic map = json['meta_box']['video_lftt4ne9hkf'];
-
-  if (map == null) return null;
-
-  if (map is Iterable) {
-    return null;
-  }
-
-  List<Map<String, dynamic>> list = [];
-
-  map.forEach((key, value) => list.add(map[key]));
-
-  if (list.length > 0) {
-    return list.map((f) => MetaBox.fromJson(f)).toList().first;
-  }
-
-  return null;
-}
-
-class MetaBox {
-  String? ID;
-  String? src;
-  String? type;
-  String? title;
-  String? caption;
-  String? description;
-  String? image;
-
-  MetaBox(
-      {this.ID,
-      this.src,
-      this.type,
-      this.title,
-      this.caption,
-      this.description,
-      this.image});
-
-  MetaBox.fromJson(Map<String, dynamic> json) {
-    ID = json['ID'];
-    src = json['src'];
-    type = json['type'];
-    title = json['title'];
-    caption = json['caption'];
-    description = json['description'];
-    image = json['image']['src'];
-  }
+  // TODO: implement props
+  List<Object?> get props => [modified];
 }
 
 List<Post>? parsePosts(dynamic data) {
   if (data is String) {
-    List<Post>? data1 = jsonDecode(data)
+    return jsonDecode(data)
         .cast<Map<String, dynamic>>()
         .map<Post>((json) => Post.fromMap(json))
         .toList();
-
-    data1?.sort((left, right) {
-      return left.orderid!.compareTo(right.orderid!);
-    });
-
-    return data1;
   } else {
-    List<Post>? data1 = data
+    return data
         .cast<Map<String, dynamic>>()
         .map<Post>((json) => Post.fromMap(json))
         .toList();
-
-    data1?.sort((left, right) {
-      return left.orderid!.compareTo(right.orderid!);
-    });
-
-    return data1;
   }
 }
-
-// "meta_box":{
-//     "video_lftt4ne9hkf":
-//       {
-//         "31188":{
-//           "ID":"31188",
-//           "src":"https:\/\/www.mecloudlab.com\/wp-content\/uploads\/2021\/07\/WHATISIPFS.mp4",
-//           "type":"video\/mp4",
-//           "title":"WHATISIPFS",
-//           "caption":"",
-//           "description":"",
-//           "meta":{
-//             "length_formatted":"4:10"
-//           },
-//           "dimensions":{
-//             "width":1920,"height":1080
-//           },
-//           "image":{
-//             "src":"https:\/\/www.mecloudlab.com\/wp-includes\/images\/media\/video.png","width":48,"height":64
-//           },
-//           "thumb":{
-//             "src":"https:\/\/www.mecloudlab.com\/wp-includes\/images\/media\/video.png","width":48,"height":64
-//           }
-//         }
-//       }
-//   }
