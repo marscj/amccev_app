@@ -1,3 +1,4 @@
+import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/package/wp/wordpress_api.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -35,7 +36,7 @@ class NewsAPIController {
     });
   }
 
-  void onRefresh(RefreshController refreshController) {
+  void onPostRefresh(RefreshController refreshController) {
     fetchPost().then((data) {
       posts = data;
       page_num = 1;
@@ -45,7 +46,7 @@ class NewsAPIController {
     });
   }
 
-  void onLoading(RefreshController refreshController) {
+  void onPostLoading(RefreshController refreshController) {
     if (page_num < meta.totalPages) {
       fetchPost(page: ++page_num).then((data) {
         posts?.addAll(data);
@@ -62,15 +63,16 @@ class NewsAPIController {
   }
 }
 
-class NewsController extends GetxController with NewsAPIController {
+class NewsController extends GetxController
+    with NewsAPIController, RefreshBaseController {
   @override
   void onRefresh() {
-    super.onRefresh();
+    onPostRefresh(refreshController);
   }
 
   @override
   void onLoading() {
-    super.onLoading();
+    onPostLoading(refreshController);
   }
 
   @override
