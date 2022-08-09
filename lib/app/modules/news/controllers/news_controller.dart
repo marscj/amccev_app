@@ -1,7 +1,6 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/package/wp/wordpress_api.dart';
 import 'package:get/get.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class NewsAPIController {
   final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
@@ -36,29 +35,30 @@ class NewsAPIController {
     });
   }
 
-  void onPostRefresh(RefreshController refreshController) {
-    fetchPost().then((data) {
+  Future<void> onPostRefresh([completed, resetNoData]) {
+    resetNoData();
+    return fetchPost().then((data) {
       posts = data;
       page_num = 1;
     }).whenComplete(() {
-      refreshController.resetNoData();
-      refreshController.refreshCompleted();
+      completed?.call();
+      resetNoData?.call();
     });
   }
 
-  void onPostLoading(RefreshController refreshController) {
+  Future<void> onPostLoading([completed, nodata]) {
     if (page_num < meta.totalPages) {
-      fetchPost(page: ++page_num).then((data) {
+      return fetchPost(page: ++page_num).then((data) {
         posts?.addAll(data);
 
         //去重
         var ids = posts!.map((e) => e.id).toSet();
         posts!.retainWhere((x) => ids.remove(x.id));
       }).whenComplete(() {
-        refreshController.loadComplete();
+        completed?.call();
       });
     } else {
-      refreshController.loadNoData();
+      return Future.sync(() => nodata?.call());
     }
   }
 }
@@ -67,12 +67,13 @@ class NewsController extends GetxController
     with NewsAPIController, RefreshBaseController {
   @override
   void onRefresh() {
-    onPostRefresh(refreshController);
+    onPostRefresh(
+        refreshController.loadComplete, refreshController.resetNoData);
   }
 
   @override
   void onLoading() {
-    onPostLoading(refreshController);
+    onPostLoading(refreshController.loadComplete, refreshController.loadNoData);
   }
 
   @override
