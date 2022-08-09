@@ -2,7 +2,7 @@ import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/app/modules/root/controllers/root_controller.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController with RefreshMixin {
+class HomeController extends GetxController with RefreshBaseController {
   final RootController rootController = Get.find<RootController>();
 
   final index = 0.obs;

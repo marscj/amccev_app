@@ -89,7 +89,7 @@ extension ExtensionWidget on Widget {
       );
 
   Widget refresh(
-    RefreshMixin controller, {
+    RefreshBaseController controller, {
     Widget? header,
   }) {
     return PullToRefresh(

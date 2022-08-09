@@ -2,7 +2,6 @@ import 'package:app/app/routes/app_pages.dart';
 import 'package:app/package/wp/src/utils.dart';
 import 'package:app/package/wp/wordpress_api.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,19 +12,6 @@ import '../controllers/news_controller.dart';
 
 class NewsView extends GetView<NewsController> {
   NewsView({Key? key}) : super(key: key);
-
-  final List<String> items = ["1", "2", "3", "4", "5", "6", "7", "8"];
-
-  void _onRefresh() async {
-    await Future.delayed(Duration(milliseconds: 1000));
-    controller.refreshController.refreshCompleted();
-  }
-
-  void _onLoading() async {
-    await Future.delayed(Duration(milliseconds: 1000));
-    items.add((items.length + 1).toString());
-    controller.refreshController.loadComplete();
-  }
 
   @override
   Widget build(BuildContext context) {

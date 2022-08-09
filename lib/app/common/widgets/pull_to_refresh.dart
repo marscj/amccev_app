@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-mixin RefreshMixin {
+abstract class RefreshBaseController {
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 
@@ -26,7 +26,7 @@ class PullToRefresh extends StatelessWidget {
 
   final Widget child;
   final Widget? header;
-  final RefreshMixin controller;
+  final RefreshBaseController controller;
   final bool enablePullDown;
   final bool enablePullUp;
 
