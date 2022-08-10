@@ -35,7 +35,6 @@ class HomeController extends SmartRefreshController {
 
   @override
   Future onFetch() {
-    // TODO: implement onFetch
-    throw UnimplementedError();
+    return Future.sync(() => null);
   }
 }

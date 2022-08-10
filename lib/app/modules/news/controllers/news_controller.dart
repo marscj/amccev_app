@@ -22,6 +22,7 @@ class NewsController extends SmartRefreshController<List<Post>> {
       'page': page,
       'per_page': pageSize,
     }).then((value) {
+      pageTotal = value.meta?.totalPages;
       return value.data;
     });
   }
