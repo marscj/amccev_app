@@ -13,23 +13,6 @@ class NewsAPIController {
       'per_page': per_page ?? 20,
     });
   }
-
-  // Future<void> onPostRefresh() {
-  //   return fetchPost().then((data) {
-  //     posts = data;
-  //     page_num = 1;
-  //   });
-  // }
-
-  // Future<void> onPostLoading() {
-  //   return fetchPost(page: ++page_num).then((data) {
-  //     posts?.addAll(data);
-
-  //     //去重
-  //     var ids = posts!.map((e) => e.id).toSet();
-  //     posts!.retainWhere((x) => ids.remove(x.id));
-  //   });
-  // }
 }
 
 class NewsController extends GetxController
