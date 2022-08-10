@@ -89,8 +89,12 @@ extension ExtensionWidget on Widget {
         },
       );
 
-  Widget refresh({Widget? header}) {
+  Widget refresh(
+    SmartRefreshController controller, {
+    Widget? header,
+  }) {
     return PullToRefresh(
+      controller: controller,
       header: header,
       child: this,
     );

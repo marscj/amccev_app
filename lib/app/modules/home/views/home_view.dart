@@ -38,7 +38,7 @@ class HomeView extends GetView<HomeController> {
         SpaceView(
           height: 32,
         ).sliver,
-      ]).refresh(),
+      ]).refresh(controller),
     ));
   }
 }

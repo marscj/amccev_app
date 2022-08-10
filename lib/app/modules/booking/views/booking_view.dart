@@ -39,7 +39,7 @@ class BookingView extends GetView<BookingController> {
             ),
           )
         ],
-      ).refresh(),
+      ).refresh(controller),
     );
   }
 }

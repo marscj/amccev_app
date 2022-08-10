@@ -7,7 +7,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:intl/intl.dart';
 
 import '../controllers/news_controller.dart';
@@ -24,7 +23,7 @@ class NewsView extends GetView<NewsController> {
         SliverPadding(padding: EdgeInsets.all(10)),
         NewsSliver(),
       ],
-    ).refresh());
+    ).refresh(controller));
   }
 }
 
