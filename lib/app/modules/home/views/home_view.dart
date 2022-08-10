@@ -10,30 +10,36 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(slivers: <Widget>[
-      ToolbarView(title: 'AMCCEV SERVICES'),
-      TitleView(
-        'Good Morning!',
-      ).sliver,
-      BannerView().sliver,
-      SpaceView().sliver,
-      TitleView('Our Service').sliver,
-      ServiceView(),
-      SpaceView().sliver,
-      TitleView('Center Branch').sliver,
-      BranchView().sliver,
-      SpaceView().sliver,
-      TitleView('News').sliver,
-      NewsSliver(),
-      SpaceView().sliver,
-      SpaceView().sliver,
-    ]).refresh(controller, header: MaterialClassicHeader()));
+        body: NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return [
+          ToolbarView(title: 'AMCCEV SERVICES'),
+        ];
+      },
+      body: CustomScrollView(slivers: <Widget>[
+        SpaceView(
+          height: 16,
+        ).sliver,
+        BannerView().sliver,
+        SpaceView().sliver,
+        TitleView('Our Service').sliver,
+        ServiceView(),
+        SpaceView().sliver,
+        TitleView('Center Branch').sliver,
+        BranchView().sliver,
+        SpaceView().sliver,
+        TitleView('News').sliver,
+        NewsSliver(),
+        SpaceView(
+          height: 32,
+        ).sliver,
+      ]).refresh(controller),
+    ));
   }
 }
 
@@ -68,12 +74,21 @@ class ToolbarView extends StatelessWidget {
               icon: Icon(Icons.support_agent)),
         )
       ],
+      expandedHeight: 0,
+      flexibleSpace: FlexibleSpaceBar(
+          background: SizedBox.shrink().container(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+            Colors.lightGreenAccent.shade700,
+            Colors.lightGreenAccent.shade100,
+          ]))),
     );
   }
 }
 
 class LogoView extends GetView<RootController> {
-  LogoView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Obx(() => Image.asset(

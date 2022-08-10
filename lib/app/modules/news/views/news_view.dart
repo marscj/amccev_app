@@ -18,34 +18,13 @@ class NewsView extends GetView<NewsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            leading: LogoView(),
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            title: Text('NEWS').s14.bold,
-            leadingWidth: 80,
-            actions: [
-              GFIconBadge(
-                padding: EdgeInsets.zero,
-                position: GFBadgePosition(top: 16, end: 12),
-                counterChild: GFBadge(
-                  size: 20,
-                  text: '1',
-                  shape: GFBadgeShape.circle,
-                ),
-                child: IconButton(
-                    onPressed: () {
-                      Get.toNamed(Routes.GETWIDGET);
-                    },
-                    icon: Icon(Icons.support_agent)),
-              )
-            ]),
         body: CustomScrollView(
-          slivers: [
-            // ToolbarView(title: 'NEWS'),
-            SliverPadding(padding: EdgeInsets.all(10)),
-            NewsSliver(),
-          ],
-        ).refresh(controller));
+      slivers: [
+        ToolbarView(title: 'NEWS'),
+        SliverPadding(padding: EdgeInsets.all(10)),
+        NewsSliver(),
+      ],
+    ).refresh(controller));
   }
 }
 

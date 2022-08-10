@@ -16,30 +16,11 @@ class BookingView extends GetView<BookingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: LogoView(),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        title: Text('BOOKING').s14.bold,
-        leadingWidth: 80,
-        actions: [
-          GFIconBadge(
-            padding: EdgeInsets.zero,
-            position: GFBadgePosition(top: 16, end: 12),
-            counterChild: GFBadge(
-              size: 20,
-              text: '1',
-              shape: GFBadgeShape.circle,
-            ),
-            child: IconButton(
-                onPressed: () {
-                  Get.toNamed(Routes.GETWIDGET);
-                },
-                icon: Icon(Icons.support_agent)),
-          )
-        ],
-      ),
       body: CustomScrollView(
         slivers: [
+          ToolbarView(
+            title: 'BOOKING',
+          ),
           SliverFixedExtentList(
             itemExtent: 50.0,
             delegate:

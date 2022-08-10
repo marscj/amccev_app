@@ -22,12 +22,6 @@ class HomeController extends SmartRefreshController {
   }
 
   @override
-  void onLoading() {}
-
-  @override
-  void onRefresh() {}
-
-  @override
   Future onFetch() {
     return Future.sync(() => null);
   }
