@@ -17,6 +17,8 @@ class HomeController extends RefreshBaseController<Post>
     rootController.persistentTabController.addListener(() {
       index.value = rootController.persistentTabController.index;
     });
+
+    append(() => onFetch);
   }
 
   @override

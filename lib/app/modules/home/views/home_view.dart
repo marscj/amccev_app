@@ -32,11 +32,9 @@ class HomeView extends GetView<HomeController> {
         BranchView().sliver,
         SpaceView().sliver,
         TitleView('News').sliver,
-        Obx(
-          () => PostListView(
-            posts: controller.value ?? [],
-          ),
-        ),
+        controller.obx((state) => PostListView(
+              posts: controller.state ?? [],
+            )),
         SpaceView().sliver,
         SpaceView().sliver,
       ]).refresh(controller, header: MaterialClassicHeader())),
