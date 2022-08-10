@@ -3,10 +3,10 @@ import 'package:app/app/routes/app_pages.dart';
 import 'package:app/package/wp/src/utils.dart';
 import 'package:app/package/wp/wordpress_api.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:intl/intl.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -18,31 +18,53 @@ class NewsView extends GetView<NewsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => SmartRefresher(
-          enablePullDown: true,
-          enablePullUp: true,
-          header: ClassicHeader(),
-          controller: controller.refreshController,
-          onRefresh: () => controller.onRefresh(),
-          onLoading: () => controller.onLoading(),
-          child: CustomScrollView(
-            slivers: [
-              controller.obx((state) => PostListView(
-                    posts: state ?? [],
-                  ))
-            ],
-          ))),
-    );
+        appBar: AppBar(
+          backgroundColor: Colors.grey.shade200,
+          title: Text('News'),
+          actions: [
+            GFIconBadge(
+              padding: EdgeInsets.zero,
+              position: GFBadgePosition(top: 16, end: 12),
+              counterChild: GFBadge(
+                size: 20,
+                text: '1',
+                shape: GFBadgeShape.circle,
+              ),
+              child: IconButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.GETWIDGET);
+                  },
+                  icon: Icon(Icons.support_agent)),
+            )
+          ],
+        ),
+        body: SmartRefresher(
+            enablePullDown: true,
+            enablePullUp: true,
+            header: ClassicHeader(),
+            controller: controller.refreshController,
+            onRefresh: () => controller.onRefresh(),
+            onLoading: () => controller.onLoading(),
+            child: CustomScrollView(
+              slivers: [
+                SliverPadding(padding: EdgeInsets.all(10)),
+                NewsSliver(),
+              ],
+            )));
   }
 }
 
-class NewsSliver extends GetView<NewsController> {
+class NewsSliver extends StatelessWidget {
   @override
-  Widget build(BuildContext context) =>
-      controller.obx((state) => PostListView(posts: state ?? []),
-          onLoading: Center(child: CupertinoActivityIndicator()).sliver,
-          onEmpty: SizedBox.shrink().sliver,
-          onError: ((error) => SizedBox.shrink().sliver));
+  Widget build(BuildContext context) => GetBuilder<NewsController>(
+      init: NewsController(),
+      initState: (state) {},
+      builder: (controller) {
+        return controller.obx((state) => PostListView(posts: state ?? []),
+            onLoading: SizedBox.shrink().sliver,
+            onEmpty: SizedBox.shrink().sliver,
+            onError: ((error) => SizedBox.shrink().sliver));
+      });
 }
 
 class PostListView extends StatelessWidget {
@@ -58,7 +80,7 @@ class PostListView extends StatelessWidget {
           post: posts[index],
           isFirst: index == 0,
           isLast: index == posts.length - 1,
-        );
+        ).fadeIn();
       }, childCount: posts.length),
     );
 
