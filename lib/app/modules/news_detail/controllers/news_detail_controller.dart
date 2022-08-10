@@ -1,9 +1,8 @@
+import 'package:app/package/wp/src/models/post.dart';
 import 'package:get/get.dart';
 
 class NewsDetailController extends GetxController {
-  //TODO: Implement NewsDetailController
-
-  final count = 0.obs;
+  Post post = Get.arguments['post'];
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +17,4 @@ class NewsDetailController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

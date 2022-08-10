@@ -25,8 +25,9 @@ class NewsView extends GetView<NewsController> {
         },
         body: CustomScrollView(
           slivers: [
-            SliverPadding(padding: EdgeInsets.all(10)),
+            SpaceView(height: 20).sliver,
             NewsSliver(),
+            SpaceView(height: 20).sliver,
           ],
         ).refresh(controller),
       ),
@@ -147,8 +148,8 @@ class ThreeLineListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      isThreeLine: true,
-      visualDensity: VisualDensity.comfortable,
+      isThreeLine: false,
+      dense: true,
       contentPadding: EdgeInsets.zero,
       leading: LeadingView(post.embedded!.first.medium!.sourceUrl),
       title: Text(post.title ?? ''),

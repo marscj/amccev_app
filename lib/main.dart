@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+// import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:get_storage/get_storage.dart';
 
@@ -24,10 +24,10 @@ void main() async {
   (MyHttp().transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
 
   //初始化闪屏
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  Future.delayed(Duration(seconds: 1))
-      .then((value) => FlutterNativeSplash.remove());
+  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // Future.delayed(Duration(seconds: 1))
+  //     .then((value) => FlutterNativeSplash.remove());
 
   //初始化缓存
   await GetStorage.init();

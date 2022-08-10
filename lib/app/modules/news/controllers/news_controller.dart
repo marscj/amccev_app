@@ -17,6 +17,7 @@ class NewsController extends SmartRefreshController<List<Post>?> {
   @override
   Future<List<Post>?> onFetch() {
     return api.posts.fetch(args: {
+      '_embed': '',
       'format': 'standard',
       'status': 'publish',
       'page': page,
