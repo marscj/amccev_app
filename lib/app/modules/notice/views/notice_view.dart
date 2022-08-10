@@ -27,62 +27,7 @@ class NoticeView extends GetView<NoticeController> {
     return GetBuilder<NoticeController>(
       init: NoticeController(),
       initState: (state) {},
-      builder: (controller) => Scaffold(
-          appBar: AppBar(
-            title: Text('BookingView'),
-            centerTitle: true,
-          ),
-          body: Scaffold(
-            body: SmartRefresher(
-              enablePullDown: true,
-              enablePullUp: true,
-              header: WaterDropHeader(),
-              footer: CustomFooter(
-                builder: (BuildContext context, LoadStatus? mode) {
-                  Widget body;
-                  if (mode == LoadStatus.idle) {
-                    body = Text("pull up load");
-                  } else if (mode == LoadStatus.loading) {
-                    body = CupertinoActivityIndicator();
-                  } else if (mode == LoadStatus.failed) {
-                    body = Text("Load Failed!Click retry!");
-                  } else if (mode == LoadStatus.canLoading) {
-                    body = Text("release to load more");
-                  } else {
-                    body = Text("No more Data");
-                  }
-                  return SizedBox(
-                    height: 55.0,
-                    child: Center(child: body),
-                  );
-                },
-              ),
-              controller: controller.refreshController,
-              onRefresh: _onRefresh,
-              onLoading: _onLoading,
-              child: CustomScrollView(
-                slivers: [
-                  SliverFixedExtentList(
-                    itemExtent: 50.0,
-                    delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                      return Container(
-                        alignment: Alignment.center,
-                        color: Colors.lightBlue[100 * (index % 9)],
-                        child: Text('list item $index'),
-                      );
-                    }, childCount: items.length),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Container(
-                      color: Colors.red,
-                      height: 200,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )),
+      builder: (controller) => Scaffold(),
     );
   }
 }

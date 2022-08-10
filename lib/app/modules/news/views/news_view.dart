@@ -38,19 +38,12 @@ class NewsView extends GetView<NewsController> {
             )
           ],
         ),
-        body: SmartRefresher(
-            enablePullDown: true,
-            enablePullUp: true,
-            header: ClassicHeader(),
-            controller: controller.refreshController,
-            onRefresh: () => controller.onRefresh(),
-            onLoading: () => controller.onLoading(),
-            child: CustomScrollView(
-              slivers: [
-                SliverPadding(padding: EdgeInsets.all(10)),
-                NewsSliver(),
-              ],
-            )));
+        body: CustomScrollView(
+          slivers: [
+            SliverPadding(padding: EdgeInsets.all(10)),
+            NewsSliver(),
+          ],
+        ).refresh(controller));
   }
 }
 
