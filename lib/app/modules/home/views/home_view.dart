@@ -63,20 +63,6 @@ class ToolbarView extends StatelessWidget {
               icon: Icon(Icons.support_agent)),
         )
       ],
-      // flexibleSpace: FlexibleSpaceBar(
-      //     background: Column(
-      //   mainAxisAlignment: MainAxisAlignment.start,
-      //   crossAxisAlignment: CrossAxisAlignment.start,
-      // )).container(
-      //   gradient: LinearGradient(
-      //     begin: Alignment.topLeft,
-      //     end: Alignment.bottomRight,
-      //     colors: [
-      //       Colors.lightGreenAccent.shade700,
-      //       Colors.lightGreenAccent.shade100,
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

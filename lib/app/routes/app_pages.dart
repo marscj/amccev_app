@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
 import '../modules/booking/bindings/booking_binding.dart';
-import '../modules/booking/booking_details/bindings/booking_details_binding.dart';
-import '../modules/booking/booking_details/views/booking_details_view.dart';
 import '../modules/booking/views/booking_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
@@ -55,13 +53,6 @@ class AppPages {
       name: _Paths.BOOKING,
       page: () => BookingView(),
       binding: BookingBinding(),
-      children: [
-        GetPage(
-          name: _Paths.BOOKING_DETAILS,
-          page: () => const BookingDetailsView(),
-          binding: BookingDetailsBinding(),
-        ),
-      ],
     ),
     GetPage(
       name: _Paths.SETTING,
