@@ -1,7 +1,7 @@
 import 'package:app/app/common/widgets/refresh.dart';
 import 'package:app/package/wp/wordpress_api.dart';
 
-class NewsController extends SmartRefreshController<List<Post>> {
+class NewsController extends SmartRefreshController<List<Post>?> {
   final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
 
   @override
@@ -15,7 +15,7 @@ class NewsController extends SmartRefreshController<List<Post>> {
   }
 
   @override
-  Future<List<Post>> onFetch() {
+  Future<List<Post>?> onFetch() {
     return api.posts.fetch(args: {
       'format': 'standard',
       'status': 'publish',
@@ -24,6 +24,9 @@ class NewsController extends SmartRefreshController<List<Post>> {
     }).then((value) {
       pageTotal = value.meta?.totalPages;
       return value.data;
-    });
+    })
+      ..onError((error, stackTrace) {
+        return [];
+      });
   }
 }

@@ -16,30 +16,34 @@ class BookingView extends GetView<BookingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          ToolbarView(
-            title: 'BOOKING',
-          ),
-          SliverFixedExtentList(
-            itemExtent: 50.0,
-            delegate:
-                SliverChildBuilderDelegate((BuildContext context, int index) {
-              return Container(
-                alignment: Alignment.center,
-                color: Colors.lightBlue[100 * (index % 9)],
-                child: Text('list item $index'),
-              );
-            }, childCount: items.length),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              color: Colors.red,
-              height: 200,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            ToolbarView(title: 'BOOKING'),
+          ];
+        },
+        body: CustomScrollView(
+          slivers: [
+            SliverFixedExtentList(
+              itemExtent: 50.0,
+              delegate:
+                  SliverChildBuilderDelegate((BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.lightBlue[100 * (index % 9)],
+                  child: Text('list item $index'),
+                );
+              }, childCount: items.length),
             ),
-          )
-        ],
-      ).refresh(controller),
+            SliverToBoxAdapter(
+              child: Container(
+                color: Colors.red,
+                height: 200,
+              ),
+            )
+          ],
+        ).refresh(controller),
+      ),
     );
   }
 }

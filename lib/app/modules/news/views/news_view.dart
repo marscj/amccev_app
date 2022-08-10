@@ -17,13 +17,20 @@ class NewsView extends GetView<NewsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            ToolbarView(title: 'NEWS'),
+          ];
+        },
         body: CustomScrollView(
-      slivers: [
-        ToolbarView(title: 'NEWS'),
-        SliverPadding(padding: EdgeInsets.all(10)),
-        NewsSliver(),
-      ],
-    ).refresh(controller));
+          slivers: [
+            SliverPadding(padding: EdgeInsets.all(10)),
+            NewsSliver(),
+          ],
+        ).refresh(controller),
+      ),
+    );
   }
 }
 
