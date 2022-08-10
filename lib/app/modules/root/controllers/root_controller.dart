@@ -5,9 +5,15 @@ class RootController extends GetxController {
   final PersistentTabController persistentTabController =
       PersistentTabController();
 
+  final index = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
+
+    persistentTabController.addListener(() {
+      index.value = persistentTabController.index;
+    });
   }
 
   @override

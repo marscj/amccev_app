@@ -6,15 +6,9 @@ import 'package:get/get.dart';
 class HomeController extends SmartRefreshController {
   final RootController rootController = Get.find<RootController>();
 
-  final index = 0.obs;
-
   @override
   void onInit() {
     super.onInit();
-
-    rootController.persistentTabController.addListener(() {
-      index.value = rootController.persistentTabController.index;
-    });
   }
 
   @override

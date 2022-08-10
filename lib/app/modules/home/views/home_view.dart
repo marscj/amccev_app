@@ -3,6 +3,7 @@ import 'package:app/app/common/gfx/carousel.dart';
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
 import 'package:app/app/modules/news/views/news_view.dart';
+import 'package:app/app/modules/root/controllers/root_controller.dart';
 import 'package:app/app/routes/app_pages.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +81,7 @@ class ToolbarView extends StatelessWidget {
   }
 }
 
-class LogoView extends GetView<HomeController> {
+class LogoView extends GetView<RootController> {
   LogoView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
