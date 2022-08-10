@@ -29,9 +29,9 @@ class HomeView extends GetView<HomeController> {
       BranchView().sliver,
       SpaceView().sliver,
       TitleView('News').sliver,
-      // controller.obx((state) => PostListView(
-      //       posts: controller.state ?? [],
-      //     )),
+      controller.newsApiController.obx((state) => PostListView(
+            posts: state ?? [],
+          )),
       SpaceView().sliver,
       SpaceView().sliver,
     ]).refresh(controller, header: MaterialClassicHeader()));
