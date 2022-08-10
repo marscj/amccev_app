@@ -180,6 +180,13 @@ class BranchView extends StatelessWidget {
   }
 }
 
+class BranchMapView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 class ServiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
