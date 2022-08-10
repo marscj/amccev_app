@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-abstract class SmartRefreshController {
+abstract class SmartRefreshController<T> extends GetxController
+    with StateMixin<T> {
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 
@@ -21,9 +22,29 @@ abstract class SmartRefreshController {
 
   get hasMore => page < pageTotal;
 
-  void onRefresh();
+  Future<T> onFetch();
 
-  void onLoading();
+  void onRefresh() {
+    onFetch().then((data) {
+      value = data;
+      page = 1;
+    }).whenComplete(() {
+      refreshController.resetNoData();
+      refreshController.refreshCompleted();
+    });
+  }
+
+  void onLoading() {
+    if (page < pageTotal) {
+      onFetch().then((value) {
+        page++;
+      }).whenComplete(() {
+        refreshController.loadComplete();
+      });
+    } else {
+      refreshController.loadNoData();
+    }
+  }
 }
 
 class PullToRefresh extends StatelessWidget {

@@ -29,7 +29,7 @@ class HomeView extends GetView<HomeController> {
       BranchView().sliver,
       SpaceView().sliver,
       TitleView('News').sliver,
-      controller.newsApiController.obx(
+      controller.newsController.obx(
           (state) => PostListView(
                 posts: state ?? [],
               ),

@@ -4,9 +4,9 @@ import 'package:app/app/modules/root/controllers/root_controller.dart';
 
 import 'package:get/get.dart';
 
-class HomeController extends GetxController with SmartRefreshController {
+class HomeController extends SmartRefreshController {
   final RootController rootController = Get.find<RootController>();
-  final NewsApiController newsApiController = NewsApiController();
+  final NewsController newsController = NewsController();
 
   final index = 0.obs;
 
@@ -18,7 +18,7 @@ class HomeController extends GetxController with SmartRefreshController {
       index.value = rootController.persistentTabController.index;
     });
 
-    newsApiController.append(() => newsApiController.fetchNews);
+    newsController.append(() => newsController.fetchNews);
   }
 
   @override
@@ -36,4 +36,10 @@ class HomeController extends GetxController with SmartRefreshController {
 
   @override
   void onRefresh() {}
+
+  @override
+  Future onFetch() {
+    // TODO: implement onFetch
+    throw UnimplementedError();
+  }
 }

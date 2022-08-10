@@ -1,14 +1,8 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/package/wp/wordpress_api.dart';
-import 'package:get/get.dart';
 
-class NewsApiController extends GetxController with StateMixin<List<Post>> {
+class NewsController extends SmartRefreshController {
   final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<List<Post>> fetchNews({int page = 1, int? per_page}) {
     return api.posts.fetch(args: {
@@ -20,23 +14,6 @@ class NewsApiController extends GetxController with StateMixin<List<Post>> {
       return value.data;
     });
   }
-}
-
-class NewsController extends GetxController with SmartRefreshController {
-  final NewsApiController newsApiController = NewsApiController();
-
-  @override
-  void onRefresh() {
-    refreshController.loadComplete();
-  }
-
-  @override
-  void onLoading() {
-    refreshController.refreshCompleted();
-    if (hasMore) {
-      refreshController.loadNoData();
-    }
-  }
 
   @override
   void onInit() {
@@ -46,5 +23,11 @@ class NewsController extends GetxController with SmartRefreshController {
   @override
   void onReady() {
     super.onReady();
+  }
+
+  @override
+  Future onFetch() {
+    // TODO: implement onFetch
+    throw UnimplementedError();
   }
 }

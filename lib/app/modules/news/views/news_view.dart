@@ -26,7 +26,7 @@ class NewsView extends GetView<NewsController> {
           onLoading: () => controller.onLoading(),
           child: CustomScrollView(
             slivers: [
-              controller.newsApiController.obx((state) => PostListView(
+              controller.obx((state) => PostListView(
                     posts: state ?? [],
                   ))
             ],

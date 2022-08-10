@@ -1,7 +1,7 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-class BookingController extends GetxController with SmartRefreshController {
+class BookingController extends SmartRefreshController {
   @override
   void onInit() {
     super.onInit();
@@ -22,4 +22,10 @@ class BookingController extends GetxController with SmartRefreshController {
 
   @override
   void onRefresh() {}
+
+  @override
+  Future<List> onFetch() {
+    // TODO: implement onFetch
+    throw UnimplementedError();
+  }
 }
