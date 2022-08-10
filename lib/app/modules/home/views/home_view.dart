@@ -17,7 +17,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(slivers: <Widget>[
-      ToolbarView(),
+      ToolbarView(title: 'AMCCEV SERVICES'),
       TitleView(
         'Good Morning!',
       ).sliver,
@@ -38,14 +38,19 @@ class HomeView extends GetView<HomeController> {
 }
 
 class ToolbarView extends StatelessWidget {
+  final String title;
+
+  const ToolbarView({super.key, required this.title});
+
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       pinned: true,
       stretch: true,
+      floating: true,
       leading: LogoView(),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      title: Text('AMCCEV SERVICES').s14.bold,
+      title: Text(title).s14.bold,
       leadingWidth: 80,
       actions: [
         GFIconBadge(

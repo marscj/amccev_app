@@ -1,4 +1,5 @@
 import 'package:app/app/common/extensions/extensions.dart';
+import 'package:app/app/modules/home/views/home_view.dart';
 import 'package:app/app/routes/app_pages.dart';
 import 'package:app/package/wp/src/utils.dart';
 import 'package:app/package/wp/wordpress_api.dart';
@@ -8,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:intl/intl.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../controllers/news_controller.dart';
 
@@ -19,27 +19,29 @@ class NewsView extends GetView<NewsController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade200,
-          title: Text('News'),
-          actions: [
-            GFIconBadge(
-              padding: EdgeInsets.zero,
-              position: GFBadgePosition(top: 16, end: 12),
-              counterChild: GFBadge(
-                size: 20,
-                text: '1',
-                shape: GFBadgeShape.circle,
-              ),
-              child: IconButton(
-                  onPressed: () {
-                    Get.toNamed(Routes.GETWIDGET);
-                  },
-                  icon: Icon(Icons.support_agent)),
-            )
-          ],
-        ),
+            leading: LogoView(),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            title: Text('NEWS').s14.bold,
+            leadingWidth: 80,
+            actions: [
+              GFIconBadge(
+                padding: EdgeInsets.zero,
+                position: GFBadgePosition(top: 16, end: 12),
+                counterChild: GFBadge(
+                  size: 20,
+                  text: '1',
+                  shape: GFBadgeShape.circle,
+                ),
+                child: IconButton(
+                    onPressed: () {
+                      Get.toNamed(Routes.GETWIDGET);
+                    },
+                    icon: Icon(Icons.support_agent)),
+              )
+            ]),
         body: CustomScrollView(
           slivers: [
+            // ToolbarView(title: 'NEWS'),
             SliverPadding(padding: EdgeInsets.all(10)),
             NewsSliver(),
           ],
