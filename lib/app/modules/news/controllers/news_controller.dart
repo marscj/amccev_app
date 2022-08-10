@@ -33,7 +33,7 @@ class NewsAPIController {
 }
 
 class NewsController extends GetxController
-    with SmartRefreshController, NewsAPIController {
+    with SmartRefreshController, NewsAPIController, StateMixin<List<Post>> {
   @override
   void onRefresh() {
     refreshController.loadComplete();

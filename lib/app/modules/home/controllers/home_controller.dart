@@ -1,6 +1,6 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/app/modules/root/controllers/root_controller.dart';
-import 'package:app/package/wp/wordpress_api.dart';
+
 import 'package:get/get.dart';
 
 class HomeController extends GetxController
@@ -16,8 +16,6 @@ class HomeController extends GetxController
     rootController.persistentTabController.addListener(() {
       index.value = rootController.persistentTabController.index;
     });
-
-    append(() => onFetch);
   }
 
   @override
@@ -28,13 +26,6 @@ class HomeController extends GetxController
   @override
   void onClose() {
     super.onClose();
-  }
-
-  Future<List<Post>> onFetch() {
-    return fetchNews(page: page, per_page: pageSize).then((value) {
-      pageTotal = value.meta?.totalPages;
-      return value.data;
-    });
   }
 
   @override
