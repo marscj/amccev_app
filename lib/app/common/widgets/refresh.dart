@@ -54,11 +54,10 @@ abstract class SmartRefreshController<T> extends GetxController
   }
 }
 
-class PullToRefresh extends StatelessWidget {
+class PullToRefresh extends GetView<SmartRefreshController> {
   PullToRefresh({
     Key? key,
     required this.child,
-    required this.controller,
     this.header,
     this.enablePullDown = true,
     this.enablePullUp = false,
@@ -68,7 +67,6 @@ class PullToRefresh extends StatelessWidget {
 
   final Widget child;
   final Widget? header;
-  final SmartRefreshController controller;
   final bool enablePullDown;
   final bool enablePullUp;
 

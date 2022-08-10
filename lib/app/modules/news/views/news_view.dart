@@ -24,7 +24,7 @@ class NewsView extends GetView<NewsController> {
         SliverPadding(padding: EdgeInsets.all(10)),
         NewsSliver(),
       ],
-    ).refresh(controller));
+    ).refresh());
   }
 }
 
