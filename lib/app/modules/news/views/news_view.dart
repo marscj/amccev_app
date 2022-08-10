@@ -16,30 +16,21 @@ class NewsView extends GetView<NewsController> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<NewsController>(
-      init: NewsController(),
-      initState: (state) {},
-      builder: (controller) => Scaffold(
-          appBar: AppBar(
-            title: Text('BookingView'),
-            centerTitle: true,
-          ),
-          body: Scaffold(
-            body: Obx(() => SmartRefresher(
-                enablePullDown: true,
-                enablePullUp: true,
-                header: ClassicHeader(),
-                controller: controller.refreshController,
-                onRefresh: () => controller.onRefresh(),
-                onLoading: () => controller.onLoading(),
-                child: CustomScrollView(
-                  slivers: [
-                    controller.obx((state) => PostListView(
-                          posts: controller.state ?? [],
-                        ))
-                  ],
-                ))),
-          )),
+    return Scaffold(
+      body: Obx(() => SmartRefresher(
+          enablePullDown: true,
+          enablePullUp: true,
+          header: ClassicHeader(),
+          controller: controller.refreshController,
+          onRefresh: () => controller.onRefresh(),
+          onLoading: () => controller.onLoading(),
+          child: CustomScrollView(
+            slivers: [
+              controller.obx((state) => PostListView(
+                    posts: controller.state ?? [],
+                  ))
+            ],
+          ))),
     );
   }
 }

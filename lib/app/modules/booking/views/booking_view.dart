@@ -12,37 +12,33 @@ class BookingView extends GetView<BookingController> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BookingController>(
-      init: BookingController(),
-      initState: (state) {},
-      builder: (controller) => Scaffold(
-          appBar: AppBar(
-            title: Text('BookingView'),
-            centerTitle: true,
-          ),
-          body: Scaffold(
-            body: CustomScrollView(
-              slivers: [
-                SliverFixedExtentList(
-                  itemExtent: 50.0,
-                  delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      color: Colors.lightBlue[100 * (index % 9)],
-                      child: Text('list item $index'),
-                    );
-                  }, childCount: items.length),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('BookingView'),
+          centerTitle: true,
+        ),
+        body: Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              SliverFixedExtentList(
+                itemExtent: 50.0,
+                delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return Container(
+                    alignment: Alignment.center,
+                    color: Colors.lightBlue[100 * (index % 9)],
+                    child: Text('list item $index'),
+                  );
+                }, childCount: items.length),
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  color: Colors.red,
+                  height: 200,
                 ),
-                SliverToBoxAdapter(
-                  child: Container(
-                    color: Colors.red,
-                    height: 200,
-                  ),
-                )
-              ],
-            ).refresh(controller),
-          )),
-    );
+              )
+            ],
+          ).refresh(controller),
+        ));
   }
 }

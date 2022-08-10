@@ -1,7 +1,6 @@
 import 'dart:ui' as ui;
 import 'package:app/app/modules/splash/controllers/splash_service.dart';
 import 'package:app/services/auth_service.dart';
-import 'package:app/services/location_service.dart';
 import 'package:app/storage/user.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

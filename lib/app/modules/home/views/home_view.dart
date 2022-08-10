@@ -14,31 +14,27 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      init: HomeController(),
-      initState: (state) {},
-      builder: (controller) => Scaffold(
-          body: CustomScrollView(slivers: <Widget>[
-        ToolbarView(),
-        TitleView(
-          'Good Morning!',
-        ).sliver,
-        BannerView().sliver,
-        SpaceView().sliver,
-        TitleView('Our Service').sliver,
-        ServiceView(),
-        SpaceView().sliver,
-        TitleView('Center Branch').sliver,
-        BranchView().sliver,
-        SpaceView().sliver,
-        TitleView('News').sliver,
-        controller.obx((state) => PostListView(
-              posts: controller.state ?? [],
-            )),
-        SpaceView().sliver,
-        SpaceView().sliver,
-      ]).refresh(controller, header: MaterialClassicHeader())),
-    );
+    return Scaffold(
+        body: CustomScrollView(slivers: <Widget>[
+      ToolbarView(),
+      TitleView(
+        'Good Morning!',
+      ).sliver,
+      BannerView().sliver,
+      SpaceView().sliver,
+      TitleView('Our Service').sliver,
+      ServiceView(),
+      SpaceView().sliver,
+      TitleView('Center Branch').sliver,
+      BranchView().sliver,
+      SpaceView().sliver,
+      TitleView('News').sliver,
+      // controller.obx((state) => PostListView(
+      //       posts: controller.state ?? [],
+      //     )),
+      SpaceView().sliver,
+      SpaceView().sliver,
+    ]).refresh(controller, header: MaterialClassicHeader()));
   }
 }
 
