@@ -1,4 +1,4 @@
-import 'package:app/app/common/widgets/pull_to_refresh.dart';
+import 'package:app/app/common/widgets/refresh.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class MyController extends SmartRefreshController {
@@ -26,7 +26,7 @@ class MyController extends SmartRefreshController {
   void onRefresh() {
     refreshController.refreshCompleted();
   }
-  
+
   @override
   Future onFetch() {
     // TODO: implement onFetch

@@ -1,4 +1,4 @@
-import 'package:app/app/common/widgets/pull_to_refresh.dart';
+import 'package:app/app/common/widgets/refresh.dart';
 import 'package:app/package/wp/wordpress_api.dart';
 
 class NewsController extends SmartRefreshController<List<Post>> {

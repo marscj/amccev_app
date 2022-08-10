@@ -1,4 +1,4 @@
-import 'package:app/app/common/widgets/pull_to_refresh.dart';
+import 'package:app/app/common/widgets/refresh.dart';
 import 'package:app/app/modules/root/controllers/root_controller.dart';
 
 import 'package:get/get.dart';
