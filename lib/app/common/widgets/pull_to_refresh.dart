@@ -1,12 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-abstract class RefreshBaseController<T> extends GetxController
-    with StateMixin<List<T>> {
+abstract class SmartRefreshController {
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 
@@ -24,30 +21,9 @@ abstract class RefreshBaseController<T> extends GetxController
 
   get hasMore => page < pageTotal;
 
-  Future<List<T>> onFetch();
+  void onRefresh();
 
-  void onRefresh() {
-    onFetch().then((data) {
-      value = data;
-      page = 1;
-    }).whenComplete(() {
-      refreshController.resetNoData();
-      refreshController.refreshCompleted();
-    });
-  }
-
-  void onLoading() {
-    if (page < pageTotal) {
-      onFetch().then((value) {
-        page++;
-        value.addAll(value);
-      }).whenComplete(() {
-        refreshController.loadComplete();
-      });
-    } else {
-      refreshController.loadNoData();
-    }
-  }
+  void onLoading();
 }
 
 class PullToRefresh extends StatelessWidget {
@@ -64,7 +40,7 @@ class PullToRefresh extends StatelessWidget {
 
   final Widget child;
   final Widget? header;
-  final RefreshBaseController controller;
+  final SmartRefreshController controller;
   final bool enablePullDown;
   final bool enablePullUp;
 

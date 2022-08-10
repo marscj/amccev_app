@@ -1,5 +1,6 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 import 'package:app/package/wp/wordpress_api.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class NewsAPIController {
   final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
@@ -31,14 +32,8 @@ class NewsAPIController {
   // }
 }
 
-class NewsController extends RefreshBaseController<Post>
-    with NewsAPIController {
-  @override
-  Future<List<Post>> onFetch() {
-    // TODO: implement onFetch
-    throw UnimplementedError();
-  }
-
+class NewsController extends GetxController
+    with SmartRefreshController, NewsAPIController {
   @override
   void onRefresh() {
     refreshController.loadComplete();

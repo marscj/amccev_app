@@ -1,6 +1,6 @@
 import 'package:app/app/common/widgets/pull_to_refresh.dart';
 
-class MessageController extends RefreshBaseController {
+class MessageController extends SmartRefreshController {
   @override
   void onInit() {
     super.onInit();

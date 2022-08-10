@@ -90,7 +90,7 @@ extension ExtensionWidget on Widget {
       );
 
   Widget refresh(
-    RefreshBaseController controller, {
+    SmartRefreshController controller, {
     Widget? header,
   }) {
     return PullToRefresh(
