@@ -22,6 +22,13 @@ abstract class SmartRefreshController<T> extends GetxController
 
   get hasMore => page < pageTotal;
 
+  @override
+  void onInit() {
+    super.onInit();
+
+    append(() => onFetch);
+  }
+
   Future<T> onFetch();
 
   void onRefresh() {

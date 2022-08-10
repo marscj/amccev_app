@@ -24,6 +24,7 @@ dependencies:
   equatable: 2.0.3
   html: 0.15.0
   intl: 0.17.0
+  table_calendar: 3.0.6
   flutter: 
     sdk: flutter
 
