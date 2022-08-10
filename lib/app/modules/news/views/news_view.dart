@@ -3,6 +3,7 @@ import 'package:app/app/routes/app_pages.dart';
 import 'package:app/package/wp/src/utils.dart';
 import 'package:app/package/wp/wordpress_api.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -33,6 +34,15 @@ class NewsView extends GetView<NewsController> {
           ))),
     );
   }
+}
+
+class NewsSliver extends GetView<NewsController> {
+  @override
+  Widget build(BuildContext context) =>
+      controller.obx((state) => PostListView(posts: state ?? []),
+          onLoading: Center(child: CupertinoActivityIndicator()).sliver,
+          onEmpty: SizedBox.shrink().sliver,
+          onError: ((error) => SizedBox.shrink().sliver));
 }
 
 class PostListView extends StatelessWidget {
