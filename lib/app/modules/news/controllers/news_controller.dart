@@ -5,12 +5,19 @@ import 'package:get/get.dart';
 class NewsApiController extends GetxController with StateMixin<List<Post>> {
   final WordPressAPI api = WordPressAPI('amccev.com/wp-json');
 
-  Future<WPResponse> fetchNews({int page = 1, int? per_page}) {
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  Future<List<Post>> fetchNews({int page = 1, int? per_page}) {
     return api.posts.fetch(args: {
       'format': 'standard',
       'status': 'publish',
       'page': page,
       'per_page': per_page ?? 20,
+    }).then((value) {
+      return value.data;
     });
   }
 }

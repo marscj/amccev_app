@@ -17,6 +17,8 @@ class HomeController extends GetxController with SmartRefreshController {
     rootController.persistentTabController.addListener(() {
       index.value = rootController.persistentTabController.index;
     });
+
+    newsApiController.append(() => newsApiController.fetchNews);
   }
 
   @override
