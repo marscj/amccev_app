@@ -36,9 +36,11 @@ extension ExtensionWidget on Widget {
           color: color,
           image: image,
           boxShadow: shadow,
-          borderRadius: shape != BoxShape.rectangle
+          borderRadius: border != null
               ? null
-              : borderRadius ?? BorderRadius.circular(radius),
+              : shape == BoxShape.rectangle
+                  ? borderRadius ?? BorderRadius.circular(radius)
+                  : null,
           gradient: gradient,
           backgroundBlendMode: backgroundBlendMode,
           shape: shape,
@@ -119,7 +121,7 @@ extension ExtensionWidget on Widget {
         // borderRadius: borderRadius ?? BorderRadius.circular(radius),
         shape: shape ??
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(4)),
+              borderRadius: BorderRadius.all(Radius.circular(radius)),
             ),
         child: this,
       );

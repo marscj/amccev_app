@@ -30,8 +30,9 @@ class HomeView extends GetView<HomeController> {
         TitleView('Our Service').sliver,
         ServiceView(),
         SpaceView().sliver,
-        TitleView('Center Branch').sliver,
-        BranchView().sliver,
+        // TitleView('Center Branch').sliver,
+        // BranchView().sliver,
+        BranchMapView().sliver,
         SpaceView().sliver,
         TitleView('News').sliver,
         NewsSliver(),
@@ -183,7 +184,34 @@ class BranchView extends StatelessWidget {
 class BranchMapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return [
+      [
+        Icon(
+          FontAwesomeIcons.mapLocation,
+          color: Colors.white,
+        ),
+        ListTile(
+          dense: true,
+          title: Text('Center Branch').s14.white.bold,
+          trailing: TextButton(
+              onPressed: () {}, child: Text('Detail').color(Colors.white)),
+        ).expanded
+      ].row().container(
+          color: Theme.of(context).colorScheme.primary,
+          padding: EdgeInsets.only(left: 16),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(4), topRight: Radius.circular(4))),
+      SizedBox(height: 10),
+      Image.asset(
+        'assets/images/branch_map.jpg',
+        height: 200,
+        width: double.infinity,
+        fit: BoxFit.cover,
+      ).container(margin: EdgeInsets.only(left: 16, right: 16, bottom: 16))
+    ]
+        .col()
+        .material(elevation: 1, radius: 4, color: Colors.white)
+        .container(padding: EdgeInsets.symmetric(horizontal: 16));
   }
 }
 
