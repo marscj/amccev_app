@@ -1,5 +1,7 @@
 import 'package:app/app/common/gfx/card.dart';
 import 'package:app/app/common/gfx/carousel.dart';
+import 'package:app/app/common/gfx/list_tile.dart';
+import 'package:app/app/common/gfx/position.dart';
 import 'package:app/app/modules/home/controllers/home_controller.dart';
 import 'package:app/app/common/extensions/extensions.dart';
 import 'package:app/app/modules/news/views/news_view.dart';
@@ -30,8 +32,9 @@ class HomeView extends GetView<HomeController> {
         TitleView('Our Service').sliver,
         ServiceView(),
         SpaceView().sliver,
-        // TitleView('Center Branch').sliver,
-        // BranchView().sliver,
+        TitleView('Featured').sliver,
+        FeaturedView().sliver,
+        SpaceView().sliver,
         BranchMapView().sliver,
         SpaceView().sliver,
         TitleView('News').sliver,
@@ -188,17 +191,20 @@ class BranchMapView extends StatelessWidget {
       [
         Icon(
           FontAwesomeIcons.mapLocation,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.primary,
         ),
         ListTile(
           dense: true,
-          title: Text('Center Branch').s14.white.bold,
+          title: Text('Center Branch').s14.black.bold,
           trailing: TextButton(
-              onPressed: () {}, child: Text('Detail').color(Colors.white)),
+              onPressed: () {}, child: Text('Detail').color(Colors.black)),
         ).expanded
       ].row().container(
-          color: Theme.of(context).colorScheme.primary,
+          // color: Theme.of(context).colorScheme.primary,
           padding: EdgeInsets.only(left: 16),
+          border: Border(
+              top: BorderSide(
+                  color: Theme.of(context).colorScheme.primary, width: 2)),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(4), topRight: Radius.circular(4))),
       SizedBox(height: 10),
@@ -210,7 +216,7 @@ class BranchMapView extends StatelessWidget {
       ).container(margin: EdgeInsets.only(left: 16, right: 16, bottom: 16))
     ]
         .col()
-        .material(elevation: 1, radius: 4, color: Colors.white)
+        .material(elevation: 1, radius: 0, color: Colors.white)
         .container(padding: EdgeInsets.symmetric(horizontal: 16));
   }
 }
@@ -424,6 +430,107 @@ class ProductItemView extends StatelessWidget {
           Text('199 AED').s12.color(Colors.red)
         ],
       ).container(padding: EdgeInsets.symmetric(horizontal: 8)),
+    );
+  }
+}
+
+class FeaturedView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    double itemWidth = (MediaQuery.of(context).size.width - 32) * 0.45;
+    double itemHeight = itemWidth * 1.2;
+    return GFXItemsCarousel(
+        start: 16,
+        end: 16,
+        space: 6,
+        itemHeight: itemHeight,
+        itemWidth: itemWidth,
+        children: [
+          FeaturedItemView(
+            height: itemHeight,
+            url:
+                'https://www.amccev.com/wp-content/uploads/2022/08/3.3-180kW-all-in-one-DUAL-gun-DC-charger-European-standard-min-1.png',
+            title:
+                '180kW All-in-One dual-Gun DC Charger (China Standard + European Standard)',
+          ),
+          FeaturedItemView(
+            height: itemHeight,
+            url:
+                'https://www.amccev.com/wp-content/uploads/2022/08/3.3-180kW-all-in-one-DUAL-gun-DC-charger-European-standard-min-1.png',
+            title:
+                '180kW All-in-One dual-Gun DC Charger (China Standard + European Standard)',
+          ),
+          FeaturedItemView(
+            height: itemHeight,
+            url:
+                'https://www.amccev.com/wp-content/uploads/2022/08/3.3-180kW-all-in-one-DUAL-gun-DC-charger-European-standard-min-1.png',
+            title:
+                '180kW All-in-One dual-Gun DC Charger (China Standard + European Standard)',
+          ),
+          FeaturedItemView(
+            height: itemHeight,
+            url:
+                'https://www.amccev.com/wp-content/uploads/2022/08/3.3-180kW-all-in-one-DUAL-gun-DC-charger-European-standard-min-1.png',
+            title:
+                '180kW All-in-One dual-Gun DC Charger (China Standard + European Standard)',
+          ),
+          FeaturedItemView(
+            height: itemHeight,
+            url:
+                'https://www.amccev.com/wp-content/uploads/2022/08/3.3-180kW-all-in-one-DUAL-gun-DC-charger-European-standard-min-1.png',
+            title:
+                '180kW All-in-One dual-Gun DC Charger (China Standard + European Standard)',
+          ),
+          FeaturedItemView(
+            height: itemHeight,
+            url:
+                'https://www.amccev.com/wp-content/uploads/2022/08/3.3-180kW-all-in-one-DUAL-gun-DC-charger-European-standard-min-1.png',
+            title:
+                '180kW All-in-One dual-Gun DC Charger (China Standard + European Standard)',
+          ),
+          FeaturedItemView(
+            height: itemHeight,
+            url:
+                'https://www.amccev.com/wp-content/uploads/2022/08/3.3-180kW-all-in-one-DUAL-gun-DC-charger-European-standard-min-1.png',
+            title:
+                '180kW All-in-One dual-Gun DC Charger (China Standard + European Standard)',
+          ),
+        ]);
+  }
+}
+
+class FeaturedItemView extends StatelessWidget {
+  final String url;
+  final String title;
+  final String? subtitle;
+  final double height;
+
+  const FeaturedItemView({
+    Key? key,
+    required this.url,
+    required this.title,
+    required this.height,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GFXCard(
+      showImage: true,
+      height: height,
+      image: CachedNetworkImage(
+        imageUrl: url,
+      ),
+      elevation: 1,
+      titlePosition: GFXPosition.end,
+      title: GFXListTile(
+        description: Text('199 AED').s12.color(Colors.red),
+        padding: EdgeInsets.zero,
+        margin: EdgeInsets.zero,
+        title: Text(title).s12.black.lines(2),
+      ),
+      padding: EdgeInsets.symmetric(vertical: 8),
+      margin: EdgeInsets.all(1),
     );
   }
 }

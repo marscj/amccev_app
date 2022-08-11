@@ -59,7 +59,7 @@ class App extends StatelessWidget {
             );
           },
           translationsKeys: AppTranslation.translations,
-          locale: lang == null ? locale : Locale(lang),
+          locale: Locale('en'), //lang == null ? locale : Locale(lang),
           fallbackLocale: Locale('en'),
           getPages: AppPages.routes,
           theme: ThemeData(

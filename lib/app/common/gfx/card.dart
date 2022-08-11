@@ -122,39 +122,37 @@ class GFXCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final CardTheme cardTheme = CardTheme.of(context);
 
-    final Widget cardChild = Padding(
-      padding: padding,
-      child: image != null
-          ? Column(
-              children: <Widget>[
-                titlePosition == GFXPosition.start
-                    ? title ?? Container()
-                    : showImage != false
-                        ? ClipRRect(
-                            // ignore: avoid_as
-                            borderRadius: borderRadius as BorderRadius? ??
-                                const BorderRadius.vertical(
-                                    top: Radius.circular(4)),
-                            child: image,
-                          )
-                        : Container(),
-                titlePosition == GFXPosition.start
-                    ? showImage != false
-                        ? Container(child: image)
-                        : Container()
-                    : title ?? Container(),
-                Padding(
-                  padding: padding,
-                  child: content ?? Container(),
-                ),
-                buttonBar ?? Container(),
-              ],
-            )
-          : Padding(
-              padding: padding,
-              child: content ?? Container(),
+    final Widget cardChild = image != null
+        ? Padding(
+            padding: padding,
+            child: SizedBox(
+              height: height,
+              child: Column(
+                children: <Widget>[
+                  titlePosition == GFXPosition.start
+                      ? title ?? Container()
+                      : showImage != false
+                          ? Expanded(
+                              child: ClipRRect(
+                              // ignore: avoid_as
+                              borderRadius: borderRadius as BorderRadius? ??
+                                  const BorderRadius.vertical(
+                                      top: Radius.circular(4)),
+                              child: image,
+                            ))
+                          : Container(),
+                  titlePosition == GFXPosition.start
+                      ? showImage != false
+                          ? Container(child: image)
+                          : Container()
+                      : title ?? Container(),
+                  content ?? Container(),
+                  buttonBar ?? Container(),
+                ],
+              ),
             ),
-    );
+          )
+        : content ?? Container();
 
     final Widget overlayImage = GFXImageOverlay(
       width: MediaQuery.of(context).size.width,
